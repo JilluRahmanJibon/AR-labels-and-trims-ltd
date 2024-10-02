@@ -2,49 +2,9 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { ChevronDownIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { menuItems } from './NavItems';
+import logo from '../../Assets/logo.png'
 
-const menuItems = [
-  { name: 'Home', path: '/' },
-  {
-    name: 'About Us',
-    subItems: [
-      { name: 'About Us', path: '/about' },
-      { name: 'About Our Company', path: '/about-company' },
-    ],
-  },
-  {
-    name: 'Product & Solutions',
-    subItems: [
-      { name: 'Product & Solutions', path: '/products' },
-      { name: 'Product & Details', path: '/product-details' },
-    ],
-  },
-  {
-    name: 'Sustainability',
-    subItems: [
-      { name: 'Sustainability Overview', path: '/sustainability' },
-      { name: 'Sustainability Initiatives', path: '/sustainability-initiatives' },
-      { name: 'Sustainability Goals', path: '/sustainability-goals' },
-    ],
-  },
-  {
-    name: 'News & Events',
-    subItems: [
-      { name: 'Latest News', path: '/latest-news' },
-      { name: 'Upcoming Events', path: '/upcoming-events' },
-      { name: 'Past Events', path: '/past-events' },
-    ],
-  },
-  {
-    name: 'Careers',
-    subItems: [
-      { name: 'Current Openings', path: '/current-openings' },
-      { name: 'Internships', path: '/internships' },
-      { name: 'Company Culture', path: '/company-culture' },
-    ],
-  },
-  { name: 'Contact Us', path: '/contact' },
-];
 
 const Navbar = () =>
 {
@@ -62,19 +22,19 @@ const Navbar = () =>
   };
 
   return (
-    <nav className="bg-white shadow-md fixed w-full z-50">
+    <nav className="bg-white shadow-md  w-full z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
+        <div className="flex justify-between h-24">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
             <NavLink to="/">
-              <img className="h-8 w-auto" src="/logo.png" alt="Company Logo" />
+              <img className="h-[50px] w-auto" src={logo} alt="Company Logo" />
             </NavLink>
           </div>
 
           {/* Desktop Menu */}
           <div className="hidden lg:flex lg:items-center">
-            <div className="ml-10 flex items-baseline space-x-2 ">
+            <div className="ml-10 flex items-baseline  space-x-2 ">
               {menuItems.map((item, index) => (
                 !item.subItems ? (
                   <NavLink
@@ -95,12 +55,12 @@ const Navbar = () =>
                     onMouseEnter={() => handleMouseEnter(index)}
                     onMouseLeave={handleMouseLeave}
                   >
-                    <button className="px-3 py-2 mb-2 rounded-md text-sm font-medium text-gray-700 hover:text-[#018496] flex items-center">
+                    <button className="px-3 py-2 mb-2 rounded-md text-sm  font-medium text-gray-700 hover:text-[#018496] flex items-center">
                       {item.name}
                       <ChevronDownIcon className="ml-1 h-4 w-4" />
                     </button>
                     {openDropdown === index && (
-                      <div className="absolute left-0 w-48 bg-white border rounded-md shadow-lg">
+                      <div className="absolute left-0 w-48 bg-white border  rounded-md shadow-lg">
                         {item.subItems.map((subItem) => (
                           <NavLink
                             key={subItem.name}
@@ -108,7 +68,7 @@ const Navbar = () =>
                             className={({ isActive }) =>
                               isActive
                                 ? 'block px-4 py-2 text-sm text-[#018496] bg-gray-100'
-                                : 'block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
+                                : 'block px-4 py-2 text-sm text-gray-700 hover:text-[#018496] hover:bg-gray-00'
                             }
                           >
                             {subItem.name}
