@@ -11,22 +11,29 @@ import 'swiper/css/autoplay';
 // import './styles.css';
 
 // import required modules
-import { Pagination, Navigation } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 
 
 const DynamicSlider = ({ slides }) =>
 {
     return (
         <Swiper
-            autoplay
+            modules={[ Pagination, Navigation, Autoplay ]}
+
+            autoplay={{
+                delay: 3000,
+                disableOnInteraction: false,
+            }}
+            speed={1500}
             slidesPerView={1}
             spaceBetween={30}
             loop={true}
             pagination={{
                 clickable: true,
             }}
+
             navigation={true}
-            modules={[ Pagination, Navigation ]}
+
             className='w-full h-[600px]'
 
         >

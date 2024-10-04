@@ -17,3 +17,25 @@ code {
 html {
 	scroll-behavior: smooth;
 }
+/* Customize Pagination Bullets */
+.swiper-pagination-bullet {
+	background-color: rgba(0, 0, 0, 0.5) !important;
+	opacity: 0.6;
+}
+
+.swiper-pagination-bullet-active {
+	background-color: #018496 !important;
+	opacity: 1;
+}
+
+/* Customize Navigation Arrows */
+.swiper-button-next,
+.swiper-button-prev {
+	color: #018496 !important;
+	opacity: 0.8;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+	opacity: 1;
+}

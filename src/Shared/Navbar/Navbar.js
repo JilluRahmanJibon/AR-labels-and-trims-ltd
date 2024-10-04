@@ -32,7 +32,7 @@ const Navbar = () =>
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden lg:flex lg:items-center">
+          <div className="hidden z-10 lg:flex lg:items-center">
             <div className="ml-10 flex items-baseline space-x-2">
               {menuItems.map((item, index) => (
                 !item.subItems ? (
