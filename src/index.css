@@ -39,3 +39,28 @@ html {
 .swiper-button-prev:hover {
 	opacity: 1;
 }
+
+
+
+.bannerDotliId{
+	color: #e1e1e1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  }
+  #bannerDotId li{
+	width: 17px;
+  }
+  #bannerDotId .slick-active .bannerDotliId{
+	color: #fff;
+  }
+
+
+@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap');
+.GeologicaFont{
+  font-family: "Geologica", sans-serif;
+}
+@import url('https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+.Quantico {
+  font-family: "Quantico", sans-serif;
+}

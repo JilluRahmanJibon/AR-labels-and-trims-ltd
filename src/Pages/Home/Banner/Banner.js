@@ -1,19 +1,102 @@
-import React from 'react'
-import DynamicSlider from '../../../Shared/DynamicSlider/DynamicSlider';
+import React from "react";
+import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
+import banner from "../../../Assets/banner2.jpg";
+
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { GoDotFill } from "react-icons/go";
 
 // Install modules
-const Banner = () =>
-{
-    const sliderData = [
-        { title: 'Slide 1', image: 'http://localhost:3000/static/media/ar-image.a22264bd26421aab3d1f.jpg' },
-        { title: 'Slide 3', image: 'https://www.adzitrims.com/sul-web-cms-adzi/upload/slider_image_upload_product_slider_1546747987_1546747987.jpg' },
-        // Add more slides as needed
-    ];
-    return (
-        <div className='mb-6'>
-            <DynamicSlider slides={sliderData} />
-        </div>
-    )
-}
+const Banner = () => {
 
-export default Banner
+  const bannertData = [
+    {
+      key: 1,
+      image: banner,
+    },
+    {
+      key: 2,
+      image: banner,
+    },
+    {
+      key: 3,
+      image: banner,
+    },
+    {
+      key: 4,
+      image: banner,
+    },
+  ];
+  let settings = {
+    dots: true,
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3500,
+    pauseOnHover: false,
+    appendDots: (dots) => (
+      <div style={{ bottom: "0px" }}>
+        <ul className="m-0" id="bannerDotId">
+          {dots}
+        </ul>
+      </div>
+    ),
+    customPaging: (i) => (
+      <div className="bannerDotliId w-[17px] bottom-0">
+        <GoDotFill className="cursor-pointer text-[17px]" />
+      </div>
+    ),
+    nextArrow: <NextButton />,
+    prevArrow: <PrevButton />,
+  };
+  return (
+    <div className="w-full h-[100%] justify-center relative mt-[4.5rem]">
+      {/* <DynamicSlider slides={sliderData} /> */}
+        <div className="relative flex items-center text-[#fff]">
+          <Slider {...settings} className="w-[100%] h-[640px] flex items-center overflow-hidden mx-auto">
+            {bannertData.map((key) => {
+              return (
+                <>
+                  <img
+                    src={key.image}
+                    className="w-[100%] block"
+                  />
+                  {/* <img
+                    src={key.image1}
+                    className="w-[100%] block"
+                  /> */}
+                </>
+              );
+            })}
+          </Slider>
+          </div>
+    </div>
+  );
+};
+
+export default Banner;
+
+function NextButton(props) {
+  const { onClick } = props;
+  return (
+    <div
+      className={`bg-white w-[20px] h-[50px] absolute top-[45%] right-0 md2:flex hidden items-center justify-center cursor-pointer z-10`}
+      onClick={onClick}
+    >
+      <MdKeyboardArrowRight className="text-[black] text-[27px]" />
+    </div>
+  );
+}
+function PrevButton(props) {
+  const { onClick } = props;
+  return (
+    <div
+      className={`bg-white w-[20px] h-[50px] absolute top-[45%] left-0 md2:flex hidden items-center justify-center cursor-pointer z-10`}
+      onClick={onClick}
+    >
+      <MdKeyboardArrowLeft className="text-[black] text-[27px]" />
+    </div>
+  );
+}
