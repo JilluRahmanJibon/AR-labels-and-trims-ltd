@@ -15,8 +15,10 @@ const Home = () =>
 {
   return (
     <main>
-      {/* this is banner section  */}
+      {/*  banner section  */}
       <Banner />
+      {/* experience section  */}
+      <Experience />
       {/* About Us section  */}
       <LandAbout />
       {/* service section  */}
@@ -33,8 +35,7 @@ const Home = () =>
       <FAQs />
       {/* Branding section  */}
       <Branding />
-      {/* experience section  */}
-      <Experience />
+
       {/* footer section for landing page on the bottom */}
       <LandFooter />
     </main>
