@@ -38,5 +38,5 @@ export const menuItems = [
             { name: 'Company Culture', path: '/company-culture' },
         ],
     },
-    { name: 'Contact Us', path: '/contact' },
+    { name: 'Contact Us', path: '/contactUs' },
 ];

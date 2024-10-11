@@ -4,7 +4,7 @@ import brandLogo from "../../../Assets/brandLogo.png";
 const Branding = () => {
   return (
     <main>
-      <section class="text-gray-600 body-font GeologicaFont">
+      <section class="text-gray-600 body-font bg-gray-100 GeologicaFont">
         <div class="xl:w-[1230px] w-[100%] px-5 py-[2rem] mx-auto">
           <div class="w-[95%] mx-auto flex flex-wrap items-center">
             <img
