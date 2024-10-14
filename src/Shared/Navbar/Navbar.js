@@ -35,7 +35,7 @@ const Navbar = () => {
       <nav
       className={` w-full relative ${
         color
-          ? "bg-[#ffffffd6] shadow-[0px_0px_3px_0px_#0003]"
+          ? "bg-[#ffffffed] shadow-[0px_0px_3px_0px_#0003]"
           : "bg-white"
       }`}
       style={{ transition: ".1s ease-in" }}
@@ -46,7 +46,7 @@ const Navbar = () => {
           <div className="flex-shrink-0 flex items-center">
             <NavLink to="/">
               {/* <img className="h-[50px] w-auto" src={logo} alt="Company Logo" /> */}
-                <h1 className="text-[24px] font-[600] text-black GeologicaFont"> AR-Labels & <span className="text-primary">Trims Ltd.</span></h1>
+                <h1 className="sm:!text-[24px]  [@media(min-width:400px)]:text-[22px] text-[19px] font-[600] text-black GeologicaFont"> AR-Labels & <span className="text-primary">Trims Ltd.</span></h1>
             </NavLink>
           </div>
 
