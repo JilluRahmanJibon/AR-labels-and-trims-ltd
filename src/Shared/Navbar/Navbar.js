@@ -46,7 +46,7 @@ const Navbar = () => {
           <div className="flex-shrink-0 flex items-center">
             <NavLink to="/">
               {/* <img className="h-[50px] w-auto" src={logo} alt="Company Logo" /> */}
-                <h1 className="text-2xl font-bold text-primary"> AR-Labels & Trims Ltd.</h1>
+                <h1 className="text-[24px] font-[600] text-black GeologicaFont"> AR-Labels & <span className="text-primary">Trims Ltd.</span></h1>
             </NavLink>
           </div>
 

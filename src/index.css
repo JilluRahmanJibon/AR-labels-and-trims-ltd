@@ -75,8 +75,16 @@ html {
 .GeologicaFont {
 	font-family: "Geologica", sans-serif;
 }
-@import url("https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap");
-.Quantico {
-	font-family: "Quantico", sans-serif;
-}
 
+
+
+
+
+.AboutPageImage {
+	background: url('/src/Assets/aboutUs.jpg');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+  }
+  

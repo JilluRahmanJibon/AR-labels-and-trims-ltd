@@ -3,7 +3,7 @@ export const menuItems = [
     {
         name: 'About Us',
         subItems: [
-            { name: 'About Us', path: '/about' },
+            { name: 'About Us', path: '/aboutus' },
             { name: 'About Our Company', path: '/about-company' },
         ],
     },
