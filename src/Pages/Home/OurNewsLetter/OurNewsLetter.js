@@ -3,7 +3,7 @@ import React from "react";
 function OurNewsLetter() {
   return (
     <main
-      className={`w-[100%] h-[100%] [@media(min-width:420px)]:py-[3.5rem] py-[2rem] [@media(min-width:420px)]:px-[2rem] px-[15px] bg-[#264d4d]  [@media(min-width:420)]:rounded-tr-[8rem] rounded-tr-[5rem]`}
+      className={`w-[100%] h-[100%] [@media(min-width:420px)]:py-[3.5rem] py-[2rem] [@media(min-width:420px)]:px-[2rem] px-[15px] bg-[#264d4d] [@media(min-width:420px)]:rounded-tr-[8rem] rounded-tr-[3rem]`}
     >
       <div className="xl:w-[1100px] w-[100%] grid [@media(min-width:1050px)]:grid-cols-2 grid-cols-1 items-center mx-auto">
         <div className="[@media(min-width:1050)]:w-[500px] [@media(min-width:700)]:w-[500px] [@media(min-width:420)]:w-[97%] w-[99%] GeologicaFont text-[#ffffff] [@media(min-width:490)]:mb-[2rem] mb-[1rem] mx-auto">

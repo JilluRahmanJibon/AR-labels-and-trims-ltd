@@ -10,6 +10,7 @@ import WhyChooseUs from "./WhyChooseUs/WhyChooseUs";
 import Portfolio from "./Portfolio/Portfolio";
 import Testimonials from "./Testimonials/Testimonials";
 import FAQs from "./FAQs/FAQs";
+import OurNewsLetter from "./OurNewsLetter/OurNewsLetter";
 
 const Home = () =>
 {
@@ -35,6 +36,8 @@ const Home = () =>
       <FAQs />
       {/* Branding section  */}
       <Branding />
+      {/* Our News Letter section  */}
+      <OurNewsLetter />
 
       {/* footer section for landing page on the bottom */}
       <LandFooter />

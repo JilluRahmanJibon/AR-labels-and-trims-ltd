@@ -3,8 +3,13 @@ export const menuItems = [
     {
         name: 'About Us',
         subItems: [
-            { name: 'About Us', path: '/aboutus' },
-            { name: 'About Our Company', path: '/about-company' },
+            // { name: 'About Us', path: '/aboutUs' },
+            { name: 'Our Company', path: '/about-our-company' },
+            { name: 'Mission & Vision', path: '/about-mission-vision' },
+            { name: 'AR Labels Family', path: '/about-ar-labels-family' },
+            { name: 'Ethics & Values', path: '/about-ethics-values' },
+            { name: 'Affiliations', path: '/about-affiliations' },
+            { name: 'Client References', path: '/about-client-references' },
         ],
     },
     {
