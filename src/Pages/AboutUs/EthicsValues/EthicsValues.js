@@ -1,7 +1,7 @@
 import React from "react";
-import DynamicBanner from "../../Shared/DynamicBanner/DynamicBanner";
+import DynamicBanner from "../../../Shared/DynamicBanner/DynamicBanner";
 
-function ClientReferences() {
+function EthicsValues() {
   return (
     <main>
       {/*  banner section  */}
@@ -10,4 +10,4 @@ function ClientReferences() {
   );
 }
 
-export default ClientReferences;
+export default EthicsValues;

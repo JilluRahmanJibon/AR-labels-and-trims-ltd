@@ -1,6 +1,7 @@
 import React from "react";
 import AboutSkils from "./AboutSkils/AboutSkils";
-import DynamicBanner from "../../Shared/DynamicBanner/DynamicBanner";
+import DynamicBanner from "../../../Shared/DynamicBanner/DynamicBanner";
+import OurCompanyDetails from "./OurCompanyDetails/OurCompanyDetails";
 
 function OurCompany() {
   return (
@@ -9,6 +10,8 @@ function OurCompany() {
       <DynamicBanner webTittle={true} />
       {/*  skils section  */}
       <AboutSkils />
+      {/*  our company details section */}
+      <OurCompanyDetails />
     </main>
   );
 }

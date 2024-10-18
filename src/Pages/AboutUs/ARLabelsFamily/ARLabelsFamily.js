@@ -1,7 +1,7 @@
 import React from "react";
-import DynamicBanner from "../../Shared/DynamicBanner/DynamicBanner";
+import DynamicBanner from "../../../Shared/DynamicBanner/DynamicBanner";
 
-function MissionVision() {
+function ARLabelsFamily() {
   return (
     <main>
       {/*  banner section  */}
@@ -10,4 +10,4 @@ function MissionVision() {
   );
 }
 
-export default MissionVision;
+export default ARLabelsFamily;

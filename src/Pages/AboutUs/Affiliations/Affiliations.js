@@ -1,7 +1,7 @@
 import React from "react";
-import DynamicBanner from "../../Shared/DynamicBanner/DynamicBanner";
+import DynamicBanner from "../../../Shared/DynamicBanner/DynamicBanner";
 
-function EthicsValues() {
+function Affiliations() {
   return (
     <main>
       {/*  banner section  */}
@@ -10,4 +10,4 @@ function EthicsValues() {
   );
 }
 
-export default EthicsValues;
+export default Affiliations;

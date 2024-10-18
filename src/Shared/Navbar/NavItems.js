@@ -1,5 +1,5 @@
 export const menuItems = [
-    { name: 'Home', path: '/' },
+    // { name: 'Home', path: '/' },
     {
         name: 'About Us',
         subItems: [
@@ -27,6 +27,10 @@ export const menuItems = [
             { name: 'Sustainability Goals', path: '/sustainability-goals' },
         ],
     },
+
+];
+export const menuItems2 = [
+
     {
         name: 'News & Events',
         subItems: [
@@ -43,5 +47,5 @@ export const menuItems = [
             { name: 'Company Culture', path: '/company-culture' },
         ],
     },
-    { name: 'Contact Us', path: '/contactUs' },
+    // { name: 'Contact Us', path: '/contactUs' },
 ];

@@ -1,7 +1,7 @@
 import React from "react";
-import DynamicBanner from "../../Shared/DynamicBanner/DynamicBanner";
+import DynamicBanner from "../../../Shared/DynamicBanner/DynamicBanner";
 
-function Affiliations() {
+function ClientReferences() {
   return (
     <main>
       {/*  banner section  */}
@@ -10,4 +10,4 @@ function Affiliations() {
   );
 }
 
-export default Affiliations;
+export default ClientReferences;
