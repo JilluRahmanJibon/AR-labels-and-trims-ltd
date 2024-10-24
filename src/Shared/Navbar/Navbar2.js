@@ -17,7 +17,8 @@ import { BsInstagram } from "react-icons/bs";
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null); // Track which dropdown is open
-  const [openDropdown2, setOpenDropdown2] = useState(null); // Track which dropdown is open
+  const [ openDropdown2, setOpenDropdown2 ] = useState(null); // Track which dropdown is open
+  const [openNav,setIsOpenNav]=useState(true)
 
   const handleMouseEnter = (index) => {
     setOpenDropdown(index);
@@ -37,35 +38,40 @@ const Navbar = () => {
 
   const [color, setColor] = useState(false);
   const changeColor = () => {
-    if (window.scrollY >= 24) {
+    if (window.scrollY >= 24)
+    {
+      setIsOpenNav(false)
       setColor(true);
     } else {
       setColor(false);
+      setIsOpenNav(true)
     }
   };
   window.addEventListener("scroll", changeColor);
 
   return (
     <div className="w-full flex flex-col fixed top-[0px] z-50 GeologicaFont">
-      <div className="bg-[#018496] w-full h-[2.5rem] flex justify-center items-center">
-        <div className="max-w-7xl w-full px-[10px] flex items-center justify-between mx-auto text-white">
-          <div className="flex items-center">
-            <div className="w-[24px] h-[24px] cursor-pointer flex justify-center items-center border-[1.59px] border-white rounded-[50px] mx-[5px]">
-              <FaFacebookF className="text-[11px]" />
+      {
+        openNav && <div className={`bg-[#018496] w-full h-[2.5rem] flex justify-center items-center`}>
+          <div className="max-w-7xl w-full flex items-center justify-between mx-auto text-white">
+            <div className="flex items-center">
+              <div className="w-[24px] h-[24px] cursor-pointer flex justify-center items-center border-[1.59px] border-white rounded-[50px] mx-[5px]">
+                <FaFacebookF className="text-[11px]" />
+              </div>
+              <div className="w-[24px] h-[24px] cursor-pointer flex justify-center items-center border-[1.59px] border-white rounded-[50px] mx-[5px]">
+                <FaLinkedinIn className="text-[11px]" />
+              </div>
+              <div className="w-[24px] h-[24px] cursor-pointer flex justify-center items-center border-[1.59px] border-white rounded-[50px] mx-[5px]">
+                <BsInstagram className="text-[11px]" />
+              </div>
             </div>
-            <div className="w-[24px] h-[24px] cursor-pointer flex justify-center items-center border-[1.59px] border-white rounded-[50px] mx-[5px]">
-              <FaLinkedinIn className="text-[11px]" />
-            </div>
-            <div className="w-[24px] h-[24px] cursor-pointer flex justify-center items-center border-[1.59px] border-white rounded-[50px] mx-[5px]">
-              <BsInstagram className="text-[11px]" />
-            </div>
-          </div>
             <div className="flex justify-center items-center mx-[5px] cursor-pointer">
               <FaRegUserCircle className="text-[20px]" />
               <p className="pl-[5px] pt-[1px] text-[12.5px]">Existing customers</p>
             </div>
+          </div>
         </div>
-      </div>
+      }
       <nav
         className={` w-full relative ${
           color ? "bg-[#ffffffed] shadow-[0px_0px_3px_0px_#0003]" : "bg-white"

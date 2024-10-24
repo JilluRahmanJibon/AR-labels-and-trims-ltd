@@ -1,30 +1,37 @@
 // src/components/Navbar.jsx
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import {
+import
+{
   ChevronDownIcon,
   Bars3Icon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { menuItems } from "./NavItems";
 
-const Navbar = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState(null); // Track which dropdown is open
+const Navbar = () =>
+{
+  const [ mobileMenuOpen, setMobileMenuOpen ] = useState(false);
+  const [ openDropdown, setOpenDropdown ] = useState(null); // Track which dropdown is open
 
-  const handleMouseEnter = (index) => {
+  const handleMouseEnter = (index) =>
+  {
     setOpenDropdown(index);
   };
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = () =>
+  {
     setOpenDropdown(null);
   };
 
-  const [color, setColor] = useState(false);
-  const changeColor = () => {
-    if (window.scrollY >= 24) {
+  const [ color, setColor ] = useState(false);
+  const changeColor = () =>
+  {
+    if (window.scrollY >= 24)
+    {
       setColor(true);
-    } else {
+    } else
+    {
       setColor(false);
     }
   };
@@ -33,9 +40,8 @@ const Navbar = () => {
   return (
     <div className="w-full flex fixed top-[0px] z-50 GeologicaFont">
       <nav
-        className={` w-full relative ${
-          color ? "bg-[#ffffffed] shadow-[0px_0px_3px_0px_#0003]" : "bg-white"
-        }`}
+        className={` w-full relative ${ color ? "bg-[#ffffffed] shadow-[0px_0px_3px_0px_#0003]" : "bg-white"
+          }`}
         style={{ transition: ".1s ease-in" }}
       >
         <div className="max-w-7xl mx-auto lg:!px-[20px] [@media(min-width:500px)]:px-[2rem] [@media(min-width:350px)]:px-[20px] px-[10px]">
@@ -79,11 +85,10 @@ const Navbar = () => {
                         <ChevronDownIcon className="ml-1 h-4 w-4" />
                       </button>
                       <div
-                        className={`absolute left-0 w-[13rem] bg-white border rounded-md shadow-lg transition-all duration-300 ease-in-out transform ${
-                          openDropdown === index
-                            ? "opacity-100 translate-y-0"
-                            : "opacity-0 -translate-y-2 pointer-events-none"
-                        }`}
+                        className={`absolute left-0 w-[13rem] bg-white border rounded-md shadow-lg transition-all duration-300 ease-in-out transform ${ openDropdown === index
+                          ? "opacity-100 translate-y-0"
+                          : "opacity-0 -translate-y-2 pointer-events-none"
+                          }`}
                       >
                         {item.subItems.map((subItem) => (
                           <NavLink
@@ -152,19 +157,17 @@ const Navbar = () => {
                     >
                       {item.name}
                       <ChevronDownIcon
-                        className={`h-5 w-5 transition-transform ${
-                          openDropdown === item.name
-                            ? "transform rotate-180"
-                            : ""
-                        }`}
+                        className={`h-5 w-5 transition-transform ${ openDropdown === item.name
+                          ? "transform rotate-180"
+                          : ""
+                          }`}
                       />
                     </button>
                     <div
-                      className={`ml-4 transition-all duration-300 ease-in-out transform ${
-                        openDropdown === item.name
-                          ? "opacity-100 translate-y-0"
-                          : "opacity-0 -translate-y-2 pointer-events-none"
-                      }`}
+                      className={`ml-4 transition-all duration-300 ease-in-out transform ${ openDropdown === item.name
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-0 -translate-y-2 pointer-events-none"
+                        }`}
                     >
                       {openDropdown === item.name && (
                         <div className="ml-4">
@@ -172,7 +175,8 @@ const Navbar = () => {
                             <NavLink
                               key={subItem.name}
                               to={subItem.path}
-                              onClick={() => {
+                              onClick={() =>
+                              {
                                 setMobileMenuOpen(false);
                                 setOpenDropdown(null);
                               }}
