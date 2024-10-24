@@ -46,9 +46,7 @@ export const menuItems2 = [
     {
         name: 'News & Events',
         subItems: [
-            { name: 'Our News & Events', path: '/news_and_events' },
-            { name: 'Facebook', path: 'https://www.facebook.com/adzitrims/' },
-            { name: 'Linkedin', path: 'https://bd.linkedin.com/company/adzi-trims-limited' },
+            { name: 'Our News & Events', path: '/news-events' }
         ],
     },
     {
