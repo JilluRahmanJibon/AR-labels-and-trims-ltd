@@ -11,11 +11,13 @@ import Portfolio from "./Portfolio/Portfolio";
 import Testimonials from "./Testimonials/Testimonials";
 import FAQs from "./FAQs/FAQs";
 import OurNewsLetter from "./OurNewsLetter/OurNewsLetter";
+import Product from "../Product/Product";
 
 const Home = () =>
 {
   return (
     <main>
+      <Product/>
       {/*  banner section  */}
       <Banner />
       {/* experience section  */}

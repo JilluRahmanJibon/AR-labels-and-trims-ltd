@@ -1,5 +1,4 @@
 export const menuItems = [
-    // { name: 'Home', path: '/' },
     {
         name: 'About Us',
         subItems: [
@@ -15,16 +14,29 @@ export const menuItems = [
     {
         name: 'Product & Solutions',
         subItems: [
-            { name: 'Product & Solutions', path: '/products' },
-            { name: 'Product & Details', path: '/product-details' },
+            { name: 'Woven Labels', path: '/products?pid=1' },
+            { name: 'Printed Fabric Labels', path: 'products?pid=2' },
+            { name: 'Screen Printed Labels', path: 'products?pid=3' },
+            { name: 'Heat Transfer Labels', path: 'products?pid=4' },
+            { name: 'Paper Items (Price Ticket, Hangtags)', path: 'products?pid=5' },
+            { name: 'Paper Packaging', path: 'products?pid=6' },
+            { name: 'Adhesive Labels/Tags', path: 'products?pid=7' },
+            { name: 'Barcode Labels & Stickers', path: 'products?pid=8' },
+            { name: 'Rubber & Silicone Patch', path: 'products?pid=9' },
+            { name: 'Jacron, PU & Leather Patch (Eco-Friendly)', path: 'products?pid=10' },
+            { name: 'Seal Cord/Plastic Clips/Loops', path: 'products?pid=11' },
+            { name: 'RFID / EAS / Alarm Labels, Tags & Stickers', path: 'products?pid=12' },
+            { name: 'Twill Tape & Elastic', path: 'products?pid=14' },
+            { name: 'Jacquard Elastic', path: 'products?pid=15' },
+            { name: 'Poly Bags', path: 'products?pid=16' },
+            { name: 'PVC / TPU / EVA Bags', path: 'products?pid=17' }
         ],
     },
     {
         name: 'Sustainability',
         subItems: [
-            { name: 'Sustainability Overview', path: '/sustainability' },
-            { name: 'Sustainability Initiatives', path: '/sustainability-initiatives' },
-            { name: 'Sustainability Goals', path: '/sustainability-goals' },
+            { name: 'Certifications', path: '/certifications' },
+
         ],
     },
 
@@ -34,18 +46,17 @@ export const menuItems2 = [
     {
         name: 'News & Events',
         subItems: [
-            { name: 'Latest News', path: '/latest-news' },
-            { name: 'Upcoming Events', path: '/upcoming-events' },
-            { name: 'Past Events', path: '/past-events' },
+            { name: 'Our News & Events', path: '/news_and_events' },
+            { name: 'Facebook', path: 'https://www.facebook.com/adzitrims/' },
+            { name: 'Linkedin', path: 'https://bd.linkedin.com/company/adzi-trims-limited' },
         ],
     },
     {
         name: 'Careers',
         subItems: [
-            { name: 'Current Openings', path: '/current-openings' },
-            { name: 'Internships', path: '/internships' },
-            { name: 'Company Culture', path: '/company-culture' },
+            { name: 'Available Positions', path: '/available_positions' },
+            { name: 'Apply Online', path: '/apply_online' },
         ],
     },
-    // { name: 'Contact Us', path: '/contactUs' },
+
 ];

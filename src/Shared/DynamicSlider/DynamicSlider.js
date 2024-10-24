@@ -38,8 +38,9 @@ const DynamicSlider = ({ slides }) =>
 
         >
             {slides.map((slide, index) => (
-                <SwiperSlide key={index}>
-                    <img src={slide.image} alt={slide.alt} />
+                <SwiperSlide className='relative' key={index}>
+                    <img className='w-full h-full' src={slide?.image} alt={slide.alt} />
+                    <h1 className='absolute top-[88%] left-[46%] text-xl font-bold text-primary'>{slide?.title}</h1>
                 </SwiperSlide>
             ))}
             ...
