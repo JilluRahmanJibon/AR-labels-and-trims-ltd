@@ -10,7 +10,7 @@ import { GoDotFill } from "react-icons/go";
 // Install modules
 const Banner = () => {
 
-  const bannertData = [
+  const bannerData = [
     {
       key: 1,
       image: banner,
@@ -55,18 +55,15 @@ const Banner = () => {
     <div className="w-full h-[100%] justify-center relative mt-[4.5rem]">
       {/* <DynamicSlider slides={sliderData} /> */}
         <div className="relative flex items-center text-[#fff]">
-          <Slider {...settings} className="w-[100%] h-[640px] flex items-center overflow-hidden mx-auto">
-            {bannertData.map((key) => {
+          <Slider {...settings} className="w-[100%] xl:h-[640px]  flex items-center overflow-hidden mx-auto">
+            {bannerData.map((key) => {
               return (
                 <>
                   <img
                     src={key.image}
                     className="w-[100%] block"
                   />
-                  {/* <img
-                    src={key.image1}
-                    className="w-[100%] block"
-                  /> */}
+                 
                 </>
               );
             })}
