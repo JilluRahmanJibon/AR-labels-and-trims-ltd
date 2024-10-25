@@ -10,6 +10,7 @@ import EthicsValues from "../Pages/AboutUs/EthicsValues/EthicsValues";
 import Affiliations from "../Pages/AboutUs/Affiliations/Affiliations";
 import ClientReferences from "../Pages/AboutUs/ClientReferences/ClientReferences";
 import Product from "../Pages/Product/Product";
+import NewsEvents from "../Pages/NewsEvents/NewsEvents";
 
 const router = createBrowserRouter([
   {
@@ -29,8 +30,11 @@ const router = createBrowserRouter([
       { path: "/about-client-references", element: <ClientReferences /> },
       // products 
       {
-        path: `/products?pid=1`, element: <Product />
-      }
+        path: `/products`, element: <Product />
+      },
+      // News Events
+      { path: "/news-events", element: <NewsEvents /> },
+
     ],
   },
   {

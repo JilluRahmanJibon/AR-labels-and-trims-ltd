@@ -122,24 +122,24 @@ const Product = () =>
                     </div>
                     <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4'>
                         {
-                            products?.map(product => <div >
-                                <div class="max-w-xs  bg-white shadow-lg rounded-lg overflow-hidden">
-                                    <div class="relative group">
+                            products?.map(product =>
+                                <div key={product?.id} className="max-w-xs  bg-white shadow-lg rounded-lg overflow-hidden">
+                                    <div className="relative group">
                                         <img
-                                            class="w-full h-48 object-cover transform transition duration-500 group-hover:scale-110"
+                                            className="w-full h-48 object-cover transform transition duration-500 group-hover:scale-110"
                                             src={product.image}
                                             alt={product.title}
                                         />
                                         <Link to={`/products?pid=${ product?.id }`}>
-                                            <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                                            <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-500"></div>
                                         </Link>
                                     </div>
-                                    <div class="p-4">
+                                    <div className="p-4">
                                         <Link to={`/products?pid=${ product?.id }`}> {product.title}</Link>
                                     </div>
                                 </div>
 
-                            </div>)
+                            )
                         }
                     </div>
                 </div>

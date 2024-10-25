@@ -14,7 +14,7 @@ export const menuItems = [
     {
         name: 'Product & Solutions',
         subItems: [
-            { name: 'Woven Labels', path: '/products?pid=1' },
+            { name: 'Woven Labels', path: '/products' },
             { name: 'Printed Fabric Labels', path: '/products?pid=2' },
             { name: 'Screen Printed Labels', path: '/products?pid=3' },
             { name: 'Heat Transfer Labels', path: '/products?pid=4' },
@@ -46,9 +46,7 @@ export const menuItems2 = [
     {
         name: 'News & Events',
         subItems: [
-            { name: 'Our News & Events', path: '/news_and_events' },
-            { name: 'Facebook', path: 'https://www.facebook.com/adzitrims/' },
-            { name: 'Linkedin', path: 'https://bd.linkedin.com/company/adzi-trims-limited' },
+            { name: 'Our News & Events', path: '/news-events' }
         ],
     },
     {
