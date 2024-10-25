@@ -9,6 +9,7 @@ import ARLabelsFamily from "../Pages/AboutUs/ARLabelsFamily/ARLabelsFamily";
 import EthicsValues from "../Pages/AboutUs/EthicsValues/EthicsValues";
 import Affiliations from "../Pages/AboutUs/Affiliations/Affiliations";
 import ClientReferences from "../Pages/AboutUs/ClientReferences/ClientReferences";
+import Product from "../Pages/Product/Product";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       { path: "/about-ethics-values", element: <EthicsValues /> },
       { path: "/about-affiliations", element: <Affiliations /> },
       { path: "/about-client-references", element: <ClientReferences /> },
+      // products 
+      {
+        path: `/products?pid=1`, element: <Product />
+      }
     ],
   },
   {
