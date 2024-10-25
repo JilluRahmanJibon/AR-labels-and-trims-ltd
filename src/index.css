@@ -109,11 +109,11 @@ html {
 
   .inputStyleIng[type="text"]:focus ~ .inputStyleIngText,
   .inputStyleIng[type="text"]:not(:placeholder-shown) ~ .inputStyleIngText{
-	@apply text-[#018496] bg-[#edededed] transform -translate-y-[22px] -translate-x-[3px] scale-75 cursor-default;
+	@apply text-[#018496] bg-[#fff] transform -translate-y-[22px] -translate-x-[3px] scale-75 cursor-default;
   }
   .inputStyleIng[type="email"]:focus ~ .inputStyleIngText,
   .inputStyleIng[type="email"]:not(:placeholder-shown) ~ .inputStyleIngText{
-	@apply text-[#018496] bg-[#edededed] transform -translate-y-[22px] -translate-x-[3px] scale-75 cursor-default;
+	@apply text-[#018496] bg-[#fff] transform -translate-y-[22px] -translate-x-[3px] scale-75 cursor-default;
   }
   
   
