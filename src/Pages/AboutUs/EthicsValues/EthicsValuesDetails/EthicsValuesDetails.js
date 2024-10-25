@@ -3,7 +3,7 @@ import CompanyImg from "../../../../Assets/AboutUs/vision_image_upload__15500496
 
 function EthicsValuesDetails() {
   return (
-    <div className="bg-[#edededed] GeologicaFont">
+    <div className="bg-[#fff] GeologicaFont">
       <main className="xl:w-[1230px] w-[96%] mx-auto  py-[3rem] px-5  overflow-hidden">
         <div className="w-full text-center text-black relative z-10 sm:pb-[25px] pb-[15px]">
           <h1 className="[@media(min-width:800px)]:text-[30px] [@media(min-width:600px)]:text-[27px] [@media(min-width:500px)]:text-[25px] [@media(min-width:400px)]:text-[22px] text-[19px] font-semibold">
@@ -15,9 +15,9 @@ function EthicsValuesDetails() {
             <div className="[@media(min-width:420px)]:w-[21px] w-[18px] [@media(min-width:420px)]:h-[3px] h-[2px] bg-[#FA0472] inline-flex"></div>
           </div>
         </div>
-        <img src={CompanyImg} className="w-full" />
 
-        <div className="">
+        <div className="rounded-[6px] shadow-[0_0px_9px_1px_#00000024]">
+        <img src={CompanyImg} className="w-full !rounded-[13px]" />
           <p className="xl:!text-[15px] md:!text-[14px] [@media(min-width:400px)]:text-[13px] text-[12px] text-justify bg-white px-[10px] py-[5px] rounded-b-[6px]">
             <b>Ethics & Values:</b>
             <ul className="py-[5px]">

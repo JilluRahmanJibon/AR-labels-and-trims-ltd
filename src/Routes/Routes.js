@@ -10,6 +10,8 @@ import EthicsValues from "../Pages/AboutUs/EthicsValues/EthicsValues";
 import Affiliations from "../Pages/AboutUs/Affiliations/Affiliations";
 import ClientReferences from "../Pages/AboutUs/ClientReferences/ClientReferences";
 import NewsEvents from "../Pages/NewsEvents/NewsEvents";
+import AvailablePositions from "../Pages/Careers/AvailablePositions/AvailablePositions";
+import ApplyOnline from "../Pages/Careers/ApplyOnline/ApplyOnline";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +31,10 @@ const router = createBrowserRouter([
       { path: "/about-client-references", element: <ClientReferences /> },
       // News Events
       { path: "/news-events", element: <NewsEvents /> },
+      // Careers
+      { path: "/available_positions", element: <AvailablePositions /> },
+      { path: "/apply_online", element: <ApplyOnline /> },
+
 
     ],
   },

@@ -30,7 +30,7 @@ function FamilyMember() {
 
   return (
     <main
-      className={`w-full h-full pt-[4rem] pb-[2.5rem] GeologicaFont bg-[#f3f4f6]`}
+      className={`w-full h-full pt-[4rem] pb-[2.5rem] GeologicaFont bg-[#fff]`}
     >
       <div className="xl:w-[1230px] w-[96%] h-[100%] z-[1] flex items-center mx-auto relative ">
         {/* Team */}

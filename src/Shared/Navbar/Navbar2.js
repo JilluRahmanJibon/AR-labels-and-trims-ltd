@@ -53,7 +53,7 @@ const Navbar = () => {
     <div className="w-full flex flex-col fixed top-[0px] z-50 GeologicaFont">
       {
         openNav && <div className={`bg-[#018496] w-full h-[2.5rem] flex justify-center items-center`}>
-          <div className="max-w-7xl w-full flex items-center justify-between mx-auto text-white">
+          <div className="max-w-7xl w-full flex items-center justify-between mx-auto text-white sm:px-[25px] px-[10px]">
             <div className="flex items-center">
               <div className="w-[24px] h-[24px] cursor-pointer flex justify-center items-center border-[1.59px] border-white rounded-[50px] mx-[5px]">
                 <FaFacebookF className="text-[11px]" />
