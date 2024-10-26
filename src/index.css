@@ -20,7 +20,9 @@ html {
 
 /* Global Scrollbar Styles */
 ::-webkit-scrollbar {
-	width: 8px; /* Width of the scrollbar */
+	width: 8px;
+	height: 10px;
+	 /* Width of the scrollbar */
 }
 
 ::-webkit-scrollbar-track {
@@ -32,7 +34,6 @@ html {
 	border-radius: 10px;
 	border: 2px solid #f1f1f1; /* Optional: Border around scrollbar handle */
 }
-
 
 
 /* Customize Pagination Bullets */
