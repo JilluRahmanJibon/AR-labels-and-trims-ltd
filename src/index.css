@@ -115,5 +115,13 @@ html {
   .inputStyleIng[type="email"]:not(:placeholder-shown) ~ .inputStyleIngText{
 	@apply text-[#018496] bg-[#fff] transform -translate-y-[22px] -translate-x-[3px] scale-75 cursor-default;
   }
+  .inputStyleIng[type="password"]:focus ~ .inputStyleIngText,
+  .inputStyleIng[type="password"]:not(:placeholder-shown) ~ .inputStyleIngText{
+	@apply text-[#018496] bg-[#fff] transform -translate-y-[22px] -translate-x-[3px] scale-75 cursor-default;
+  }
   
+  .inputStyleIng[type="file"]:focus ~ .inputStyleIngText,
+  .inputStyleIng[type="file"]:not(:placeholder-shown) ~ .inputStyleIngText{
+	@apply text-[#018496] bg-[#fff] transform -translate-y-[22px] -translate-x-[3px] scale-75 cursor-default;
+  }
   

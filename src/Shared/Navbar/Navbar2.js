@@ -1,6 +1,6 @@
 // src/components/Navbar.jsx
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import {
   ChevronDownIcon,
   Bars3Icon,
@@ -65,10 +65,10 @@ const Navbar = () => {
                 <BsInstagram className="text-[11px]" />
               </div>
             </div>
-            <div className="flex justify-center items-center mx-[5px] cursor-pointer">
+            <Link to={"/login"} className="flex justify-center items-center mx-[5px] cursor-pointer">
               <FaRegUserCircle className="text-[20px]" />
               <p className="pl-[5px] pt-[1px] text-[12.5px]">Existing customers</p>
-            </div>
+            </Link>
           </div>
         </div>
       }
