@@ -102,8 +102,8 @@ const Product = () =>
         }
     ]
     return (
-        <section >
-            <div className='mt-[100px] px-12 ' >
+        <section className='max-w-[1920px] mx-auto '>
+            <div className='mt-[100px]  px-12 ' >
                 <DynamicSlider slides={slides} />
             </div>
             <div className='bg-gray-50 py-6 px-12'>
@@ -120,10 +120,10 @@ const Product = () =>
 
                         <div className='w-[70px] h-[3px]  bg-black'></div>
                     </div>
-                    <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4'>
+                    <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 mt-2 gap-4'>
                         {
                             products?.map(product =>
-                                <div key={product?.id} className="max-w-xs  bg-white shadow-lg rounded-lg overflow-hidden">
+                                <div key={product?.id} className="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
                                     <div className="relative group">
                                         <img
                                             className="w-full h-48 object-cover transform transition duration-500 group-hover:scale-110"

@@ -8,7 +8,8 @@ import "slick-carousel/slick/slick-theme.css";
 import { GoDotFill } from "react-icons/go";
 
 // Install modules
-const Banner = () => {
+const Banner = () =>
+{
 
   const bannerData = [
     {
@@ -52,31 +53,33 @@ const Banner = () => {
     prevArrow: <PrevButton />,
   };
   return (
-    <div className="w-full h-[100%] justify-center relative mt-[4.5rem]">
+    <div className=" max-w-[1920px] mx-auto w-full h-[100%] justify-center relative mt-[4.5rem]">
       {/* <DynamicSlider slides={sliderData} /> */}
-        <div className="relative flex items-center text-[#fff]">
-          <Slider {...settings} className="w-[100%] xl:h-[640px]  flex items-center overflow-hidden mx-auto">
-            {bannerData.map((data) => {
-              return (
-                <div key={data?.id}>
-                  <img 
-                    src={data.image}
-                    className="w-[100%] block"
-                    alt=""
-                  />
-                 
-                </div>
-              );
-            })}
-          </Slider>
-          </div>
+      <div className="relative flex items-center text-[#fff]">
+        <Slider {...settings} className="w-[100%] xl:h-[640px]  flex items-center overflow-hidden mx-auto">
+          {bannerData.map((data) =>
+          {
+            return (
+              <div key={data?.id}>
+                <img
+                  src={data.image}
+                  className="w-[100%] block"
+                  alt=""
+                />
+
+              </div>
+            );
+          })}
+        </Slider>
+      </div>
     </div>
   );
 };
 
 export default Banner;
 
-function NextButton(props) {
+function NextButton (props)
+{
   const { onClick } = props;
   return (
     <div
@@ -87,7 +90,8 @@ function NextButton(props) {
     </div>
   );
 }
-function PrevButton(props) {
+function PrevButton (props)
+{
   const { onClick } = props;
   return (
     <div

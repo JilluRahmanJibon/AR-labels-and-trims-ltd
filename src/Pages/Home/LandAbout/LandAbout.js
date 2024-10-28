@@ -4,7 +4,7 @@ import arImage from '../../../Assets/ar-image.jpg'; // Replace with actual image
 const LandAbout = () =>
 {
     return (
-        <section className=" py-12">
+        <section className=" py-12 px-2">
             <div className="container mx-auto flex flex-col md:flex-row items-center">
                 {/* Image Section */}
                 <div className="md:w-1/2">
