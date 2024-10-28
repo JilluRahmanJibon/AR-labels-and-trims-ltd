@@ -11,6 +11,10 @@ import Affiliations from "../Pages/AboutUs/Affiliations/Affiliations";
 import ClientReferences from "../Pages/AboutUs/ClientReferences/ClientReferences";
 import Product from "../Pages/Product/Product";
 import NewsEvents from "../Pages/NewsEvents/NewsEvents";
+import AvailablePositions from "../Pages/Careers/AvailablePositions/AvailablePositions";
+import ApplyOnline from "../Pages/Careers/ApplyOnline/ApplyOnline";
+import Login from "../Pages/Login/Login";
+import SignUp from "../Pages/SignUp/SignUp";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +38,13 @@ const router = createBrowserRouter([
       },
       // News Events
       { path: "/news-events", element: <NewsEvents /> },
+      // Careers
+      { path: "/available_positions", element: <AvailablePositions /> },
+      { path: "/apply_online", element: <ApplyOnline /> },
+      // Login & Sign In
+      { path: "/login", element: <Login /> },
+      { path: "/sign_up", element: <SignUp /> },
+
 
     ],
   },

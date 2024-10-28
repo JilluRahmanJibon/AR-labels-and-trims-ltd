@@ -20,7 +20,9 @@ html {
 
 /* Global Scrollbar Styles */
 ::-webkit-scrollbar {
-	width: 8px; /* Width of the scrollbar */
+	width: 8px;
+	height: 10px;
+	 /* Width of the scrollbar */
 }
 
 ::-webkit-scrollbar-track {
@@ -32,7 +34,6 @@ html {
 	border-radius: 10px;
 	border: 2px solid #f1f1f1; /* Optional: Border around scrollbar handle */
 }
-
 
 
 /* Customize Pagination Bullets */
@@ -109,11 +110,19 @@ html {
 
   .inputStyleIng[type="text"]:focus ~ .inputStyleIngText,
   .inputStyleIng[type="text"]:not(:placeholder-shown) ~ .inputStyleIngText{
-	@apply text-[#018496] bg-[#edededed] transform -translate-y-[22px] -translate-x-[3px] scale-75 cursor-default;
+	@apply text-[#018496] bg-[#fff] transform -translate-y-[22px] -translate-x-[3px] scale-75 cursor-default;
   }
   .inputStyleIng[type="email"]:focus ~ .inputStyleIngText,
   .inputStyleIng[type="email"]:not(:placeholder-shown) ~ .inputStyleIngText{
-	@apply text-[#018496] bg-[#edededed] transform -translate-y-[22px] -translate-x-[3px] scale-75 cursor-default;
+	@apply text-[#018496] bg-[#fff] transform -translate-y-[22px] -translate-x-[3px] scale-75 cursor-default;
+  }
+  .inputStyleIng[type="password"]:focus ~ .inputStyleIngText,
+  .inputStyleIng[type="password"]:not(:placeholder-shown) ~ .inputStyleIngText{
+	@apply text-[#018496] bg-[#fff] transform -translate-y-[22px] -translate-x-[3px] scale-75 cursor-default;
   }
   
+  .inputStyleIng[type="file"]:focus ~ .inputStyleIngText,
+  .inputStyleIng[type="file"]:not(:placeholder-shown) ~ .inputStyleIngText{
+	@apply text-[#018496] bg-[#fff] transform -translate-y-[22px] -translate-x-[3px] scale-75 cursor-default;
+  }
   

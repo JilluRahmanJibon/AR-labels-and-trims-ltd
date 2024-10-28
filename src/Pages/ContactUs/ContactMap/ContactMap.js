@@ -5,7 +5,7 @@ const ContactUs = () => {
     <main
       className={`w-[100%] h-[100%] flex items-center justify-center bg-white`}
     >
-      <div className="container mx-auto text-center GeologicaFont py-[4rem]">
+      <div className="container mx-auto text-center GeologicaFont md:pt-[3rem] pt-[2rem] pb-[4rem]">
         <h1 className="font-[700] md:text-[29px] sm:text-[24px] text-[20px] mx-auto text-[#018496]">
           Our Location
           {/* Our Support Guys or */}
