@@ -15,6 +15,7 @@ import AvailablePositions from "../Pages/Careers/AvailablePositions/AvailablePos
 import ApplyOnline from "../Pages/Careers/ApplyOnline/ApplyOnline";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
+import Certifications from "../Pages/Sustainability/Certifications";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,8 @@ const router = createBrowserRouter([
       // Login & Sign In
       { path: "/login", element: <Login /> },
       { path: "/sign_up", element: <SignUp /> },
+      // 
+      { path: "/certifications", element: <Certifications /> },
 
 
     ],
