@@ -14,19 +14,23 @@ const Banner = () =>
   const bannerData = [
     {
       id: 1,
-      image: banner,
+      image: "https://www.adzitrims.com/sul-web-cms-adzi/upload/slider_image_upload_site_banner_slider_1571199708_1571199708.jpg",
     },
     {
       id: 2,
-      image: banner,
+      image: "https://www.adzitrims.com/sul-web-cms-adzi/upload/slider_image_upload_site_banner_slider_1571200303_1571200303.jpg",
     },
     {
       id: 3,
-      image: banner,
+      image: "https://www.adzitrims.com/sul-web-cms-adzi/upload/slider_image_upload_site_banner_slider_1571199708_1571199708.jpg",
     },
     {
       id: 4,
-      image: banner,
+      image: "https://www.adzitrims.com/sul-web-cms-adzi/upload/slider_image_upload_site_banner_slider_1546504364_1546504364.jpg",
+    },
+    {
+      id: 5,
+      image: "https://www.adzitrims.com/sul-web-cms-adzi/upload/slider_image_upload_site_banner_slider_1571199708_1571199708.jpg",
     },
   ];
   let settings = {
