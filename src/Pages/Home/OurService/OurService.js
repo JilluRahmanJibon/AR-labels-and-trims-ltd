@@ -20,15 +20,15 @@ const OurService = () =>
         },
     ];
   return (
-      <section className="py-12 bg-gray-100">
+      <section className="py-12 bg-white GeologicaFont">
           <div className="container mx-auto px-6">
-              <h2 className="text-3xl font-semibold text-center text-gray-800">Our Services</h2>
+              <h2 className="sm:!text-3xl [@media(min-width:460px)]:text-[26px] text-[22px] font-semibold text-center text-gray-800">Our Services</h2>
               <div className="mt-8 flex flex-wrap justify-center gap-6">
                   {services.map((service, index) => (
-                      <div key={index} className="bg-white p-6 rounded-md shadow-md w-80">
+                      <div key={index} className="bg-white p-6 rounded-md shadow-[0px_0px_6px_0px_#00000021] w-80">
                           <div className="text-4xl">{service.icon}</div>
-                          <h3 className="mt-4 text-xl font-semibold text-gray-800">{service.title}</h3>
-                          <p className="mt-2 text-gray-600">{service.description}</p>
+                          <h3 className="mt-4 text-[18px] font-semibold text-gray-800">{service.title}</h3>
+                          <p className="mt-2 text-[15px] text-gray-600">{service.description}</p>
                       </div>
                   ))}
               </div>

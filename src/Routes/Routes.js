@@ -15,6 +15,7 @@ import ApplyOnline from "../Pages/Careers/ApplyOnline/ApplyOnline";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import Certifications from "../Pages/Sustainability/Certifications";
+import AdminDashboard from "../Pages/AdminDashboard/AdminDashboard";
 
 const router = createBrowserRouter([
   {
@@ -40,10 +41,12 @@ const router = createBrowserRouter([
       // Login & Sign In
       { path: "/login", element: <Login /> },
       { path: "/sign_up", element: <SignUp /> },
-      // 
+      // Certifications
       { path: "/certifications", element: <Certifications /> },
 
 
+      // Admin Dashboard
+      { path: "/admin-dashboard", element: <AdminDashboard /> },
     ],
   },
   {

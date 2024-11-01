@@ -12,19 +12,19 @@ const Banner = () => {
 
   const bannerData = [
     {
-      key: 1,
+      id: 1,
       image: banner,
     },
     {
-      key: 2,
+      id: 2,
       image: banner,
     },
     {
-      key: 3,
+      id: 3,
       image: banner,
     },
     {
-      key: 4,
+      id: 4,
       image: banner,
     },
   ];
@@ -58,13 +58,14 @@ const Banner = () => {
           <Slider {...settings} className="w-[100%] xl:h-[640px]  flex items-center overflow-hidden mx-auto">
             {bannerData.map((key) => {
               return (
-                <>
+                <div 
+                key={key.id}>
                   <img
                     src={key.image}
                     className="w-[100%] block"
                   />
                  
-                </>
+                </div>
               );
             })}
           </Slider>

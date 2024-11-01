@@ -1,29 +1,40 @@
- 
 const Experience = () => {
+  const experienceData = [
+    {
+      id: 1,
+      tittle: "954+",
+      description: "fashion, homeware and sportswear brand partners",
+    },
+    {
+      id: 2,
+      tittle: "401+",
+      description: "clothing brands helped by us to become more sustainable",
+    },
+    {
+      id: 3,
+      tittle: "8+",
+      description: "production facilities around the world",
+    },
+  ];
   return (
-      <div className="relative w-full text-white bg-primary">
-          <div className="xl:w-[1180px] sm:w-[100%] w-[98%] h-[100%] flex flex-wrap justify-around items-center mx-auto GeologicaFont py-[40px]">
-              <div className="flex flex-col items-center text-center w-[160px] h-[115px]">
-                  <p className="text-[40px] font-bold ">144m+</p>
-                  <p className="text-[15px] w-full leading-[17px] mx-auto">
-                      units produced annually
-                  </p>
-              </div>
-              <div className="flex flex-col items-center text-center w-[160px] h-[115px]">
-                  <p className="text-[40px] font-bold">71+</p>
-                  <p className="text-[15px] w-full sm:leading-[22px] sm3:leading-[19px] leading-[17px] mx-auto">
-                      counties shipped to in the last 12 months
-                  </p>
-              </div>
-              <div className="flex flex-col items-center text-center w-[160px] h-[115px] ">
-                  <p className="text-[40px] font-bold">40+</p>
-                  <p className="text-[15px] w-full sm:leading-[22px] sm3:leading-[19px] leading-[17px] mx-auto">
-                      years of experience
-                  </p>
-              </div>
-          </div>
+    <div className="relative w-full text-white bg-primary">
+      <div className="xl:w-[1180px] w-[100%] h-[100%] flex flex-wrap justify-center items-center mx-auto GeologicaFont py-[15px]">
+          {experienceData.map((key) => (
+            <div
+              key={key.id}
+              className="[@media(min-width:450px)]:w-[300px] w-[290px] flex [@media(min-width:600px)]:flex-row flex-col items-center [@media(min-width:600px)]:justify-start justify-center [@media(min-width:600px)]:text-left text-center mx-auto py-[10px] px-[5px]"
+            >
+              <h3 className="[@media(min-width:450px)]:text-[23px] text-[21px] w-[56px] font-semibold [@media(min-width:600px)]:mt-[-5px] mt-0 text-white">
+                {key.tittle}
+              </h3>
+              <p className="[@media(min-width:450px)]:text-[15px] text-[14px] mt-2 [@media(min-width:600px)]:pl-[10px] pl-0 text-[#efefef]">
+                {key.description}
+              </p>
+            </div>
+          ))}
       </div>
-  )
-}
+    </div>
+  );
+};
 
-export default Experience
+export default Experience;

@@ -8,7 +8,7 @@ const Root = () =>
     return (
         <main>
             <section>
-                <Navbar />
+                {/* <Navbar /> */}
             </section>
             <section >
                 <Outlet />
