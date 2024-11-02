@@ -59,23 +59,21 @@ const Banner = () =>
   return (
     <div className=" max-w-[1920px] mx-auto w-full h-[100%] justify-center relative mt-[4.5rem]">
       {/* <DynamicSlider slides={sliderData} /> */}
-      <div className="relative flex items-center text-[#fff]">
-        <Slider {...settings} className="w-[100%] xl:h-[640px]  flex items-center overflow-hidden mx-auto">
-          {bannerData.map((data) =>
-          {
-            return (
-              <div key={data?.id}>
-                <img
-                  src={data.image}
-                  className="w-[100%] block"
-                  alt=""
-                />
-
-              </div>
-            );
-          })}
-        </Slider>
-      </div>
+        <div className="relative flex items-center text-[#fff]">
+          <Slider {...settings} className="w-[100%] xl:h-[640px]  flex items-center overflow-hidden mx-auto">
+            {bannerData.map((key) => {
+              return (
+                <>
+                  <img
+                    src={key.image}
+                    className="w-[100%] block"
+                  />
+                 
+                </>
+              );
+            })}
+          </Slider>
+          </div>
     </div>
   );
 };

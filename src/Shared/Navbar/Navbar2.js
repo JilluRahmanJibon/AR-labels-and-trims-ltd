@@ -7,7 +7,7 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { menuItems, menuItems2 } from "./NavItems";
-import logo from "../../Assets/logo.png";
+import logo from "../../Assets/logo3.png";
 import { FaFacebookF } from "react-icons/fa6";
 import { FaRegUserCircle } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";

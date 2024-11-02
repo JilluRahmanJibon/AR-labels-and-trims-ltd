@@ -24,22 +24,22 @@ const FAQs = () =>
     ];
 
     return (
-        <section className="py-12">
-            <div className="container mx-auto px-6">
-                <h2 className="text-3xl font-semibold text-center text-gray-800">Frequently Asked Questions</h2>
+        <section className="py-[3rem]">
+            <div className="container mx-auto px-6 GeologicaFont">
+                <h2 className="sm:!text-[28px] [@media(min-width:460px)]:text-[26px] text-[20px] font-semibold text-center text-gray-800">Frequently Asked Questions</h2>
                 <div className="mt-8 max-w-2xl mx-auto">
                     {faqs.map((faq, index) => (
                         <div key={index} className="mb-4">
                             <button
                                 onClick={() => toggleFAQ(index)}
-                                className="w-full text-left flex justify-between items-center bg-white p-4 rounded-md shadow-md focus:outline-none"
+                                className="w-full text-left flex justify-between items-center bg-white p-4 rounded-md shadow-[0px_0px_6px_0px_#00000021] focus:outline-none"
                             >
-                                <span className="text-gray-800 font-medium">{faq.question}</span>
+                                <span className="text-gray-800 font-medium text-[15px]">{faq.question}</span>
                                 <span>{activeIndex === index ? '-' : '+'}</span>
                             </button>
                             {activeIndex === index && (
-                                <div className="mt-2 p-4 bg-white rounded-md shadow-md">
-                                    <p className="text-gray-600">{faq.answer}</p>
+                                <div className="mt-2 p-4 bg-white rounded-md shadow-[0px_0px_6px_0px_#00000021]">
+                                    <p className="text-gray-600 text-[14px]">{faq.answer}</p>
                                 </div>
                             )}
                         </div>

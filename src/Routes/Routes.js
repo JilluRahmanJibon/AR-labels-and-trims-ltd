@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Root from "../Layout/Root";
+import Root2 from "../Layout/Root2";
 import ErrorPage from "../Components/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home";
 import ContactUs from "../Pages/ContactUs/ContactUs";
@@ -16,6 +17,7 @@ import ApplyOnline from "../Pages/Careers/ApplyOnline/ApplyOnline";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import Certifications from "../Pages/Sustainability/Certifications";
+import AdminDashboard from "../Pages/AdminDashboard/AdminDashboard";
 
 const router = createBrowserRouter([
   {
@@ -45,9 +47,22 @@ const router = createBrowserRouter([
       // Login & Sign In
       { path: "/login", element: <Login /> },
       { path: "/sign_up", element: <SignUp /> },
-      // 
+      // Certifications
       { path: "/certifications", element: <Certifications /> },
 
+
+      // Admin Dashboard
+      // { path: "/admin-dashboard", element: <AdminDashboard /> },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: <Root2 />,
+    errorElement: <ErrorPage />,
+    children: [
+      // Dashboard Home
+      { path: "/dashboard", element: <AdminDashboard /> },
+      
 
     ],
   },

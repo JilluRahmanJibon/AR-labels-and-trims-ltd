@@ -16,8 +16,8 @@ const ApplyOnlineDetails = () => {
       id: 2,
       tittle: "Job Tittle",
       childlist: [
-        { id: 1, description: "" },
-        // { id: 2, description: "Presedent" },
+        { id: 1, description: "Presedent" },
+        { id: 2, description: "Vice Presedent" },
       ],
       width: [
         { id: 1, size: "360px" },
