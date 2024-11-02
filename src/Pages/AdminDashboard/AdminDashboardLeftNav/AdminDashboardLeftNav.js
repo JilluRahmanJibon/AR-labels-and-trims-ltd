@@ -42,7 +42,7 @@ const AdminDashboardLeftNav = () => {
               {/* Nav Item */}
               <div className="pt-[1rem] space-y-1">
                 <NavLink
-                  to={"/admin-dashboard"}
+                  to={"/dashboard"}
                   className={({ isActive }) =>
                     isActive
                       ? "flex items-center justify-between py-[1rem] rounded-md text-[14px] font-medium text-primary "

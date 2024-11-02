@@ -1,14 +1,16 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import Navbar from '../Shared/Navbar/Navbar2'
+import AdminDashboardNav from '../Pages/AdminDashboard/AdminDashboardNav/AdminDashboardNav'
+import AdminDashboardLeftNav from '../Pages/AdminDashboard/AdminDashboardLeftNav/AdminDashboardLeftNav'
 import Footer from '../Shared/Footer/Footer'
 
-const Root = () =>
+const Root2 = () =>
 {
     return (
         <main>
             <section>
-                <Navbar />
+                <AdminDashboardNav />
+                <AdminDashboardLeftNav />
             </section>
             <section >
                 <Outlet />
@@ -20,4 +22,4 @@ const Root = () =>
     )
 }
 
-export default Root
+export default Root2
