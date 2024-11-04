@@ -24,7 +24,7 @@ const FAQs = () =>
     ];
 
     return (
-        <section className="py-[3rem]">
+        <section className="py-[2rem]">
             <div className="container mx-auto px-6 GeologicaFont">
                 <h2 className="sm:!text-[28px] [@media(min-width:460px)]:text-[26px] text-[20px] font-semibold text-center text-gray-800">Frequently Asked Questions</h2>
                 <div className="mt-8 max-w-2xl mx-auto">

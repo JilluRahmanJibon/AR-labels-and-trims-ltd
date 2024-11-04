@@ -1,6 +1,5 @@
 import React from "react";
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
-import banner from "../../../Assets/banner2.jpg";
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -49,28 +48,27 @@ const Banner = () =>
       </div>
     ),
     customPaging: (i) => (
-      <div className="bannerDotliId w-[17px] bottom-0">
-        <GoDotFill className="cursor-pointer text-[17px]" />
+      <div className="bannerDotliId [@media(min-width:650px)]:w-[17px] w-[12px] bottom-0">
+        <GoDotFill className="cursor-pointer [@media(min-width:650px)]:text-[17px] text-[12px]" />
       </div>
     ),
     nextArrow: <NextButton />,
     prevArrow: <PrevButton />,
   };
+
   return (
-    <div className=" max-w-[1920px] mx-auto w-full h-[100%] justify-center relative mt-[4.5rem]">
+    <div className=" max-w-[1920px] mx-auto w-full h-[100%] justify-center relative mt-[6.5rem]">
       {/* <DynamicSlider slides={sliderData} /> */}
       <div className="relative flex items-center text-[#fff]">
-        <Slider {...settings} className="w-[100%] xl:h-[640px]  flex items-center overflow-hidden mx-auto">
+        <Slider {...settings} className="w-[100%] xl:h-[610px]  [@media(min-width:650px)]:flex hidden items-center overflow-hidden mx-auto">
           {bannerData.map((key) =>
           {
             return (
-              <>
                 <img
+                key={key.id}
                   src={key.image}
                   className="w-[100%] block"
                 />
-
-              </>
             );
           })}
         </Slider>
@@ -81,27 +79,26 @@ const Banner = () =>
 
 export default Banner;
 
-function NextButton (props)
-{
+function NextButton(props) {
   const { onClick } = props;
   return (
     <div
-      className={`bg-white w-[20px] h-[50px] absolute top-[45%] right-0 md2:flex hidden items-center justify-center cursor-pointer z-10`}
+      className={`bg-[#dcdcdc] [@media(min-width:1000px)]:w-[30px] w-[20px] [@media(min-width:1000px)]:h-[80px] h-[50px] absolute top-[40%] right-0 [@media(min-width:450px)]:flex hidden items-center justify-center cursor-pointer z-10 text-[black] hover:text-primary transition-[0.3s]`}
       onClick={onClick}
     >
-      <MdKeyboardArrowRight className="text-[black] text-[27px]" />
+      <MdKeyboardArrowRight className=" text-[27px]" />
     </div>
   );
 }
-function PrevButton (props)
-{
+function PrevButton(props) {
   const { onClick } = props;
   return (
     <div
-      className={`bg-white w-[20px] h-[50px] absolute top-[45%] left-0 md2:flex hidden items-center justify-center cursor-pointer z-10`}
+      className={`bg-[#dcdcdc] [@media(min-width:1000px)]:w-[30px] w-[20px] [@media(min-width:1000px)]:h-[80px] h-[50px] absolute top-[40%] left-0 [@media(min-width:450px)]:flex hidden items-center justify-center cursor-pointer z-10 text-[black] hover:text-primary transition-[0.3s]`}
       onClick={onClick}
     >
-      <MdKeyboardArrowLeft className="text-[black] text-[27px]" />
+      <MdKeyboardArrowLeft className=" text-[27px]" />
     </div>
   );
 }
+

@@ -20,7 +20,7 @@ const OurService = () =>
         },
     ];
   return (
-      <section className="py-12 bg-white GeologicaFont">
+      <section className="[@media(min-width:460px)]:py-12 py-6 bg-white GeologicaFont">
           <div className="container mx-auto px-6">
               <h2 className="sm:!text-3xl [@media(min-width:460px)]:text-[26px] text-[22px] font-semibold text-center text-gray-800">Our Services</h2>
               <div className="mt-8 flex flex-wrap justify-center gap-6">

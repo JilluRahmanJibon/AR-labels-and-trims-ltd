@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 
 const AvailablePositionsDetails = () => {
-  const [availablePosition, setavailablePosition] = useState(true);
+  const [availablePosition, setavailablePosition] = useState(false);
   const AvailablePositionsData = [
     {
       id: 1,
@@ -40,6 +40,7 @@ const AvailablePositionsDetails = () => {
       ],
     },
   ];
+
 
   return (
     <div className="bg-[#fff] GeologicaFont">
