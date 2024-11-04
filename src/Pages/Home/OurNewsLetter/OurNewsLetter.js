@@ -6,11 +6,11 @@ function OurNewsLetter() {
       className={`w-[100%] h-[100%] [@media(min-width:420px)]:py-[3.5rem] py-[2rem] [@media(min-width:420px)]:px-[2rem] px-[15px] bg-[#264d4d] [@media(min-width:420px)]:rounded-tr-[8rem] rounded-tr-[3rem]`}
     >
       <div className="xl:w-[1100px] w-[100%] grid [@media(min-width:1050px)]:grid-cols-2 grid-cols-1 items-center mx-auto">
-        <div className="[@media(min-width:1050px)]:w-[500px] [@media(min-width:700px)]:w-[500px] [@media(min-width:420px)]:w-[97%] w-[99%] GeologicaFont text-[#ffffff] [@media(min-width:490px)]:mb-[2rem] mb-[1rem] mx-auto">
-            <h1 className="xl:!text-[32px] [@media(min-width:490px)]:text-[28px] [@media(min-width:420px)]:text-[25px] [@media(min-width:400px)]:text-[22px] text-[20px] [@media(min-width:490px)]:pb-[12px] pb-[7px]">Sign up for our newsletter</h1>
+        <div className="[@media(min-width:1100px)]:w-[500px] [@media(min-width:1050px)]:w-[400px] [@media(min-width:420px)]:w-[97%] w-[99%] GeologicaFont text-[#ffffff] [@media(min-width:490px)]:mb-[2rem] mb-[1rem] mx-auto">
+            <h1 className="xl:!text-[32px] [@media(min-width:500px)]:text-[28px] [@media(min-width:400px)]:text-[20px] text-[20px] [@media(min-width:490px)]:pb-[12px] pb-[7px]">Sign up for our newsletter</h1>
             <p className="[@media(min-width:1050px)]:text-[16px] [@media(min-width:490px)]:text-[15px] [@media(min-width:400px)]:text-[14px] text-[13px] [@media(min-width:490px)]:leading-[18px]">Want to keep up to date with industry developments, trends, product launches and more? Sign up to our newsletter to get the latest delivered to your inbox.</p>
         </div>
-        <form className="[@media(min-width:1100px)]:w-[500px] [@media(min-width:1050px)]:w-[400px] [@media(min-width:700px)]:w-[600px] [@media(min-width:420px)]:w-[97%] w-[99%] [@media(min-width:1050px)]:ml-[1rem] mx-auto">
+        <form className="[@media(min-width:1100px)]:w-[500px] [@media(min-width:1050px)]:w-[400px] [@media(min-width:420px)]:w-[97%] w-[99%] [@media(min-width:1050px)]:ml-[1rem] mx-auto">
           <div className="grid [@media(min-width:490px)]:gap-6 gap-2 mb-[1rem] md:grid-cols-2 text-left">
             <div>
               <label
