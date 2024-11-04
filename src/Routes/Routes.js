@@ -18,6 +18,8 @@ import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import Certifications from "../Pages/Sustainability/Certifications";
 import AdminDashboard from "../Pages/AdminDashboard/AdminDashboard";
+import AdminDashboardAllProduct from "../Pages/AdminDashboard/AdminDashboardAllProduct/AdminDashboardAllProduct";
+import AdminDashboardAddProduct from "../Pages/AdminDashboard/AdminDashboardAddProduct/AdminDashboardAddProduct";
 
 const router = createBrowserRouter([
   {
@@ -49,9 +51,6 @@ const router = createBrowserRouter([
       { path: "/sign_up", element: <SignUp /> },
       // Certifications
       { path: "/certifications", element: <Certifications /> },
-
-
-      
     ],
   },
   {
@@ -63,6 +62,10 @@ const router = createBrowserRouter([
       { path: "/superAdmin/dashboard", element: <AdminDashboard /> },
       
 
+      // Dashboard All Products
+      { path: "/dashboard/product-solutions/all-products", element: <AdminDashboardAllProduct /> },
+      // Dashboard Add Product
+      { path: "/dashboard/product-solutions/add-product", element: <AdminDashboardAddProduct /> },
     ],
   },
   {

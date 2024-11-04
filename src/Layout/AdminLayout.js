@@ -1,8 +1,6 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 import AdminDashboardNav from '../Pages/AdminDashboard/AdminDashboardNav/AdminDashboardNav'
-import AdminDashboardLeftNav from '../Pages/AdminDashboard/AdminDashboardLeftNav/AdminDashboardLeftNav'
-import Footer from '../Shared/Footer/Footer'
 import ProtectedRoute from './ProtectedRoute'
 import { useQuery } from '@tanstack/react-query'
 import Spinner from '../Components/Loader/Spinner'
@@ -30,16 +28,13 @@ const AdminLayout = () =>
         <main>
             <ProtectedRoute>
 
-                <section className='fixed'>
+                <section >
                     <AdminDashboardNav data={data} />
-                    <AdminDashboardLeftNav data={data} />
                 </section>
                 <section >
                     <Outlet />
                 </section>
-                <section >
-                    {/* <Footer /> */}
-                </section>
+
             </ProtectedRoute>
         </main>
     )

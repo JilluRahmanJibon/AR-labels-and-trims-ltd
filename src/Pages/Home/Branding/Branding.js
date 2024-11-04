@@ -1,49 +1,76 @@
 import React from "react";
-import brandLogo1 from "../../../Assets/brand/brandLogo1.png";
-import brandLogo2 from "../../../Assets/brand/brandLogo2.png";
+import brandLogo1 from "../../../Assets/brand/brandLogo4.png";
+import brandLogo2 from "../../../Assets/brand/brandLogo8.png";
 import brandLogo3 from "../../../Assets/brand/brandLogo3.png";
-import brandLogo4 from "../../../Assets/brand/brandLogo4.png";
+import brandLogo4 from "../../../Assets/brand/brandLogo1.png";
 import brandLogo5 from "../../../Assets/brand/brandLogo5.png";
 import brandLogo6 from "../../../Assets/brand/brandLogo6.png";
 import brandLogo7 from "../../../Assets/brand/brandLogo7.png";
-import brandLogo8 from "../../../Assets/brand/brandLogo8.png";
+import brandLogo8 from "../../../Assets/brand/brandLogo2.png";
 import brandLogo9 from "../../../Assets/brand/brandLogo9.png";
-import brandLogo10 from "../../../Assets/brand/brandLogo10.png";
-import brandLogo11 from "../../../Assets/brand/brandLogo11.png";
+import brandLogo10 from "../../../Assets/brand/brandLogo11.png";
+import brandLogo11 from "../../../Assets/brand/brandLogo10.png";
 import Marquee from "react-fast-marquee";
 
-const Branding = () => {
+const Branding = () =>
+{
+  const brandLogoData = [
+    { id: 1, image: brandLogo1 },
+    { id: 2, image: brandLogo2 },
+    { id: 3, image: brandLogo3 },
+    { id: 4, image: brandLogo4 },
+    { id: 5, image: brandLogo5 },
+    { id: 6, image: brandLogo6 },
+    { id: 7, image: brandLogo7 },
+    { id: 8, image: brandLogo8 },
+    { id: 9, image: brandLogo9 },
+    { id: 10, image: brandLogo10 },
+    { id: 11, image: brandLogo11 },
+  ];
   return (
     <main>
-      <section class="text-gray-600 body-font bg-gray-100 GeologicaFont">
-        <div class="xl:w-[1230px] w-[100%] px-5 py-[2rem] mx-auto">
-          <div class="w-[95%] mx-auto flex flex-wrap items-center">
-            <img
-              alt="ecommerce"
-              class="md:w-1/2 sm:w-[460px] w-[100%] lg:h-auto h-[100%] object-cover object-center md:m-0 m-auto"
-              src={brandLogo1}
-            />
-            <div class="md:w-1/2 sm:w-[460px] w-[100%]  md:text-left text-center md:m-0 m-auto">
-              <h1 class="text-gray-900 text-3xl title-font font-medium mb-[8px]">
+      <section className="text-gray-600 body-font GeologicaFont">
+        <div className="xl:w-[1230px] w-[100%] [@media(min-width:400px)]:px-5 px-0 [@media(min-width:400px)]:pt-[2rem] pt-[1.5rem] [@media(min-width:625px)]:pb-[2rem] pb-[0.5rem] mx-auto">
+          <div className="w-[95%] mx-auto flex flex-wrap justify-center items-center">
+            <div className="[@media(min-width:600px)]:w-[550px] w-[100%] text-center md:m-0 m-auto">
+              <h1 className="sm:!text-[28px] [@media(min-width:460px)]:text-[26px] text-[20px] font-semibold text-center text-gray-800 mb-[8px]">
                 Sustainable branding <br />
                 from stitch to store
               </h1>
 
-              <p class="leading-[22px] pb-[8px] text-[15px]">
+              <p className="leading-[22px] [@media(min-width:400px)]:pb-[5px] pb-[1px] md:text-[15px] sm:text-[14px] text-[13px]">
                 Looking to achieve your sustainability and branding targets?
                 We’ll help you get there with our range of eco-friendly
                 packaging and trims.
               </p>
-              <p class="leading-[22px] text-[15px]">
+              <p className="leading-[22px] [@media(min-width:400px)]:pb-[10px] pb-[5px] md:text-[15px] sm:text-[14px] text-[13px]">
                 As your branding partner, we’ll design, develop and deliver your
                 products globally through an infrastructure that benefits you.
                 The result? A sustainable supply chain. Consistent and impactful
                 branding. High quality. Innovative materials.
               </p>
-              <button class="text-white hover:text-primary bg-primary border-[2px] border-primary py-2 px-6 focus:outline-none hover:bg-transparent rounded-[50px] transition-[0.3s] mt-[10px]">
+              <button className="md:text-[15px] sm:text-[14px] text-[13px] text-white hover:text-primary bg-primary border-[2px] border-primary [@media(min-width:400px)]:py-2 py-[7px] [@media(min-width:400px)]:px-6 px-[18px] focus:outline-none hover:bg-transparent rounded-[50px] transition-[0.3s] mt-[5px]">
                 Our sustainability commitment
               </button>
             </div>
+          </div>
+
+          <div className="w-full [@media(min-width:400px)]:h-[110px] h-[90px] flex items-center mt-[1rem] relative">
+            <Marquee className="z-0">
+              {brandLogoData.map((key) =>
+              {
+                return (
+                  <div
+                    key={key.id}
+                    className={`[@media(min-width:625px)]:w-[65px] [@media(min-width:400px)]:w-[55px] w-[40px] [@media(min-width:625px)]:mr-[45px] [@media(min-width:400px)]:mr-[35px] mr-[25px] shadow-[0px_0px_6px_0px_#0000000f]`}
+                  >
+                    <img src={key.image} className="w-full" alt="" />
+                  </div>
+                );
+              })}
+            </Marquee>
+            <div className="[@media(min-width:550px)]:w-[100px] [@media(min-width:400px)]:w-[80px] w-[50px] [@media(min-width:400px)]:h-[110px] h-[90px] absolute top-0 left-0 bg-gradient-to-r from-[#fff] z-[10]"></div>
+            <div className="[@media(min-width:550px)]:w-[100px] [@media(min-width:400px)]:w-[80px] w-[50px] [@media(min-width:400px)]:h-[110px] h-[90px] absolute top-0 right-0 bg-gradient-to-l from-[#fff] z-[10]"></div>
           </div>
         </div>
       </section>

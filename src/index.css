@@ -64,19 +64,6 @@ html {
   opacity: 1;
 }
 
-.bannerDotliId {
-  color: #e1e1e1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-#bannerDotId li {
-  width: 17px;
-}
-#bannerDotId .slick-active .bannerDotliId {
-  color: #fff;
-}
-
 @import url("https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap");
 .GeologicaFont {
   font-family: "Geologica", sans-serif;
@@ -120,6 +107,11 @@ html {
   @apply text-[#018496] bg-[#fff] transform -translate-y-[22px] -translate-x-[3px] scale-75 cursor-default;
 }
 
+.inputStyleIng[type="tel"]:focus ~ .inputStyleIngText,
+.inputStyleIng[type="tel"]:not(:placeholder-shown) ~ .inputStyleIngText {
+  @apply text-[#018496] bg-[#fff] transform -translate-y-[22px] -translate-x-[3px] scale-75 cursor-default;
+}
+
 /* =-=-=-=-=-=-=-=-=-=-=-=Testimonial=-=-=-=-=-=-=-=-=-=-=-= */
 
 .bannerDotliId {
@@ -137,5 +129,24 @@ html {
   }
 }
 #bannerDotId .slick-active .bannerDotliId {
+  color: #018496;
+}
+
+/* Small Size Dot */
+.bannerSmallDotliId {
+  color: #00000045;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#bannerSmallDotId li {
+  width: 10px;
+}
+@media screen and (max-width: 640px) {
+  #bannerSmallDotId li {
+    width: 5px;
+  }
+}
+#bannerSmallDotId .slick-active .bannerSmallDotliId {
   color: #018496;
 }

@@ -1,42 +1,18 @@
-import React from "react";
-import DynamicSlider from "../../Shared/DynamicSlider/DynamicSlider";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { GoDotFill } from "react-icons/go";
-import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
 
-const Product = () =>
-{
-  let settings = {
-    dots: true,
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3500,
-    pauseOnHover: false,
-    appendDots: (dots) => (
-      <div style={{ bottom: "0px" }}>
-        <ul className="m-0" id="bannerSmallDotId">
-          {dots}
-        </ul>
-      </div>
-    ),
-    customPaging: (i) => (
-      <div className="bannerSmallDotliId [@media(min-width:450px)]:w-[14px] w-[11px] bottom-0 [@media(min-width:450px)]:mt-[8px] mt-[15px]">
-        <GoDotFill className="cursor-pointer [@media(min-width:450px)]:text-[14px] text-[11px]" />
-      </div>
-    ),
-    nextArrow: <NextButton />,
-    prevArrow: <PrevButton />,
-  };
+const AdminDashboardAllProduct = () => {
+  // Product Delete Action
+  const [handleDeleteCrumb, sethandleDeleteCrumb] = useState();
 
   const products = [
     {
       id: "1",
-      title: "Woven Labels ",
+      title: "Woven Labels",
       description:
         "We offer you the latest, state of the art, air jet weaving technology to create high-definition quality labels, including the newest and trendiest weaves and textures in the market. Our creative team offers you innovative design solutions to fulfill the most recent fashion trend requirements at the quality and competitive pricing you need.",
       image: [
@@ -355,89 +331,111 @@ const Product = () =>
       ],
     },
   ];
-  return (
-    <section className="max-w-[1920px] mx-auto GeologicaFont">
-      <div className="mt-[100px] ">
-        <DynamicSlider slides={products[ 0 ].image} />
+  let settings = {
+    dots: true,
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3500,
+    pauseOnHover: false,
+    appendDots: (dots) => (
+      <div style={{ bottom: "0px" }}>
+        <ul className="m-0" id="bannerSmallDotId">
+          {dots}
+        </ul>
       </div>
-      <div className=" py-6 [@media(min-width:850px)]:px-12 px-[0px]">
-        <div className="[@media(min-width:850px)]:px-[0px] px-[1rem]">
-          <h2 className="[@media(min-width:460px)]:text-[22px] text-[18px] font-semibold [@media(min-width:850px)]:pb-[5px] pb-0 text-gray-800">
-            Woven Labels
-          </h2>
-
-          <p className="[@media(min-width:850px)]:text-[16px] [@media(min-width:600px)]:text-[15px] [@media(min-width:400px)]:text-[14px] text-[13px]">
-            We offer you the latest, state of the art, air jet weaving
-            technology to create high-definition quality labels, including the
-            newest and trendiest weaves and textures in the market. Our creative
-            team offers you innovative design solutions to fulfill the most
-            recent fashion trend requirements at the quality and competitive
-            pricing you need.
-          </p>
+    ),
+    customPaging: (i) => (
+      <div className="bannerSmallDotliId [@media(min-width:450px)]:w-[14px] w-[11px] bottom-0 [@media(min-width:450px)]:mt-[8px] mt-[15px]">
+        <GoDotFill className="cursor-pointer [@media(min-width:450px)]:text-[14px] text-[11px]" />
+      </div>
+    ),
+    nextArrow: <NextButton />,
+    prevArrow: <PrevButton />,
+  };
+  return (
+    <div className="w-full h-full pt-[4rem] [@media(min-width:1400px)]:pl-[15rem] pl-0 relative GeologicaFont">
+      <div className="w-full h-full pt-[1rem]">
+        <h1 className="[@media(min-width:800px)]:text-[30px] [@media(min-width:600px)]:text-[27px] [@media(min-width:500px)]:text-[25px] [@media(min-width:400px)]:text-[22px] text-[19px] font-semibold text-center">
+          Show All Products
+        </h1>
+        <div className="flex items-center mt-[5px] justify-center">
+          <div className="[@media(min-width:420px)]:w-[21px] w-[18px] [@media(min-width:420px)]:h-[3px] h-[2px] bg-[#FA0472] inline-flex"></div>
+          <div className="[@media(min-width:420px)]:w-[22px] w-[19px] [@media(min-width:420px)]:h-[6px] h-[5px] mx-[5px] bg-[#018496] inline-flex"></div>
+          <div className="[@media(min-width:420px)]:w-[21px] w-[18px] [@media(min-width:420px)]:h-[3px] h-[2px] bg-[#FA0472] inline-flex"></div>
         </div>
-        <div className="w-full py-6 [@media(min-width:850px)]:px-[0px] px-[1rem]">
-          <div className="w-full flex flex-wrap items-center pb-6">
-            <h2 className="sm:!text-[30px] [@media(min-width:460px)]:text-[26px] text-[20px] font-semibold text-[#2C3E50]  pr-[10px] ">
-              <span className="text-black">Our</span> Products
-            </h2>
-            <p className="[@media(min-width:595px)]:text-[16px] [@media(min-width:400px)]:text-[14px] text-[13px] [@media(min-width:595px)]:pt-[7px] pt-0 text-left">
-              (Delivering Brand Identification Solutions)
-            </p>
-          </div>
-          <div className="border-b border-dashed border-black">
-            <div className="w-[70px] h-[3px]  bg-black"></div>
-          </div>
-
-          <div className="flex flex-wrap w-[100%] mx-auto justify-center py-[2rem]">
-            {products.map((key) =>
-            {
-              return (
-                <div
-                  key={key.id}
-                  className="[@media(min-width:450px)]:w-[360px] [@media(min-width:370px)]:w-[330px] w-[300px] h-[260px] [@media(min-width:450px)]:mx-[10px] mx-0 my-[10px]  rounded-[10px] overflow-hidden border-[2px] border-[#ececec] bg-[#ffffff] relative"
+        <div className="flex flex-wrap w-[100%] mx-auto justify-center py-[2rem]">
+          {products.map((key) => {
+            return (
+              <div
+                key={key.id}
+                className="[@media(min-width:450px)]:w-[360px] [@media(min-width:370px)]:w-[330px] w-[300px] [@media(min-width:450px)]:mx-[10px] mx-0 my-[10px]  rounded-[10px] overflow-hidden border-[2px] border-[#ececec] bg-[#ffffff]"
+              >
+                {/* multiple image */}
+                <Slider
+                  {...settings}
+                  className={`w-[100%] [@media(min-width:450px)]:h-[190px] h-[150px] ${
+                    key.image.length > 1 ? "flex" : "!hidden"
+                  }  items-center overflow-hidden mx-auto`}
                 >
-                  <Link to={`/products?pid=${ key?.id }`}>
-                    {/* multiple image */}
-                    <Slider
-                      {...settings}
-                      className={`w-[100%] h-[220px]  ${ key.image.length > 1 ? "flex" : "!hidden"
-                        } items-center overflow-hidden mx-auto`}
-                    >
-                      {key.image.map((key) =>
-                      {
-                        return (
-                          <img
-                            key={key.id}
-                            src={key.img}
-                            className="w-[100%] h-[12rem] object-cover object-center block"
-                          />
+                  {key.image.map((key) => {
+                    return (
+                      <img
+                        key={key.id}
+                        alt="product image"
+                        src={key.img}
+                        className="w-[100%] block"
+                      />
+                    );
+                  })}
+                </Slider>
+                {/* 1 image only */}
+                <img
+                  src={key.image[0].img}
+                  alt="product image"
+                  className={`w-[100%] ${key.image.length > 1 ? "hidden" : "block"}`}
+                />
+
+                <div className="text-center text-black [@media(min-width:450px)]:pt-[10px] pt-[5px] [@media(min-width:450px)]:pb-[15px] pb-[5px] px-[7px]">
+                  <p className="text-red-600 [@media(min-width:450px)]:text-[16px] text-[15px]">
+                    ({key.title})
+                  </p>
+                  <p className="[@media(min-width:450px)]:text-[14px] text-[13px] text-justify [@media(min-width:450px)]:px-[10px] px-[5px] pt-[5px] ">
+                    {key.description}
+                  </p>
+
+                  <div className="flex justify-center pb-[10px] pt-[15px]">
+                    <button className="text-white [@media(min-width:450px)]:text-[14px] text-[13px] bg-green-500 [@media(min-width:450px)]:py-2 py-[8px] [@media(min-width:450px)]:px-6 px-[20px] focus:outline-none rounded-[5px] mr-[15px]">
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => {
+                        const confirmBox = window.confirm(
+                          `Do you really want to delete (${key.title}) product?`
                         );
-                      })}
-                    </Slider>
-                    {/* 1 image only */}
-                    <img
-                      src={key.image[ 0 ].img}
-                      alt="product image"
-                      className={`w-[100%] h-[12rem] ${ key.image.length > 1 ? "hidden" : "block"
-                        }`} />
-                  </Link>
-                  <div className="text-center text-black px-[5px] absolute bottom-[10px] left-0 right-0">
-                    <p className="text-red-600 [@media(min-width:450px)]:text-[16px] text-[15px]">
-                      {key.title}
-                    </p>
+                        {
+                          confirmBox === true
+                            ? sethandleDeleteCrumb(true)
+                            : sethandleDeleteCrumb(false);
+                        }
+                      }}
+                      className="text-white [@media(min-width:450px)]:text-[14px] text-[13px] bg-red-600 [@media(min-width:450px)]:py-2 py-[8px] [@media(min-width:450px)]:px-6 px-[20px] focus:outline-none rounded-[5px]"
+                    >
+                      Delete
+                    </button>
                   </div>
                 </div>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
-function NextButton (props)
-{
+function NextButton(props) {
   const { onClick } = props;
   return (
     <div
@@ -448,8 +446,7 @@ function NextButton (props)
     </div>
   );
 }
-function PrevButton (props)
-{
+function PrevButton(props) {
   const { onClick } = props;
   return (
     <div
@@ -461,4 +458,4 @@ function PrevButton (props)
   );
 }
 
-export default Product;
+export default AdminDashboardAllProduct;

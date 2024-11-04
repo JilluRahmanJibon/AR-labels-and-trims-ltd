@@ -1,4 +1,5 @@
-const Experience = () => {
+const Experience = () =>
+{
   const experienceData = [
     {
       id: 1,
@@ -18,20 +19,20 @@ const Experience = () => {
   ];
   return (
     <div className="relative w-full text-white bg-primary">
-      <div className="xl:w-[1180px] w-[100%] h-[100%] flex flex-wrap justify-center items-center mx-auto GeologicaFont py-[15px]">
-          {experienceData.map((key) => (
-            <div
-              key={key.id}
-              className="[@media(min-width:450px)]:w-[300px] w-[290px] flex [@media(min-width:600px)]:flex-row flex-col items-center [@media(min-width:600px)]:justify-start justify-center [@media(min-width:600px)]:text-left text-center mx-auto py-[10px] px-[5px]"
-            >
-              <h3 className="[@media(min-width:450px)]:text-[23px] text-[21px] w-[56px] font-semibold [@media(min-width:600px)]:mt-[-5px] mt-0 text-white">
-                {key.tittle}
-              </h3>
-              <p className="[@media(min-width:450px)]:text-[15px] text-[14px] mt-2 [@media(min-width:600px)]:pl-[10px] pl-0 text-[#efefef]">
-                {key.description}
-              </p>
-            </div>
-          ))}
+      <div className="xl:w-[1180px] w-[100%] h-[100%] flex flex-wrap justify-center items-center mx-auto GeologicaFont [@media(min-width:580px)]:pt-[15px] pt-[0px] [@media(min-width:580px)]:pb-[15px] pb-[5px]">
+        {experienceData.map((key) => (
+          <div
+            key={key.id}
+            className="[@media(min-width:580px)]:w-[300px] w-[260px] flex flex-row items-center justify-start text-left mx-auto [@media(min-width:580px)]:pt-[10px] pt-[2px] [@media(min-width:580px)]:pb-[10px] pb-[2px] px-[5px]"
+          >
+            <h3 className="[@media(min-width:580px)]:text-[23px] text-[15px] [@media(min-width:580px)]:w-[56px] w-[40px] font-semibold mt-[-5px] text-white text-center">
+              {key.tittle}
+            </h3>
+            <p className="[@media(min-width:580px)]:text-[15px] [@media(min-width:400px)]:text-[13px] text-[12px] mt-2 pl-[10px] text-[#efefef]">
+              {key.description}
+            </p>
+          </div>
+        ))}
       </div>
     </div>
   );

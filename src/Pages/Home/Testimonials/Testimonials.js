@@ -5,7 +5,8 @@ import "slick-carousel/slick/slick-theme.css";
 
 import { GoDotFill } from "react-icons/go";
 
-const Testimonial = () => {
+const Testimonial = () =>
+{
   const settings = {
     dots: true,
     infinite: false,
@@ -95,16 +96,16 @@ const Testimonial = () => {
         <h1 className="sm:!text-3xl [@media(min-width:460px)]:text-[26px] text-[20px] text-gray-800 sm:!leading-[36px] [@media(min-width:460px)]:leading-[32px] leading-[25px] font-semibold title-font [@media(min-width:460px)]:mb-[19px] sm:!mb-[1.5rem] mb-[0px] text-center relative z-10 ">
           What People Say About
           <br />
-           Our Company
+          Our Company
         </h1>
         <div className=" [@media(min-width:846px)]:py-[2px] py-[10px] mx-auto flex items-center w-[100%] relative z-10 ">
           <Slider {...settings} className="w-full h-full">
-            {TestimonialClint.map((key) => {
+            {TestimonialClint.map((key) =>
+            {
               return (
                 <div
-                key={key.id}
+                  key={key.id}
                   className="sm:!px-[10px] px-0 w-[100%] my-[10px]"
-                  data-aos="fade-right"
                 >
                   <div className="h-full bg-[#fff] sm:!px-8 px-6 sm:!py-8 py-4 rounded [@media(min-width:460px)]:shadow-[0px_0px_6px_0px_#00000021] shadow-none [@media(min-width:460px)]:text-left text-center">
                     <svg
@@ -144,10 +145,12 @@ const Testimonial = () => {
   );
 };
 
-function SampleNextArrow() {
+function SampleNextArrow ()
+{
   return <div className="hidden"></div>;
 }
-function SamplePrevArrow() {
+function SamplePrevArrow ()
+{
   return <div className="hidden"></div>;
 }
 
