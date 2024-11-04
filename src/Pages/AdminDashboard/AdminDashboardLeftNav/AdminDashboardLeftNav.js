@@ -1,13 +1,14 @@
 // src/components/Navbar.jsx
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { menuItemsDashboard } from "../../../Shared/Navbar/NavItems";
 import { ImHome } from "react-icons/im";
 import { GoChevronRight } from "react-icons/go";
 
-const AdminDashboardLeftNav = () => {
-  const [openDropdown, setOpenDropdown] = useState(null); // Track which dropdown is open
+const AdminDashboardLeftNav = ({ data }) =>
+{
+  const [ openDropdown, setOpenDropdown ] = useState(null); // Track which dropdown is open
 
   return (
     <div className="w-[15rem] flex flex-col fixed top-0 left-[0px] z-[40] GeologicaFont">
@@ -34,9 +35,10 @@ const AdminDashboardLeftNav = () => {
                 </div>
                 <div className="flex-grow">
                   <h2 className="text-gray-900 font-medium text-[14px]">
-                    David Grey. H
+                    {data?.name}
+
                   </h2>
-                  <p className="text-gray-500 text-[12px]">Project Manager</p>
+                  <p className="text-gray-500 text-[12px]">{data?.role}</p>
                 </div>
               </div>
               {/* Nav Item */}
@@ -78,19 +80,17 @@ const AdminDashboardLeftNav = () => {
                       >
                         {item.name}
                         <ChevronDownIcon
-                          className={`h-[14px] w-[14px] transition-transform ${
-                            openDropdown === item.name
+                          className={`h-[14px] w-[14px] transition-transform ${ openDropdown === item.name
                               ? "transform rotate-180"
                               : ""
-                          }`}
+                            }`}
                         />
                       </button>
                       <div
-                        className={`ml-4 mb-[10px] transition-all duration-300 ease-in-out transform ${
-                          openDropdown === item.name
+                        className={`ml-4 mb-[10px] transition-all duration-300 ease-in-out transform ${ openDropdown === item.name
                             ? "opacity-100 translate-y-0"
                             : "opacity-0 -translate-y-2 pointer-events-none"
-                        }`}
+                          }`}
                       >
                         {openDropdown === item.name && (
                           <div className="ml-[5px]">
@@ -98,7 +98,8 @@ const AdminDashboardLeftNav = () => {
                               <NavLink
                                 key={subItem.name}
                                 to={subItem.path}
-                                onClick={() => {
+                                onClick={() =>
+                                {
                                   setOpenDropdown(null);
                                 }}
                                 className={({ isActive }) =>

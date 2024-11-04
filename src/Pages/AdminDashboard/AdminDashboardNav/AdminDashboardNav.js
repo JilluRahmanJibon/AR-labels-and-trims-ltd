@@ -4,10 +4,12 @@ import { NavLink } from "react-router-dom";
 import { Bars3Icon } from "@heroicons/react/24/outline";
 import { FaPowerOff } from "react-icons/fa6";
 import logo from "../../../Assets/logo3.png";
-
 import { FaAngleDown } from "react-icons/fa6";
 
-const AdminDashboardNav = () => {
+
+const AdminDashboardNav = ({data}) =>
+{
+ 
   return (
     <div className="w-full flex flex-col fixed top-[0px] z-50 GeologicaFont">
       <nav
@@ -45,7 +47,7 @@ const AdminDashboardNav = () => {
                 </div>
                 <div className="flex items-center">
                   <h2 className="text-gray-900 font-[400] text-[14px] select-none">
-                    David Grey. H
+                    {data?.name}
                   </h2>
                   <FaAngleDown className="text-gray-500 text-[14px] ml-[10px]" />
                 </div>
@@ -57,7 +59,7 @@ const AdminDashboardNav = () => {
         </div>
       </nav>
     </div>
-  );
+  )
 };
 
 export default AdminDashboardNav;
