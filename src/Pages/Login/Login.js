@@ -1,9 +1,68 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { toast } from "sonner";
+import verifyToken from "../../utils/verifyToken";
 
-export default function Login() {
-  const [clickEye, setclickEye] = useState(true);
+export default function Login ()
+{
+  const navigate = useNavigate();
+
+  const [ clickEye, setclickEye ] = useState(true);
+  const [ formData, setFormData ] = useState({
+    email: 'jillurahmanjibon@gmail.com',
+    password: 'AR_Admin'
+  });
+
+  const handleChange = (e) =>
+  {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [ name ]: value
+    }));
+  };
+
+  const handleSubmit = async (e) =>
+  {
+    e.preventDefault();
+    const toastId = toast.loading("Loading in");
+
+    try
+    {
+      const baseUrl = process.env.REACT_APP_BASE_URL;
+
+      const response = await fetch(`${ baseUrl }/auth/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const result = await response.json();
+
+      if (response.ok)
+      {
+
+        const user = verifyToken(result.data.accessToken)
+        localStorage.setItem('authToken', result.data.accessToken);
+        toast.success(`${ user.role } logged in successfully.`, {
+          id: toastId,
+          duration: 2000,
+        });
+        navigate(`/${ user.role }/dashboard`);
+      } else
+      {
+        console.error('Form submission failed:', result);
+        // Handle error response (e.g., show error message)
+      }
+    } catch (error)
+    {
+      toast.error("Something went wrong", { id: toastId, duration: 2000 });
+    }
+  };
+
   return (
     <main
       className={`w-[100%] h-[100vh] flex flex-col justify-center items-center relative mt-[4.5rem] GeologicaFont`}
@@ -15,7 +74,7 @@ export default function Login() {
               <h2 className="relative text-black text-[24px] tracking-[1px] text-center pb-[20px]">
                 Login
               </h2>
-              <form>
+              <form onSubmit={handleSubmit}>
                 <div className="mb-[15px] text-left">
                   <label className="relative">
                     <input
@@ -24,7 +83,9 @@ export default function Login() {
                       name="email"
                       autoComplete="off"
                       required
-                      placeholder=""
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="example@gmail.com"
                       className="inputStyleIng  border-[2px] border-[#00000087] text-black text-sm rounded-lg focus:ring-[#018496] focus:border-[#00000087] block w-full p-2.5 dark:!bg-transparent dark:border-[#00000087] placeholder-[#pffffff9c] dark:focus:ring-[#018496] dark:focus:border-[#018496] font-[500] outline-none"
                     />
                     <span className="inputStyleIngText text-sm text-black text-opacity-80 bg-[#fff] absolute left-2 top-3 px-1 transition duration-200 input-text cursor-text">
@@ -39,8 +100,11 @@ export default function Login() {
                       id="password"
                       name="password"
                       autoComplete="off"
+
                       required
-                      placeholder=""
+                      value={formData.password}
+                      onChange={handleChange}
+                      placeholder="xxxxxxx"
                       className="inputStyleIng  border-[2px] border-[#00000087] text-black text-sm rounded-lg focus:ring-[#018496] focus:border-[#00000087] block w-full p-2.5 dark:!bg-transparent dark:border-[#00000087] placeholder-[#pffffff9c] dark:focus:ring-[#018496] dark:focus:border-[#018496] font-[500] outline-none"
                     />
                     <span className="inputStyleIngText text-sm text-black text-opacity-80 bg-[#fff] absolute left-2 top-3 px-1 transition duration-200 input-text cursor-text">
@@ -48,15 +112,13 @@ export default function Login() {
                     </span>
                     <FaEyeSlash
                       onClick={() => setclickEye(true)}
-                      className={`text-[16px] text-[#00000087] absolute right-[8px] top-[14px] cursor-pointer ${
-                        clickEye ? "hidden" : ""
-                      }`}
+                      className={`text-[16px] text-[#00000087] absolute right-[8px] top-[14px] cursor-pointer ${ clickEye ? "hidden" : ""
+                        }`}
                     />
                     <FaEye
                       onClick={() => setclickEye(false)}
-                      className={`text-[16px] text-[#00000087] absolute right-[8px] top-[14px] cursor-pointer ${
-                        clickEye ? "" : "hidden"
-                      }`}
+                      className={`text-[16px] text-[#00000087] absolute right-[8px] top-[14px] cursor-pointer ${ clickEye ? "" : "hidden"
+                        }`}
                     />
                   </label>
                 </div>
