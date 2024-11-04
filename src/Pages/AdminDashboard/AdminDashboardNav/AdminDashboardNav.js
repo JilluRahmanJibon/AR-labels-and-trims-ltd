@@ -13,6 +13,8 @@ import { GoChevronRight } from "react-icons/go";
 const AdminDashboardNav = ({ data }) =>
 {
   const [ showLeftNav, setshowLeftNav ] = useState(true)
+  const [ handleLogout, setHandleLogout ] = useState();
+  console.log(handleLogout)
 
   // Left Nav
   const [ openDropdown, setOpenDropdown ] = useState(null); // Track which dropdown is open
@@ -87,8 +89,24 @@ const AdminDashboardNav = ({ data }) =>
               {/* Desktop Menu Right Side */}
 
               <div className="flex justify-end gap-2 items-center [@media(min-width:850px)]:pr-[2.5rem] pr-[1.5rem]">
-              Logout
-                <FaPowerOff className="text-[14px] text-gray-600" />
+
+                <button
+                  onClick={() =>
+                  {
+                    const confirmBox = window.confirm(
+                      `Do you really want to Logout`
+                    );
+                    {
+                      confirmBox === true
+                        ? setHandleLogout(true)
+                        : setHandleLogout(false);
+                    }
+                  }}
+                  className="flex items-center text-red-600"
+                >
+                  <p className="text-[14px] font-[500] pr-[5px]">Logout</p>
+                  <FaPowerOff className="text-[13px]" />
+                </button>
               </div>
             </div>
           </div>
