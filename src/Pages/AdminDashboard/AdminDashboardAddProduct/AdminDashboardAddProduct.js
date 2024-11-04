@@ -135,14 +135,14 @@ const AdminDashboardAddProduct = () => {
                 );
               })}
             </Slider>
-              <p className={` ${showimage.length === 0 ? "flex" : "hidden"} absolute top-[30%] left-[35%] text-[15px] select-none`}>Product Image</p>
+              <p className={` ${showimage.length === 0 ? "flex" : "hidden"} absolute top-[25%] left-[35%] text-[15px] select-none`}>Product Image</p>
 
             <div className="text-center text-black [@media(min-width:450px)]:pt-[10px] pt-[5px] [@media(min-width:450px)]:pb-[15px] pb-[5px] px-[7px]">
               <p className="text-red-600 [@media(min-width:450px)]:text-[16px] text-[15px]">
-                {showPName ? showPName : "Product Name"}
+                {showPName ? showPName : "Woven Labels"}
               </p>
               <p className="[@media(min-width:450px)]:text-[14px] text-[13px] text-justify [@media(min-width:450px)]:px-[10px] px-[5px] pt-[5px] ">
-                {showPDescription ? showPDescription : "Write Product Description"}
+                {showPDescription ? showPDescription : "We offer you the latest, state of the art, air jet weaving technology to create high-definition quality labels, including the newest and trendiest weaves and textures in the market. Our creative team offers you innovative design solutions to fulfill the most recent fashion trend requirements at the quality and competitive pricing you need."}
               </p>
             </div>
           </div>
