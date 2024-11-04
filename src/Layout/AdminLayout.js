@@ -7,7 +7,7 @@ import ProtectedRoute from './ProtectedRoute'
 import { useQuery } from '@tanstack/react-query'
 import Spinner from '../Components/Loader/Spinner'
 
-const Root2 = () =>
+const AdminLayout = () =>
 {
     const token = localStorage.getItem('authToken')
     const { isLoading, error, data: datas } = useQuery({
@@ -30,7 +30,7 @@ const Root2 = () =>
         <main>
             <ProtectedRoute>
 
-                <section>
+                <section className='fixed'>
                     <AdminDashboardNav data={data} />
                     <AdminDashboardLeftNav data={data} />
                 </section>
@@ -45,4 +45,4 @@ const Root2 = () =>
     )
 }
 
-export default Root2
+export default AdminLayout
