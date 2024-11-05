@@ -95,7 +95,7 @@ const Navbar = () =>
           <div className="flex justify-between items-center [@media(min-width:850px)]:h-[4.5rem] h-[4rem]">
 
             {/* Desktop Menu Left Side */}
-            <div className="w-[430px] hidden z-10 [@media(min-width:1130px)]:flex lg:items-center">
+            <div className="w-[460px] hidden z-10 [@media(min-width:1130px)]:flex lg:items-center">
               <div className="flex items-baseline">
                 {menuItems.map((item, index) =>
                   !item.subItems ? (

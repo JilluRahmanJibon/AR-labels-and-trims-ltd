@@ -1,6 +1,6 @@
 // src/components/Navbar.jsx
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Navigate, NavLink } from "react-router-dom";
 import { Bars3Icon } from "@heroicons/react/24/outline";
 import { FaPowerOff } from "react-icons/fa6";
 import logo from "../../../Assets/logo3.png";
@@ -10,14 +10,23 @@ import { ImHome } from "react-icons/im";
 import { GoChevronRight } from "react-icons/go";
 
 
-const AdminDashboardNav = ({ data }) =>
+const AdminDashboardNav = ({ datas }) =>
 {
   const [ showLeftNav, setshowLeftNav ] = useState(true)
-  const [ handleLogout, setHandleLogout ] = useState();
-  console.log(handleLogout)
+  const [ openDropdown, setOpenDropdown ] = useState(null);
+  const [ handleLogout, setHandleLogout ] = useState(false);
+
+
+  if (handleLogout)
+  {
+    localStorage.removeItem('authToken')
+    return <Navigate to="/login" replace={true} />;
+
+  }
+
+
 
   // Left Nav
-  const [ openDropdown, setOpenDropdown ] = useState(null); // Track which dropdown is open
   const menuItemsDashboard = [
     {
       name: "About Us",
@@ -61,6 +70,7 @@ const AdminDashboardNav = ({ data }) =>
     }
 
   ];
+  const { data } = datas
   return (
     <>
       {/* Dashboard Top Nav */}

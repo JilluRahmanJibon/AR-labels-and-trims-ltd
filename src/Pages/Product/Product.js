@@ -6,9 +6,23 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { GoDotFill } from "react-icons/go";
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
+import { useQuery } from "@tanstack/react-query";
+import Spinner from "../../Components/Loader/Spinner";
 
 const Product = () =>
 {
+  const { isLoading, error, data } = useQuery({
+    queryKey: [ '/products' ],
+    queryFn: () =>
+      fetch(`${ process.env.REACT_APP_BASE_URL }/products/`, {
+        method: 'GET'
+      }).then((res) =>
+        res.json(),
+      ),
+  })
+
+  if (isLoading) return <Spinner />
+
   let settings = {
     dots: true,
     infinite: true,
@@ -33,332 +47,11 @@ const Product = () =>
     prevArrow: <PrevButton />,
   };
 
-  const products = [
-    {
-      id: "1",
-      title: "Woven Labels ",
-      description:
-        "We offer you the latest, state of the art, air jet weaving technology to create high-definition quality labels, including the newest and trendiest weaves and textures in the market. Our creative team offers you innovative design solutions to fulfill the most recent fashion trend requirements at the quality and competitive pricing you need.",
-      image: [
-        {
-          id: 1,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1541052299_1541052299.jpg",
-        },
-        {
-          id: 2,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1541052299_1541052299.jpg",
-        },
-        {
-          id: 3,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1541052299_1541052299.jpg",
-        },
-      ],
-    },
-    {
-      id: "2",
-      title: "Printed Fabric Labels",
-      description:
-        "We offer you the latest, state of the art, air jet weaving technology to create high-definition quality labels, including the newest and trendiest weaves and textures in the market. Our creative team offers you innovative design solutions to fulfill the most recent fashion trend requirements at the quality and competitive pricing you need.",
-      image: [
-        {
-          id: 1,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1546506827_1546506827.jpg",
-        },
-        {
-          id: 2,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1546506827_1546506827.jpg",
-        },
-        {
-          id: 3,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1546506827_1546506827.jpg",
-        },
-      ],
-    },
-    {
-      id: "3",
-      title: "Screen Printed Labels",
-      description:
-        "We offer you the latest, state of the art, air jet weaving technology to create high-definition quality labels, including the newest and trendiest weaves and textures in the market. Our creative team offers you innovative design solutions to fulfill the most recent fashion trend requirements at the quality and competitive pricing you need.",
-      image: [
-        {
-          id: 1,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1546507720_1546507720.jpg",
-        },
-        {
-          id: 2,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1546507720_1546507720.jpg",
-        },
-        {
-          id: 3,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1546507720_1546507720.jpg",
-        },
-      ],
-    },
-    {
-      id: "4",
-      title: "Heat Transfer Labels",
-      description:
-        "We offer you the latest, state of the art, air jet weaving technology to create high-definition quality labels, including the newest and trendiest weaves and textures in the market. Our creative team offers you innovative design solutions to fulfill the most recent fashion trend requirements at the quality and competitive pricing you need.",
-      image: [
-        {
-          id: 1,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1541052388_1541052388.jpg",
-        },
-        {
-          id: 2,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1541052388_1541052388.jpg",
-        },
-        {
-          id: 3,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1541052388_1541052388.jpg",
-        },
-      ],
-    },
-    {
-      id: "5",
-      title: "Paper Items (Price Ticket, Hangtags)",
-      description:
-        "We offer you the latest, state of the art, air jet weaving technology to create high-definition quality labels, including the newest and trendiest weaves and textures in the market. Our creative team offers you innovative design solutions to fulfill the most recent fashion trend requirements at the quality and competitive pricing you need.",
-      image: [
-        {
-          id: 1,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1571196260_1571196260.jpg",
-        },
-        {
-          id: 2,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1571196260_1571196260.jpg",
-        },
-        {
-          id: 3,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1571196260_1571196260.jpg",
-        },
-      ],
-    },
-    {
-      id: "6",
-      title: "Paper Packaging",
-      description:
-        "We offer you the latest, state of the art, air jet weaving technology to create high-definition quality labels, including the newest and trendiest weaves and textures in the market. Our creative team offers you innovative design solutions to fulfill the most recent fashion trend requirements at the quality and competitive pricing you need.",
-      image: [
-        {
-          id: 1,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1541052442_1541052442.jpg",
-        },
-        {
-          id: 2,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1541052442_1541052442.jpg",
-        },
-        {
-          id: 3,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1541052442_1541052442.jpg",
-        },
-      ],
-    },
-    {
-      id: "7",
-      title: "Adhesive Labels/Tags",
-      description:
-        "We offer you the latest, state of the art, air jet weaving technology to create high-definition quality labels, including the newest and trendiest weaves and textures in the market. Our creative team offers you innovative design solutions to fulfill the most recent fashion trend requirements at the quality and competitive pricing you need.",
-      image: [
-        {
-          id: 1,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1541052514_1541052514.jpg",
-        },
-        {
-          id: 2,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1541052514_1541052514.jpg",
-        },
-        {
-          id: 3,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1541052514_1541052514.jpg",
-        },
-      ],
-    },
-    {
-      id: "8",
-      title: "Barcode Labels & Stickers",
-      description:
-        "We offer you the latest, state of the art, air jet weaving technology to create high-definition quality labels, including the newest and trendiest weaves and textures in the market. Our creative team offers you innovative design solutions to fulfill the most recent fashion trend requirements at the quality and competitive pricing you need.",
-      image: [
-        {
-          id: 1,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1546508362_1546508362.jpg",
-        },
-        {
-          id: 2,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1546508362_1546508362.jpg",
-        },
-        {
-          id: 3,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1546508362_1546508362.jpg",
-        },
-      ],
-    },
-    {
-      id: "9",
-      title: "Rubber & Silicone Patch",
-      description:
-        "We offer you the latest, state of the art, air jet weaving technology to create high-definition quality labels, including the newest and trendiest weaves and textures in the market. Our creative team offers you innovative design solutions to fulfill the most recent fashion trend requirements at the quality and competitive pricing you need.",
-      image: [
-        {
-          id: 1,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1541052616_1541052616.jpg",
-        },
-        {
-          id: 2,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1541052616_1541052616.jpg",
-        },
-        {
-          id: 3,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1541052616_1541052616.jpg",
-        },
-      ],
-    },
-    {
-      id: "10",
-      title: "Jacron, PU & Leather Patch (Eco-Friendly)",
-      description:
-        "We offer you the latest, state of the art, air jet weaving technology to create high-definition quality labels, including the newest and trendiest weaves and textures in the market. Our creative team offers you innovative design solutions to fulfill the most recent fashion trend requirements at the quality and competitive pricing you need.",
-      image: [
-        {
-          id: 1,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1541053907_1541053907.jpg",
-        },
-        {
-          id: 2,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1541053907_1541053907.jpg",
-        },
-        {
-          id: 3,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1541053907_1541053907.jpg",
-        },
-      ],
-    },
-    {
-      id: "11",
-      title: "Seal Cord/Plastic Clips/Loops",
-      description:
-        "We offer you the latest, state of the art, air jet weaving technology to create high-definition quality labels, including the newest and trendiest weaves and textures in the market. Our creative team offers you innovative design solutions to fulfill the most recent fashion trend requirements at the quality and competitive pricing you need.",
-      image: [
-        {
-          id: 1,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1541052685_1541052685.jpg",
-        },
-        {
-          id: 2,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1541052685_1541052685.jpg",
-        },
-        {
-          id: 3,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1541052685_1541052685.jpg",
-        },
-      ],
-    },
-    {
-      id: "12",
-      title: "RFID / EAS / Alarm Labels, Tags & Stickers",
-      description:
-        "We offer you the latest, state of the art, air jet weaving technology to create high-definition quality labels, including the newest and trendiest weaves and textures in the market. Our creative team offers you innovative design solutions to fulfill the most recent fashion trend requirements at the quality and competitive pricing you need.",
-      image: [
-        {
-          id: 1,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1541052711_1541052711.jpg",
-        },
-        {
-          id: 2,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1541052711_1541052711.jpg",
-        },
-        {
-          id: 3,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1541052711_1541052711.jpg",
-        },
-      ],
-    },
-    {
-      id: "13",
-      title: "Twill Tape & Elastic",
-      description:
-        "We offer you the latest, state of the art, air jet weaving technology to create high-definition quality labels, including the newest and trendiest weaves and textures in the market. Our creative team offers you innovative design solutions to fulfill the most recent fashion trend requirements at the quality and competitive pricing you need.",
-      image: [
-        {
-          id: 1,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1568020801_1568020801.jpg",
-        },
-        {
-          id: 2,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1568020801_1568020801.jpg",
-        },
-        {
-          id: 3,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1568020801_1568020801.jpg",
-        },
-      ],
-    },
-    {
-      id: "14",
-      title: "Jacquard Elastic",
-      description:
-        "We offer you the latest, state of the art, air jet weaving technology to create high-definition quality labels, including the newest and trendiest weaves and textures in the market. Our creative team offers you innovative design solutions to fulfill the most recent fashion trend requirements at the quality and competitive pricing you need.",
-      image: [
-        {
-          id: 1,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1568020889_1568020889.jpg",
-        },
-        {
-          id: 2,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1568020889_1568020889.jpg",
-        },
-        {
-          id: 3,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1568020889_1568020889.jpg",
-        },
-      ],
-    },
-    {
-      id: "15",
-      title: "Poly Bags",
-      description:
-        "We offer you the latest, state of the art, air jet weaving technology to create high-definition quality labels, including the newest and trendiest weaves and textures in the market. Our creative team offers you innovative design solutions to fulfill the most recent fashion trend requirements at the quality and competitive pricing you need.",
-      image: [
-        {
-          id: 1,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1568020964_1568020964.jpg",
-        },
-        {
-          id: 2,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1568020964_1568020964.jpg",
-        },
-        {
-          id: 3,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1568020964_1568020964.jpg",
-        },
-      ],
-    },
-    {
-      id: "16",
-      title: "PVC / TPU / EVA Bags",
-      description:
-        "We offer you the latest, state of the art, air jet weaving technology to create high-definition quality labels, including the newest and trendiest weaves and textures in the market. Our creative team offers you innovative design solutions to fulfill the most recent fashion trend requirements at the quality and competitive pricing you need.",
-      image: [
-        {
-          id: 1,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1568021093_1568021093.jpg",
-        },
-        {
-          id: 2,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1568021093_1568021093.jpg",
-        },
-        {
-          id: 3,
-          img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1568021093_1568021093.jpg",
-        },
-      ],
-    },
-  ];
+
   return (
     <section className="max-w-[1920px] mx-auto GeologicaFont">
       <div className="mt-[100px] ">
-        <DynamicSlider slides={products[ 0 ].image} />
+        <DynamicSlider slides={data?.data[ 0 ].image} />
       </div>
       <div className=" py-6 [@media(min-width:850px)]:px-12 px-[0px]">
         <div className="[@media(min-width:850px)]:px-[0px] px-[1rem]">
@@ -389,35 +82,36 @@ const Product = () =>
           </div>
 
           <div className="flex flex-wrap w-[100%] mx-auto justify-center py-[2rem]">
-            {products.map((key) =>
+            {data?.data?.map((key) =>
             {
               return (
                 <div
-                  key={key.id}
+                  key={key._id}
                   className="[@media(min-width:450px)]:w-[360px] [@media(min-width:370px)]:w-[330px] w-[300px] h-[260px] [@media(min-width:450px)]:mx-[10px] mx-0 my-[10px]  rounded-[10px] overflow-hidden border-[2px] border-[#ececec] bg-[#ffffff] relative"
                 >
-                  <Link to={`/products?pid=${ key?.id }`}>
+                  <Link to={`/products?pid=${ key?._id }`}>
                     {/* multiple image */}
                     <Slider
                       {...settings}
                       className={`w-[100%] h-[220px]  ${ key.image.length > 1 ? "flex" : "!hidden"
                         } items-center overflow-hidden mx-auto`}
                     >
-                      {key.image.map((key) =>
+                      {key?.image?.map((key) =>
                       {
                         return (
                           <img
-                            key={key.id}
+                            key={key._id}
                             src={key.img}
                             className="w-[100%] h-[12rem] object-cover object-center block"
+                            alt=""
                           />
                         );
                       })}
                     </Slider>
                     {/* 1 image only */}
                     <img
-                      src={key.image[ 0 ].img}
-                      alt="product image"
+                      src={key.image[ 0 ].image}
+                      alt=""
                       className={`w-[100%] h-[12rem] ${ key.image.length > 1 ? "hidden" : "block"
                         }`} />
                   </Link>

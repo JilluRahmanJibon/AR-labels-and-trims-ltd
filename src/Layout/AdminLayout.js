@@ -5,6 +5,7 @@ import ProtectedRoute from './ProtectedRoute'
 import { useQuery } from '@tanstack/react-query'
 import Spinner from '../Components/Loader/Spinner'
 
+
 const AdminLayout = () =>
 {
     const token = localStorage.getItem('authToken')
@@ -22,14 +23,16 @@ const AdminLayout = () =>
 
             ),
     })
+   
+ 
     if (isLoading) return <Spinner />
-    const { data } = datas
+
     return (
         <main>
-            <ProtectedRoute>
+            <ProtectedRoute requiredRole={datas?.data?.role} >
 
                 <section >
-                    <AdminDashboardNav data={data} />
+                    <AdminDashboardNav datas={datas} />
                 </section>
                 <section >
                     <Outlet />
