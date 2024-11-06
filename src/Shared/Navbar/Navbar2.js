@@ -77,17 +77,17 @@ const Navbar = () =>
   })
   if (isLoading) return <Spinner />
 
-  const extractedData = data?.data.map(item => ({
+  const extractedData = data?.data?.map(item => ({
     _id: item._id,
     title: item.title
   }));
 
-  const updatedSubItems = extractedData.map(item => ({
+  const updatedSubItems = extractedData?.map(item => ({
     title: item.title,
     path: `/products/${ item._id }`
   }));
 
-  const updatedMenuItems = menuItems.map(item =>
+  const updatedMenuItems = menuItems?.map(item =>
   {
     if (item.title === 'Product & Solutions')
     {
@@ -184,7 +184,7 @@ const Navbar = () =>
                           : "opacity-0 -translate-y-2 pointer-events-none"
                           }`}
                       >
-                        {item.subItems.map((subItem) => (
+                        {item.subItems?.map((subItem) => (
                           <NavLink
                             key={subItem.title}
                             to={subItem.path}
@@ -217,7 +217,7 @@ const Navbar = () =>
             {/* Desktop Menu Right Side */}
             <div className="w-[465px] hidden z-10 [@media(min-width:1130px)]:flex lg:items-center justify-end ">
               <div className="flex items-baseline">
-                {menuItems2.map((item, index) =>
+                {menuItems2?.map((item, index) =>
                   !item.subItems ? (
                     <NavLink
                       key={item.title}
@@ -247,7 +247,7 @@ const Navbar = () =>
                           : "opacity-0 -translate-y-2 pointer-events-none"
                           }`}
                       >
-                        {item.subItems.map((subItem) => (
+                        {item.subItems?.map((subItem) => (
                           <NavLink
                             key={subItem.title}
                             to={subItem.path}
@@ -296,7 +296,7 @@ const Navbar = () =>
         {mobileMenuOpen && (
           <div className="[@media(min-width:1130px)]:hidden border-t-[1px] border-t-[#e0e0e0c3] shadow-[0px_0px_3px_0px_#0003]">
             <div className="px-2 pt-2 space-y-1 sm:px-3">
-              {menuItems.map((item) =>
+              {menuItems?.map((item) =>
                 !item.subItems ? (
                   <NavLink
                     key={item.title}
@@ -336,7 +336,7 @@ const Navbar = () =>
                     >
                       {openDropdown === item.title && (
                         <div className="ml-4">
-                          {item.subItems.map((subItem) => (
+                          {item.subItems?.map((subItem) => (
                             <NavLink
                               key={subItem.title}
                               to={subItem.path}
@@ -362,7 +362,7 @@ const Navbar = () =>
               )}
             </div>
             <div className="px-2 pb-3 space-y-1 sm:px-3">
-              {menuItems2.map((item) =>
+              {menuItems2?.map((item) =>
                 !item.subItems ? (
                   <NavLink
                     key={item.title}
@@ -402,7 +402,7 @@ const Navbar = () =>
                     >
                       {openDropdown === item.title && (
                         <div className="ml-4">
-                          {item.subItems.map((subItem) => (
+                          {item.subItems?.map((subItem) => (
                             <NavLink
                               key={subItem.title}
                               to={subItem.path}
