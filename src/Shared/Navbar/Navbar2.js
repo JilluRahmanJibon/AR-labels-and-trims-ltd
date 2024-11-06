@@ -296,7 +296,7 @@ const Navbar = () =>
         {mobileMenuOpen && (
           <div className="[@media(min-width:1130px)]:hidden border-t-[1px] border-t-[#e0e0e0c3] shadow-[0px_0px_3px_0px_#0003]">
             <div className="px-2 pt-2 space-y-1 sm:px-3">
-              {menuItems?.map((item) =>
+              {updatedMenuItems?.map((item) =>
                 !item.subItems ? (
                   <NavLink
                     key={item.title}

@@ -55,7 +55,6 @@ export default function Login ()
       } else
       {
         console.error('Form submission failed:', result);
-        // Handle error response (e.g., show error message)
       }
     } catch (error)
     {

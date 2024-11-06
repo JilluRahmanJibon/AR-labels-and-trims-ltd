@@ -4,16 +4,16 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { GoDotFill } from "react-icons/go";
+import { toast } from "sonner";
 
-const AdminDashboardAddProduct = () => {
-  const [showPName, setshowPName] = useState();
-  const [showPDescription, setshowPDescription] = useState();
-  const [showimage, setshowimage] = useState([]);
-  console.log(showPName);
-  console.log(showPDescription);
-  console.log(showimage);
+const AdminDashboardAddProduct = () =>
+{
+  const [ showPName, setshowPName ] = useState();
+  const [ showPDescription, setshowPDescription ] = useState();
+  const [ showimage, setshowimage ] = useState([]);
 
-   
+
+
 
   let settings = {
     dots: true,
@@ -42,54 +42,99 @@ const AdminDashboardAddProduct = () => {
   };
 
   // State for form fields
-  const [formData, setFormData] = useState({
-    productName: "",
-    productDescription: "",
-    productImage: [],
+  const [ formData, setFormData ] = useState({
+    name: "",
+    description: "",
+    image: [],
   });
 
   // State for form submission
-  const [submitted, setSubmitted] = useState(false);
+  const [ submitted, setSubmitted ] = useState(false);
 
   // Handle input change
-  const handleChange = (e) => {
+  const handleChange = (e) =>
+  {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData({ ...formData, [ name ]: value });
   };
   // ```````````````handle image uploade```````````````````
-  const handleChangeImageUploade = (e) => {
+  const handleChangeImageUploade = (e) =>
+  {
 
-    const file = e.target.files?.[0];
-    setshowimage([...showimage, { id: 1, img: URL.createObjectURL(file) }]);
-    setFormData({ ...formData, "productImage": showimage});
-    // handleChange(e);
+    const file = e.target.files?.[ 0 ];
+    setshowimage([ ...showimage, { img: URL.createObjectURL(file) } ]);
+    setFormData({ ...formData, "image": showimage });
+
   };
   // ```````````````handle Product Name```````````````````
-  const handleChangeProductName = (e) => {
+  const handleChangename = (e) =>
+  {
     const name = e.target.value;
     setshowPName(name);
     handleChange(e);
   };
   // ```````````````handle Product Description```````````````````
-  const handleChangeProductDescription = (e) => {
+  const handleChangedescription = (e) =>
+  {
     const name = e.target.value;
     setshowPDescription(name);
     handleChange(e);
   };
 
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) =>
+  {
     e.preventDefault();
+    const token = localStorage.getItem('authToken')
+    const toastId = toast.loading("Loading in");
+    const data = {
+      title: formData.name,
+      description: formData.description,
+      image: showimage
+    }
+     
+    
+    try
+    {
+      const baseUrl = process.env.REACT_APP_BASE_URL;
 
-    // Here you can integrate with your backend API
-    console.log("Form Data Submitted:", formData);
-    setSubmitted(true);
+      const response = await fetch(`${ baseUrl }/products/create-product`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          "Authorization": `${ token }`
+        },
+        body: JSON.stringify(data)
+      });
+
+      const result = await response.json();
+
+      if (response.ok)
+      {
+        toast.success(`Product is created successfully.`, {
+          id: toastId,
+          duration: 2000,
+        });
+
+        // setFormData({
+        //   name: "",
+        //   description: "",
+        //   image: [],
+        // });
+      } else
+      {
+        console.error(':', result);
+        toast.error("Failed to create product", { id: toastId, duration: 2000 });
+
+      }
+    } catch (error)
+    {
+      toast.error("Something went wrong", { id: toastId, duration: 2000 });
+    }
+
+    // setSubmitted(true);
     // Reset form fields
-    setFormData({
-      productName: "",
-      productDescription: "",
-      productImage: [],
-    });
+   
   };
 
   return (
@@ -111,7 +156,8 @@ const AdminDashboardAddProduct = () => {
               {...settings}
               className={`w-[100%] [@media(min-width:450px)]:h-[190px] h-[150px] flex items-center overflow-hidden mx-auto`}
             >
-              {showimage.map((key) => {
+              {showimage.map((key) =>
+              {
                 return (
                   <img
                     key={key._id ? key._id : ""}
@@ -122,14 +168,14 @@ const AdminDashboardAddProduct = () => {
                 );
               })}
             </Slider>
-              <p className={` ${showimage.length === 0 ? "flex" : "hidden"} absolute top-[25%] left-[35%] text-[15px] select-none`}>Product Image</p>
+            <p className={` ${ showimage.length === 0 ? "flex" : "hidden" } absolute top-[25%] left-[35%] text-[15px] select-none`}>Product Image</p>
 
             <div className="text-center text-black [@media(min-width:450px)]:pt-[10px] pt-[5px] [@media(min-width:450px)]:pb-[15px] pb-[5px] px-[7px]">
               <p className="text-red-600 [@media(min-width:450px)]:text-[16px] text-[15px]">
-                {showPName ? showPName : "Woven Labels"}
+                {showPName ? showPName : "Product Title here"}
               </p>
               <p className="[@media(min-width:450px)]:text-[14px] text-[13px] text-justify [@media(min-width:450px)]:px-[10px] px-[5px] pt-[5px] ">
-                {showPDescription ? showPDescription : "We offer you the latest, state of the art, air jet weaving technology to create high-definition quality labels, including the newest and trendiest weaves and textures in the market. Our creative team offers you innovative design solutions to fulfill the most recent fashion trend requirements at the quality and competitive pricing you need."}
+                {showPDescription ? showPDescription : "Product description example here!"}
               </p>
             </div>
           </div>
@@ -145,10 +191,10 @@ const AdminDashboardAddProduct = () => {
                 <label className="relative">
                   <input
                     type="text"
-                    id="productName"
-                    name="productName"
-                    value={formData.productName}
-                    onChange={handleChangeProductName}
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChangename}
                     autoComplete="off"
                     required
                     placeholder=""
@@ -163,10 +209,10 @@ const AdminDashboardAddProduct = () => {
                 <label className="relative">
                   <textarea
                     type="text"
-                    id="productDescription"
-                    name="productDescription"
-                    value={formData.productDescription}
-                    onChange={handleChangeProductDescription}
+                    id="description"
+                    name="description"
+                    value={formData.description}
+                    onChange={handleChangedescription}
                     autoComplete="off"
                     required
                     rows="7"
@@ -183,10 +229,10 @@ const AdminDashboardAddProduct = () => {
                 <label className="relative">
                   <input
                     type="file"
-                    id="productImage"
-                    name="productImage"
+                    id="image"
+                    name="image"
                     autoComplete="off"
-                    // value={formData.productImage}
+                    // value={formData.image}
                     onChange={handleChangeImageUploade}
                     required
                     placeholder=""
@@ -203,7 +249,7 @@ const AdminDashboardAddProduct = () => {
                 value="Submit Now"
                 className="text-[14px] px-[22px] py-[8px] rounded-[50px] hover:!bg-transparent bg-[#018496] text-[#fff] hover:text-[#018496] border-[2px] border-[#018496] transition-[0.4s]"
               >
-                Add Product 
+                Add Product
               </button>
             </form>
           </div>
@@ -213,22 +259,24 @@ const AdminDashboardAddProduct = () => {
   );
 };
 
-function NextButton(props) {
+function NextButton (props)
+{
   const { onClick, showButton } = props;
   return (
     <div
-      className={`bg-[#dcdcdc] w-[20px] h-[50px] absolute top-[45%] right-0 [@media(min-width:450px)]:${showButton? "flex": "hidden"} hidden items-center justify-center cursor-pointer z-10`}
+      className={`bg-[#dcdcdc] w-[20px] h-[50px] absolute top-[45%] right-0 [@media(min-width:450px)]:${ showButton ? "flex" : "hidden" } hidden items-center justify-center cursor-pointer z-10`}
       onClick={onClick}
     >
       <MdKeyboardArrowRight className="text-[black] text-[27px]" />
     </div>
   );
 }
-function PrevButton(props) {
+function PrevButton (props)
+{
   const { onClick, showButton } = props;
   return (
     <div
-      className={`bg-[#dcdcdc] w-[20px] h-[50px] absolute top-[45%] left-0 [@media(min-width:450px)]:${showButton? "flex": "hidden"} hidden items-center justify-center cursor-pointer z-10`}
+      className={`bg-[#dcdcdc] w-[20px] h-[50px] absolute top-[45%] left-0 [@media(min-width:450px)]:${ showButton ? "flex" : "hidden" } hidden items-center justify-center cursor-pointer z-10`}
       onClick={onClick}
     >
       <MdKeyboardArrowLeft className="text-[black] text-[27px]" />

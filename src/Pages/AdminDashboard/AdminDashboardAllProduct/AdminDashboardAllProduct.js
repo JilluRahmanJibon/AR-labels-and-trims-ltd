@@ -1,16 +1,58 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { GoDotFill } from "react-icons/go";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import Spinner from "../../../Components/Loader/Spinner";
 import { Link } from "react-router-dom";
+import { toast } from "sonner";
 
-const AdminDashboardAllProduct = () => {
+const AdminDashboardAllProduct = () =>
+{
   // Product Delete Action
-  const [handleDeleteCrumb, sethandleDeleteCrumb] = useState();
+  const [ handleDeleteCrumb, sethandleDeleteCrumb ] = useState();
+  const queryClient = useQueryClient();
+  useEffect(() =>
+  {
+    const token = localStorage.getItem('authToken')
+    if (handleDeleteCrumb && token)
+    {
+      const deleteData = async () =>
+      {
+        const toastId = toast.loading("Loading in");
+
+        try
+        {
+          const response = await fetch(`${ process.env.REACT_APP_BASE_URL }/products/${ handleDeleteCrumb }`, {
+            method: "DELETE",
+            headers: {
+              "Authorization": `${ token }`
+            },
+          });
+
+          if (response.ok)
+          {
+            queryClient.invalidateQueries("/products");
+            toast.success(`Product is Deleted successfully!`, {
+              id: toastId,
+              duration: 2000,
+            });
+          }
+        } catch (error)
+        {
+          toast.error(` Something went wrong when deleting the product!`, {
+            id: toastId,
+            duration: 2000,
+          });
+        }
+      };
+
+      deleteData();
+
+    }
+  }, [ handleDeleteCrumb, queryClient ])
 
   const { isLoading, error, data } = useQuery({
     queryKey: [ '/products' ],
@@ -23,9 +65,10 @@ const AdminDashboardAllProduct = () => {
       ),
   })
 
- 
+
 
   if (isLoading) return <Spinner />
+  if (error) return <p>Error fetching data!</p>;
 
   let settings = {
     dots: true,
@@ -54,7 +97,7 @@ const AdminDashboardAllProduct = () => {
     <div className="w-full h-full pt-[4rem] [@media(min-width:1400px)]:pl-[15rem] pl-0 relative GeologicaFont">
       <div className="w-full h-full pt-[1rem]">
         <h1 className="[@media(min-width:800px)]:text-[30px] [@media(min-width:600px)]:text-[27px] [@media(min-width:500px)]:text-[25px] [@media(min-width:400px)]:text-[22px] text-[19px] font-semibold text-center">
-          Show All Products
+          <span className="text-primary">" {data?.data?.length} "</span> Product Found
         </h1>
         <div className="flex items-center mt-[5px] justify-center">
           <div className="[@media(min-width:420px)]:w-[21px] w-[18px] [@media(min-width:420px)]:h-[3px] h-[2px] bg-[#FA0472] inline-flex"></div>
@@ -62,7 +105,8 @@ const AdminDashboardAllProduct = () => {
           <div className="[@media(min-width:420px)]:w-[21px] w-[18px] [@media(min-width:420px)]:h-[3px] h-[2px] bg-[#FA0472] inline-flex"></div>
         </div>
         <div className="flex flex-wrap w-[100%] mx-auto justify-center py-[2rem]">
-          {data?.data?.map((key) => {
+          {data?.data?.map((key) =>
+          {
             return (
               <div
                 key={key._id}
@@ -71,11 +115,11 @@ const AdminDashboardAllProduct = () => {
                 {/* multiple image */}
                 <Slider
                   {...settings}
-                  className={`w-[100%] [@media(min-width:450px)]:h-[190px] h-[150px] ${
-                    key.image.length > 1 ? "flex" : "!hidden"
-                  }  items-center overflow-hidden mx-auto`}
+                  className={`w-[100%] [@media(min-width:450px)]:h-[190px] h-[150px] ${ key.image.length > 1 ? "flex" : "!hidden"
+                    }  items-center overflow-hidden mx-auto`}
                 >
-                  {key.image.map((key) => {
+                  {key.image.map((key) =>
+                  {
                     return (
                       <img
                         key={key.img}
@@ -88,9 +132,9 @@ const AdminDashboardAllProduct = () => {
                 </Slider>
                 {/* 1 image only */}
                 <img
-                  src={key.image[0].img}
+                  src={key.image[ 0 ].img}
                   alt={key?.name}
-                  className={`w-[100%] ${key.image.length > 1 ? "hidden" : "block"}`}
+                  className={`w-[100%] ${ key.image.length > 1 ? "hidden" : "block" }`}
                 />
 
                 <div className="text-center text-black [@media(min-width:450px)]:pt-[10px] pt-[5px] [@media(min-width:450px)]:pb-[15px] pb-[5px] px-[7px]">
@@ -102,19 +146,20 @@ const AdminDashboardAllProduct = () => {
                   </p>
 
                   <div className="flex justify-center pb-[10px] pt-[15px]">
-                    <Link to={`/dashboard/product-solutions/update/${key?._id}`}>
+                    <Link to={`/dashboard/product-solutions/update/${ key?._id }`}>
                       <button className="text-white [@media(min-width:450px)]:text-[14px] text-[13px] bg-green-500 [@media(min-width:450px)]:py-2 py-[8px] [@media(min-width:450px)]:px-6 px-[20px] focus:outline-none rounded-[5px] mr-[15px]">
                         Edit
                       </button>
                     </Link>
                     <button
-                      onClick={() => {
+                      onClick={() =>
+                      {
                         const confirmBox = window.confirm(
-                          `Do you really want to delete (${key.title}) product?`
+                          `Do you really want to delete (${ key.title }) product?`
                         );
                         {
                           confirmBox === true
-                            ? sethandleDeleteCrumb(true)
+                            ? sethandleDeleteCrumb(key._id)
                             : sethandleDeleteCrumb(false);
                         }
                       }}
@@ -133,7 +178,8 @@ const AdminDashboardAllProduct = () => {
   );
 };
 
-function NextButton(props) {
+function NextButton (props)
+{
   const { onClick } = props;
   return (
     <div
@@ -144,7 +190,8 @@ function NextButton(props) {
     </div>
   );
 }
-function PrevButton(props) {
+function PrevButton (props)
+{
   const { onClick } = props;
   return (
     <div

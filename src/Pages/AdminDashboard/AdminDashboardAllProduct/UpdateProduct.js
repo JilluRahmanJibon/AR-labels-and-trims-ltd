@@ -34,7 +34,7 @@ const UpdateProduct = () =>
         queryKey: [ '/products', pid ], // Include id in the query key
         queryFn: () =>
             fetch(`${ process.env.REACT_APP_BASE_URL }/products/${ pid }`, {
-                method: 'GET',
+                method: 'GET'
             }).then((res) => res.json()),
         enabled: !!pid, // Ensures the query only runs when `id` is defined
     });
