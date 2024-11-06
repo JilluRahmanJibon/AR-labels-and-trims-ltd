@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import DynamicSlider from "../../Shared/DynamicSlider/DynamicSlider";
 import { Link, useParams } from "react-router-dom";
 import Slider from "react-slick";
@@ -22,7 +22,12 @@ const Product = () =>
   })
 
   const { pid } = useParams()
-  const { data: product } = useQuery({
+  useEffect(() =>
+  {
+    // Scroll to the top whenever the product ID changes
+    window.scrollTo(0, 0);
+  }, [ pid ]);
+  const {isLoading:isLoading2, data: product } = useQuery({
     queryKey: [ '/products', pid ], // Include id in the query key
     queryFn: () =>
       fetch(`${ process.env.REACT_APP_BASE_URL }/products/${ pid }`, {
@@ -32,6 +37,7 @@ const Product = () =>
   });
 
   if (isLoading) return <Spinner />
+  if (isLoading2) return <Spinner />
 
   let settings = {
     dots: true,
@@ -57,7 +63,7 @@ const Product = () =>
     prevArrow: <PrevButton />,
   };
 
- 
+
 
   return (
     <section className="max-w-[1920px] mx-auto GeologicaFont">
@@ -72,7 +78,7 @@ const Product = () =>
           </h2>
 
           <p className="[@media(min-width:850px)]:text-[16px] [@media(min-width:600px)]:text-[15px] [@media(min-width:400px)]:text-[14px] text-[13px]">
-           {product?.data?.description}
+            {product?.data?.description}
           </p>
         </div>
         <div className="w-full py-6 [@media(min-width:850px)]:px-[0px] px-[1rem]">
