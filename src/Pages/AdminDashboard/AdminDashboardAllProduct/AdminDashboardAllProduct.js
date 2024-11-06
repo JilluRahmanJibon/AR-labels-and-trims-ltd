@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { GoDotFill } from "react-icons/go";
 import { useQuery } from "@tanstack/react-query";
 import Spinner from "../../../Components/Loader/Spinner";
+import { Link } from "react-router-dom";
 
 const AdminDashboardAllProduct = () => {
   // Product Delete Action
@@ -64,7 +65,7 @@ const AdminDashboardAllProduct = () => {
           {data?.data?.map((key) => {
             return (
               <div
-                key={key.id}
+                key={key._id}
                 className="[@media(min-width:450px)]:w-[360px] [@media(min-width:370px)]:w-[330px] w-[300px] [@media(min-width:450px)]:mx-[10px] mx-0 my-[10px]  rounded-[10px] overflow-hidden border-[2px] border-[#ececec] bg-[#ffffff]"
               >
                 {/* multiple image */}
@@ -77,7 +78,7 @@ const AdminDashboardAllProduct = () => {
                   {key.image.map((key) => {
                     return (
                       <img
-                        key={key._id}
+                        key={key.img}
                         alt={key?.name}
                         src={key.img}
                         className="w-[100%] block"
@@ -101,9 +102,11 @@ const AdminDashboardAllProduct = () => {
                   </p>
 
                   <div className="flex justify-center pb-[10px] pt-[15px]">
-                    <button className="text-white [@media(min-width:450px)]:text-[14px] text-[13px] bg-green-500 [@media(min-width:450px)]:py-2 py-[8px] [@media(min-width:450px)]:px-6 px-[20px] focus:outline-none rounded-[5px] mr-[15px]">
-                      Edit
-                    </button>
+                    <Link to={`/dashboard/product-solutions/update/${key?._id}`}>
+                      <button className="text-white [@media(min-width:450px)]:text-[14px] text-[13px] bg-green-500 [@media(min-width:450px)]:py-2 py-[8px] [@media(min-width:450px)]:px-6 px-[20px] focus:outline-none rounded-[5px] mr-[15px]">
+                        Edit
+                      </button>
+                    </Link>
                     <button
                       onClick={() => {
                         const confirmBox = window.confirm(

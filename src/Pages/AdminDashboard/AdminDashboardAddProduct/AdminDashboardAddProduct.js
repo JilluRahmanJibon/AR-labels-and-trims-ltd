@@ -13,20 +13,7 @@ const AdminDashboardAddProduct = () => {
   console.log(showPDescription);
   console.log(showimage);
 
-  // const image = [
-  //   {
-  //     id: 1,
-  //     img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1541052299_1541052299.jpg",
-  //   },
-  //   {
-  //     id: 2,
-  //     img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1541052299_1541052299.jpg",
-  //   },
-  //   {
-  //     id: 3,
-  //     img: "https://www.adzitrims.com/sul-web-cms-adzi/upload/image_upload_product_and_solutions_1541052299_1541052299.jpg",
-  //   },
-  // ];
+   
 
   let settings = {
     dots: true,
@@ -127,8 +114,8 @@ const AdminDashboardAddProduct = () => {
               {showimage.map((key) => {
                 return (
                   <img
-                    key={key.id ? key.id : ""}
-                    alt="product image"
+                    key={key._id ? key._id : ""}
+                    alt={key?.name}
                     src={key.img ? key.img : ""}
                     className="w-[100%] block"
                   />

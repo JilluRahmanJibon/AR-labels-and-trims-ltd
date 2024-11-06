@@ -11,7 +11,7 @@ import Spinner from "../../Components/Loader/Spinner";
 
 const Product = () =>
 {
-  const { isLoading, error, data } = useQuery({
+  const { isLoading, data } = useQuery({
     queryKey: [ '/products' ],
     queryFn: () =>
       fetch(`${ process.env.REACT_APP_BASE_URL }/products/`, {
@@ -27,7 +27,7 @@ const Product = () =>
     // Scroll to the top whenever the product ID changes
     window.scrollTo(0, 0);
   }, [ pid ]);
-  const {isLoading:isLoading2, data: product } = useQuery({
+  const { isLoading: isLoading2, data: product } = useQuery({
     queryKey: [ '/products', pid ], // Include id in the query key
     queryFn: () =>
       fetch(`${ process.env.REACT_APP_BASE_URL }/products/${ pid }`, {

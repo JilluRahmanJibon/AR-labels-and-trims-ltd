@@ -66,7 +66,7 @@ const Navbar = () =>
     user = verifyToken(token)
   }
 
-  const { isLoading, error, data } = useQuery({
+  const { isLoading,  data } = useQuery({
     queryKey: [ '/products' ],
     queryFn: () =>
       fetch(`${ process.env.REACT_APP_BASE_URL }/products`, {
