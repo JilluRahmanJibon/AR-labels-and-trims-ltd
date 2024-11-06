@@ -1,6 +1,6 @@
 import React from "react";
 import DynamicSlider from "../../Shared/DynamicSlider/DynamicSlider";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -20,6 +20,16 @@ const Product = () =>
         res.json(),
       ),
   })
+
+  const { pid } = useParams()
+  const { data: product } = useQuery({
+    queryKey: [ '/products', pid ], // Include id in the query key
+    queryFn: () =>
+      fetch(`${ process.env.REACT_APP_BASE_URL }/products/${ pid }`, {
+        method: 'GET',
+      }).then((res) => res.json()),
+    enabled: !!pid, // Ensures the query only runs when `id` is defined
+  });
 
   if (isLoading) return <Spinner />
 
@@ -47,25 +57,22 @@ const Product = () =>
     prevArrow: <PrevButton />,
   };
 
+ 
 
   return (
     <section className="max-w-[1920px] mx-auto GeologicaFont">
       <div className="mt-[100px] ">
-        <DynamicSlider slides={data?.data[ 0 ].image} />
+        <DynamicSlider slides={product?.data.image} />
       </div>
       <div className=" py-6 [@media(min-width:850px)]:px-12 px-[0px]">
         <div className="[@media(min-width:850px)]:px-[0px] px-[1rem]">
           <h2 className="[@media(min-width:460px)]:text-[22px] text-[18px] font-semibold [@media(min-width:850px)]:pb-[5px] pb-0 text-gray-800">
-            Woven Labels
+            {product?.data?.title}
+
           </h2>
 
           <p className="[@media(min-width:850px)]:text-[16px] [@media(min-width:600px)]:text-[15px] [@media(min-width:400px)]:text-[14px] text-[13px]">
-            We offer you the latest, state of the art, air jet weaving
-            technology to create high-definition quality labels, including the
-            newest and trendiest weaves and textures in the market. Our creative
-            team offers you innovative design solutions to fulfill the most
-            recent fashion trend requirements at the quality and competitive
-            pricing you need.
+           {product?.data?.description}
           </p>
         </div>
         <div className="w-full py-6 [@media(min-width:850px)]:px-[0px] px-[1rem]">
@@ -89,7 +96,7 @@ const Product = () =>
                   key={key._id}
                   className="[@media(min-width:450px)]:w-[360px] [@media(min-width:370px)]:w-[330px] w-[300px] h-[260px] [@media(min-width:450px)]:mx-[10px] mx-0 my-[10px]  rounded-[10px] overflow-hidden border-[2px] border-[#ececec] bg-[#ffffff] relative"
                 >
-                  <Link to={`/products?pid=${ key?._id }`}>
+                  <Link to={`/products/${ key?._id }`}>
                     {/* multiple image */}
                     <Slider
                       {...settings}
@@ -100,7 +107,7 @@ const Product = () =>
                       {
                         return (
                           <img
-                            key={key._id}
+                            key={key.img}
                             src={key.img}
                             className="w-[100%] h-[12rem] object-cover object-center block"
                             alt=""

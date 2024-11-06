@@ -2,17 +2,20 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import
-  {
-    ChevronDownIcon,
-    Bars3Icon,
-    XMarkIcon,
-  } from "@heroicons/react/24/outline";
+{
+  ChevronDownIcon,
+  Bars3Icon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 import { menuItems, menuItems2 } from "./NavItems";
 import logo from "../../Assets/logo3.png";
 import { FaFacebookF } from "react-icons/fa6";
-import { FaRegUserCircle } from "react-icons/fa";
+import { FaRegUserCircle, FaUserCheck } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { BsInstagram } from "react-icons/bs";
+import verifyToken from "../../utils/verifyToken";
+import { useQuery } from "@tanstack/react-query";
+import Spinner from "../../Components/Loader/Spinner";
 
 const Navbar = () =>
 {
@@ -55,6 +58,49 @@ const Navbar = () =>
     }
   };
   window.addEventListener("scroll", changeColor);
+  const token = localStorage.getItem('authToken')
+  let user
+  if (token)
+  {
+
+    user = verifyToken(token)
+  }
+
+  const { isLoading, error, data } = useQuery({
+    queryKey: [ '/products' ],
+    queryFn: () =>
+      fetch(`${ process.env.REACT_APP_BASE_URL }/products`, {
+        method: 'GET'
+      }).then((res) =>
+        res.json(),
+      ),
+  })
+  if (isLoading) return <Spinner />
+
+  const extractedData = data?.data.map(item => ({
+    _id: item._id,
+    title: item.title
+  }));
+
+  const updatedSubItems = extractedData.map(item => ({
+    title: item.title,
+    path: `/products/${ item._id }`
+  }));
+
+  const updatedMenuItems = menuItems.map(item =>
+  {
+    if (item.title === 'Product & Solutions')
+    {
+      return {
+        ...item,
+        subItems: updatedSubItems
+      };
+    }
+    return item;
+  });
+
+
+
 
   return (
     <div className="w-full flex flex-col fixed top-[0px] z-50 GeologicaFont">
@@ -74,15 +120,26 @@ const Navbar = () =>
                 <BsInstagram className="text-[11px]" />
               </div>
             </div>
-            <Link
-              to={"/login"}
-              className="flex justify-center items-center mx-[5px] cursor-pointer"
-            >
-              <FaRegUserCircle className="[@media(min-width:450px)]:text-[20px] text-[17px]" />
-              <p className="pl-[5px] pt-[1px] [@media(min-width:450px)]:text-[12.5px] text-[12px]">
-                Existing customers
-              </p>
-            </Link>
+
+            {
+              user ? <Link
+                to={`${ user?.role }/dashboard`}
+                className="flex justify-center items-center mx-[5px] cursor-pointer"
+              >
+                <FaUserCheck className="[@media(min-width:450px)]:text-[20px] text-[17px]" />
+                <p className="pl-[5px] pt-[1px] [@media(min-width:450px)]:text-[12.5px] text-[12px]">
+                  Profile
+                </p>
+              </Link> : <Link
+                to={"/login"}
+                className="flex justify-center items-center mx-[5px] cursor-pointer"
+              >
+                <FaRegUserCircle className="[@media(min-width:450px)]:text-[20px] text-[17px]" />
+                <p className="pl-[5px] pt-[1px] [@media(min-width:450px)]:text-[12.5px] text-[12px]">
+                  Existing customers
+                </p>
+              </Link>
+            }
           </div>
         </div>
       )}
@@ -97,10 +154,10 @@ const Navbar = () =>
             {/* Desktop Menu Left Side */}
             <div className="w-[460px] hidden z-10 [@media(min-width:1130px)]:flex lg:items-center">
               <div className="flex items-baseline">
-                {menuItems.map((item, index) =>
+                {updatedMenuItems?.map((item, index) =>
                   !item.subItems ? (
                     <NavLink
-                      key={item.name}
+                      key={item.title}
                       to={item.path}
                       className={({ isActive }) =>
                         isActive
@@ -108,28 +165,28 @@ const Navbar = () =>
                           : "px-[5px] rounded-md text-sm font-medium text-gray-700 hover:text-primary"
                       }
                     >
-                      {item.name}
+                      {item.title}
                     </NavLink>
                   ) : (
                     <div
-                      key={item.name}
+                      key={item.title}
                       className="relative"
                       onMouseEnter={() => handleMouseEnter(index)}
                       onMouseLeave={handleMouseLeave}
                     >
                       <button className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary flex items-center">
-                        {item.name}
+                        {item.title}
                         <ChevronDownIcon className="ml-1 h-4 w-4" />
                       </button>
                       <div
                         className={`absolute left-0 w-[13rem] bg-white border rounded-md shadow-lg transition-all duration-300 ease-in-out transform ${ openDropdown === index
-                            ? "opacity-100 translate-y-0"
-                            : "opacity-0 -translate-y-2 pointer-events-none"
+                          ? "opacity-100 translate-y-0"
+                          : "opacity-0 -translate-y-2 pointer-events-none"
                           }`}
                       >
                         {item.subItems.map((subItem) => (
                           <NavLink
-                            key={subItem.name}
+                            key={subItem.title}
                             to={subItem.path}
                             className={
                               ({ isActive }) =>
@@ -138,7 +195,7 @@ const Navbar = () =>
                                   : "block px-4 py-2 text-sm text-gray-700 hover:text-primary transition-all hover:border-l-[3px] hover:border-primary" // Hover state with left border
                             }
                           >
-                            {subItem.name}
+                            {subItem.title}
                           </NavLink>
                         ))}
                       </div>
@@ -163,7 +220,7 @@ const Navbar = () =>
                 {menuItems2.map((item, index) =>
                   !item.subItems ? (
                     <NavLink
-                      key={item.name}
+                      key={item.title}
                       to={item.path}
                       className={({ isActive }) =>
                         isActive
@@ -171,28 +228,28 @@ const Navbar = () =>
                           : "px-[5px] rounded-md text-sm font-medium text-gray-700 hover:text-primary"
                       }
                     >
-                      {item.name}
+                      {item.title}
                     </NavLink>
                   ) : (
                     <div
-                      key={item.name}
+                      key={item.title}
                       className="relative"
                       onMouseEnter={() => handleMouseEnter2(index)}
                       onMouseLeave={handleMouseLeave2}
                     >
                       <button className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary flex items-center">
-                        {item.name}
+                        {item.title}
                         <ChevronDownIcon className="ml-1 h-4 w-4" />
                       </button>
                       <div
                         className={`absolute left-0  w-[13rem] bg-white border rounded-md shadow-lg transition-all duration-300 ease-in-out transform ${ openDropdown2 === index
-                            ? "opacity-100 translate-y-0"
-                            : "opacity-0 -translate-y-2 pointer-events-none"
+                          ? "opacity-100 translate-y-0"
+                          : "opacity-0 -translate-y-2 pointer-events-none"
                           }`}
                       >
                         {item.subItems.map((subItem) => (
                           <NavLink
-                            key={subItem.name}
+                            key={subItem.title}
                             to={subItem.path}
                             className={
                               ({ isActive }) =>
@@ -201,7 +258,7 @@ const Navbar = () =>
                                   : "block px-4 py-2 text-sm text-gray-700 hover:text-primary transition-all hover:border-l-[3px] hover:border-primary" // Hover state with left border
                             }
                           >
-                            {subItem.name}
+                            {subItem.title}
                           </NavLink>
                         ))}
                       </div>
@@ -242,7 +299,7 @@ const Navbar = () =>
               {menuItems.map((item) =>
                 !item.subItems ? (
                   <NavLink
-                    key={item.name}
+                    key={item.title}
                     to={item.path}
                     onClick={() => setMobileMenuOpen(false)}
                     className={({ isActive }) =>
@@ -251,37 +308,37 @@ const Navbar = () =>
                         : "block px-3 py-2 rounded-md [@media(min-width:800px)]:text-[15px] text-[14px] font-medium text-gray-700 hover:text-primary"
                     }
                   >
-                    {item.name}
+                    {item.title}
                   </NavLink>
                 ) : (
-                  <div key={item.name}>
+                  <div key={item.title}>
                     <button
                       onClick={() =>
                         setOpenDropdown(
-                          openDropdown === item.name ? null : item.name
+                          openDropdown === item.title ? null : item.title
                         )
                       }
                       className="w-full flex items-center justify-between px-3 py-2 rounded-md [@media(min-width:800px)]:text-[15px] text-[14px] font-medium text-gray-700 hover:text-primary focus:outline-none"
                     >
-                      {item.name}
+                      {item.title}
                       <ChevronDownIcon
-                        className={`h-[15px] w-[15px] transition-transform ${ openDropdown === item.name
-                            ? "transform rotate-180"
-                            : ""
+                        className={`h-[15px] w-[15px] transition-transform ${ openDropdown === item.title
+                          ? "transform rotate-180"
+                          : ""
                           }`}
                       />
                     </button>
                     <div
-                      className={`ml-4 transition-all duration-300 ease-in-out transform ${ openDropdown === item.name
-                          ? "opacity-100 translate-y-0"
-                          : "opacity-0 -translate-y-2 pointer-events-none"
+                      className={`ml-4 transition-all duration-300 ease-in-out transform ${ openDropdown === item.title
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-0 -translate-y-2 pointer-events-none"
                         }`}
                     >
-                      {openDropdown === item.name && (
+                      {openDropdown === item.title && (
                         <div className="ml-4">
                           {item.subItems.map((subItem) => (
                             <NavLink
-                              key={subItem.name}
+                              key={subItem.title}
                               to={subItem.path}
                               onClick={() =>
                               {
@@ -294,7 +351,7 @@ const Navbar = () =>
                                   : "block px-[8px] py-2 rounded-md [@media(min-width:800px)]:text-[14px] text-[13px] font-medium text-gray-700 hover:text-primary"
                               }
                             >
-                              {subItem.name}
+                              {subItem.title}
                             </NavLink>
                           ))}
                         </div>
@@ -308,7 +365,7 @@ const Navbar = () =>
               {menuItems2.map((item) =>
                 !item.subItems ? (
                   <NavLink
-                    key={item.name}
+                    key={item.title}
                     to={item.path}
                     onClick={() => setMobileMenuOpen(false)}
                     className={({ isActive }) =>
@@ -317,37 +374,37 @@ const Navbar = () =>
                         : "block px-3 py-2 rounded-md [@media(min-width:800px)]:text-[15px] text-[14px] font-medium text-gray-700 hover:text-primary"
                     }
                   >
-                    {item.name}
+                    {item.title}
                   </NavLink>
                 ) : (
-                  <div key={item.name}>
+                  <div key={item.title}>
                     <button
                       onClick={() =>
                         setOpenDropdown(
-                          openDropdown === item.name ? null : item.name
+                          openDropdown === item.title ? null : item.title
                         )
                       }
                       className="w-full flex items-center justify-between px-3 py-2 rounded-md [@media(min-width:800px)]:text-[15px] text-[14px] font-medium text-gray-700 hover:text-primary focus:outline-none"
                     >
-                      {item.name}
+                      {item.title}
                       <ChevronDownIcon
-                        className={`h-[15px] w-[15px] transition-transform ${ openDropdown === item.name
-                            ? "transform rotate-180"
-                            : ""
+                        className={`h-[15px] w-[15px] transition-transform ${ openDropdown === item.title
+                          ? "transform rotate-180"
+                          : ""
                           }`}
                       />
                     </button>
                     <div
-                      className={`ml-4 transition-all duration-300 ease-in-out transform ${ openDropdown === item.name
-                          ? "opacity-100 translate-y-0"
-                          : "opacity-0 -translate-y-2 pointer-events-none"
+                      className={`ml-4 transition-all duration-300 ease-in-out transform ${ openDropdown === item.title
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-0 -translate-y-2 pointer-events-none"
                         }`}
                     >
-                      {openDropdown === item.name && (
+                      {openDropdown === item.title && (
                         <div className="ml-4">
                           {item.subItems.map((subItem) => (
                             <NavLink
-                              key={subItem.name}
+                              key={subItem.title}
                               to={subItem.path}
                               onClick={() =>
                               {
@@ -360,7 +417,7 @@ const Navbar = () =>
                                   : "block px-[8px] py-2 rounded-md [@media(min-width:800px)]:text-[14px] text-[13px] font-medium text-gray-700 hover:text-primary"
                               }
                             >
-                              {subItem.name}
+                              {subItem.title}
                             </NavLink>
                           ))}
                         </div>

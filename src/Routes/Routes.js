@@ -39,7 +39,7 @@ const router = createBrowserRouter([
       { path: "/about-client-references", element: <ClientReferences /> },
       // products 
       {
-        path: `/products`, element: <Product />
+        path: `/products/:pid`, element: <Product />
       },
       // News Events
       { path: "/news-events", element: <NewsEvents /> },
