@@ -25,14 +25,15 @@ const AdminLayout = () =>
 
             ),
     })
-    if (error)
+    console.log(error, datas)
+    if (isLoading)
+    {
+        return <Spinner />
+
+    } else if (!datas || error)
     {
         localStorage.removeItem('authToken')
         return navigate('/login')
-
-    } else if (isLoading)
-    {
-        return <Spinner />
     }
 
 
