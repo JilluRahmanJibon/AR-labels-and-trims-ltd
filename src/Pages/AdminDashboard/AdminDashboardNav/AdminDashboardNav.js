@@ -10,7 +10,7 @@ import { ImHome } from "react-icons/im";
 import { GoChevronRight } from "react-icons/go";
 
 
-const AdminDashboardNav = ({ datas }) =>
+const AdminDashboardNav = ({ data }) =>
 {
   const [ showLeftNav, setshowLeftNav ] = useState(true)
   const [ openDropdown, setOpenDropdown ] = useState(null);
@@ -70,7 +70,6 @@ const AdminDashboardNav = ({ datas }) =>
     }
 
   ];
-  const { data } = datas
   return (
     <>
       {/* Dashboard Top Nav */}

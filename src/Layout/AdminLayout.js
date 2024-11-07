@@ -32,13 +32,14 @@ const AdminLayout = () =>
         }
     }, [ isLoading, datas, navigate ]);
 
+    
     if (isLoading) return <Spinner />;
 
     return (
         <main>
             <ProtectedRoute requiredRole={datas?.data?.role}>
                 <section>
-                    <AdminDashboardNav datas={datas} />
+                    <AdminDashboardNav data={datas?.data} />
                 </section>
                 <section>
                     <Outlet />

@@ -14,7 +14,6 @@ const AdminDashboardAddProduct = () =>
   const handleFilesChange = (e) =>
   {
     const files = Array.from(e.target.files);
-    console.log("🚀 ~ files:", files)
 
     const newFiles = files.filter(
       (file) => !selectedFiles.some((selectedFile) => selectedFile.name === file.name)
@@ -53,9 +52,6 @@ const AdminDashboardAddProduct = () =>
       title: formData.name,
       description: formData.description
     }));
-
-
-    // Append files to FormData
     selectedFiles.forEach((file) =>
     {
       data.append("files", file);
@@ -63,12 +59,11 @@ const AdminDashboardAddProduct = () =>
 
     try
     {
-      const response = await fetch(`${ process.env.REACT_APP_BASE_URL }/products/create-product`, {
+      const response = await fetch(`${ process.env.REACT_APP_BASE_URL }/products/create-product`, { // error come from this line
         method: "POST",
         headers: {
           Authorization: `${ token }`,
         },
-        enabled: !!token, 
         body: data,
       });
       if (response.ok)
