@@ -1,12 +1,6 @@
 // src/components/Navbar.jsx
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import
-{
-  ChevronDownIcon,
-  Bars3Icon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
 import { menuItems, menuItems2 } from "./NavItems";
 import logo from "../../Assets/logo3.png";
 import { FaFacebookF } from "react-icons/fa6";
@@ -16,6 +10,13 @@ import { BsInstagram } from "react-icons/bs";
 import verifyToken from "../../utils/verifyToken";
 import { useQuery } from "@tanstack/react-query";
 import Spinner from "../../Components/Loader/Spinner";
+
+import
+{
+  ChevronDownIcon,
+  Bars3Icon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 
 const Navbar = () =>
 {

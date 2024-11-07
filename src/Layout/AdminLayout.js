@@ -1,5 +1,5 @@
 import React from 'react'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
 import AdminDashboardNav from '../Pages/AdminDashboard/AdminDashboardNav/AdminDashboardNav'
 import ProtectedRoute from './ProtectedRoute'
 import { useQuery } from '@tanstack/react-query'
@@ -8,6 +8,8 @@ import Spinner from '../Components/Loader/Spinner'
 
 const AdminLayout = () =>
 {
+    const navigate = useNavigate();
+
     const token = localStorage.getItem('authToken')
     const { isLoading, error, data: datas } = useQuery({
         queryKey: [ '/users/me' ],
@@ -23,10 +25,15 @@ const AdminLayout = () =>
 
             ),
     })
-   
- 
-    if (isLoading) return <Spinner />
 
+
+    if (isLoading) return <Spinner />
+    if (error)
+    {
+        localStorage.removeItem('authToken')
+        navigate('/login')
+
+    }
     return (
         <main>
             <ProtectedRoute requiredRole={datas?.data?.role} >
