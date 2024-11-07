@@ -25,12 +25,12 @@ const AdminLayout = () =>
 
             ),
     })
-    console.log(error, datas)
+    console.log( datas)
     if (isLoading)
     {
         return <Spinner />
 
-    } else if (!datas || error)
+    } else if (datas.message ==='Unauthorized')
     {
         localStorage.removeItem('authToken')
         return navigate('/login')
