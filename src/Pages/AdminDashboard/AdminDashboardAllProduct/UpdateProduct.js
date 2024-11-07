@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -7,7 +7,7 @@ import { GoDotFill } from "react-icons/go";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import Spinner from "../../../Components/Loader/Spinner";
-
+import {toast} from 'sonner'
 const UpdateProduct = () =>
 {
 
@@ -77,9 +77,9 @@ const UpdateProduct = () =>
     const handleSubmit = (e) =>
     {
         e.preventDefault();
-
+        toast.error("Something went wrong!!",);
         // Here you can integrate with your backend API
-        console.log("Form Data Submitted:", formData);
+        
         setSubmitted(true);
         // Reset form fields
         setFormData({
@@ -172,8 +172,8 @@ const UpdateProduct = () =>
 
                     <div className="sm:w-[500px] w-[100%] GeologicaFont sm:mx-0 mx-[1rem] sm:pl-[2rem] pl-0 text-center">
                         {submitted && (
-                            <div className="mb-4 p-4 bg-green-100 text-green-700 rounded">
-                                Update Product
+                            <div className="mb-4 p-4 bg-green-100 text-red-700 rounded">
+                                Update feature are not available at the moment!!
                             </div>
                         )}
                         <form onSubmit={handleSubmit} className="">
