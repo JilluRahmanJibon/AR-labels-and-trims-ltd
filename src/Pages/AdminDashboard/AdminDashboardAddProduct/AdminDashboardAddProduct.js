@@ -46,7 +46,7 @@ const AdminDashboardAddProduct = () =>
   const handleSubmit = async (e) =>
   {
     e.preventDefault();
-    const authToken = localStorage.getItem("authToken")
+    const token = localStorage.getItem("authToken")
     const toastId = toast.loading("Submitting...");
     const data = new FormData();
     data.append('data', JSON.stringify({
@@ -66,8 +66,9 @@ const AdminDashboardAddProduct = () =>
       const response = await fetch(`${ process.env.REACT_APP_BASE_URL }/products/create-product`, {
         method: "POST",
         headers: {
-          Authorization: `${ authToken }`,
+          Authorization: `${ token }`,
         },
+        enabled: !!token, 
         body: data,
       });
       if (response.ok)

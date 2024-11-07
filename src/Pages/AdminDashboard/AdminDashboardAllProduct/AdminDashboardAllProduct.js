@@ -30,6 +30,7 @@ const AdminDashboardAllProduct = () =>
             headers: {
               "Authorization": `${ token }`
             },
+            enabled: !!token, 
           });
 
           if (response.ok)

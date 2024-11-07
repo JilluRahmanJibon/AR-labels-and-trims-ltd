@@ -1,16 +1,16 @@
-import React from 'react'
-import { Outlet, useNavigate } from 'react-router-dom'
-import AdminDashboardNav from '../Pages/AdminDashboard/AdminDashboardNav/AdminDashboardNav'
-import ProtectedRoute from './ProtectedRoute'
-import { useQuery } from '@tanstack/react-query'
-import Spinner from '../Components/Loader/Spinner'
-
+import React, { useEffect } from 'react';
+import { Outlet, useNavigate } from 'react-router-dom';
+import AdminDashboardNav from '../Pages/AdminDashboard/AdminDashboardNav/AdminDashboardNav';
+import ProtectedRoute from './ProtectedRoute';
+import { useQuery } from '@tanstack/react-query';
+import Spinner from '../Components/Loader/Spinner';
 
 const AdminLayout = () =>
 {
     const navigate = useNavigate();
+    const token = localStorage.getItem('authToken');
 
-    const token = localStorage.getItem('authToken')
+    // Only run the query if the token is available
     const { isLoading, error, data: datas } = useQuery({
         queryKey: [ '/users/me' ],
         queryFn: () =>
@@ -20,37 +20,32 @@ const AdminLayout = () =>
                     'Content-Type': 'application/json',
                     Authorization: `${ token }`,
                 },
-            }).then((res) =>
-                res.json(),
+            }).then((res) => res.json()),
+        enabled: !!token, // Only fetch when the token exists
+    });
 
-            ),
-    })
-    console.log( datas)
-    if (isLoading)
+    useEffect(() =>
     {
-        return <Spinner />
+        if (!isLoading && datas && datas.message === 'Unauthorized')
+        {
+            navigate('/login');
+        }
+    }, [ isLoading, datas, navigate ]);
 
-    } else if (datas.message ==='Unauthorized')
-    {
-        localStorage.removeItem('authToken')
-        return navigate('/login')
-    }
-
+    if (isLoading) return <Spinner />;
 
     return (
         <main>
-            <ProtectedRoute requiredRole={datas?.data?.role} >
-
-                <section >
+            <ProtectedRoute requiredRole={datas?.data?.role}>
+                <section>
                     <AdminDashboardNav datas={datas} />
                 </section>
-                <section >
+                <section>
                     <Outlet />
                 </section>
-
             </ProtectedRoute>
         </main>
-    )
-}
+    );
+};
 
-export default AdminLayout
+export default AdminLayout;

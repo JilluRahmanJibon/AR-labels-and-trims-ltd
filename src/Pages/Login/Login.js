@@ -51,7 +51,9 @@ export default function Login ()
           id: toastId,
           duration: 2000,
         });
+
         navigate(`/${ user.role }/dashboard`);
+
       } else
       {
         console.error('Form submission failed:', result);
