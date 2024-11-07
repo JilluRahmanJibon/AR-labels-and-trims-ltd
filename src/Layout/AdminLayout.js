@@ -25,15 +25,17 @@ const AdminLayout = () =>
 
             ),
     })
-
-
-    if (isLoading) return <Spinner />
     if (error)
     {
         localStorage.removeItem('authToken')
-        navigate('/login')
+        return navigate('/login')
 
+    } else if (isLoading)
+    {
+        return <Spinner />
     }
+
+
     return (
         <main>
             <ProtectedRoute requiredRole={datas?.data?.role} >
