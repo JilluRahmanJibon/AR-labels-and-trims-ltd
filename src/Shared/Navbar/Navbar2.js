@@ -68,7 +68,7 @@ const Navbar = () =>
     user = verifyToken(token)
   }
 
-  const { isLoading,  data } = useQuery({
+  const { isLoading, error, data } = useQuery({
     queryKey: [ '/categories' ],
     queryFn: () =>
       fetch(`${ BaseURL }/categories`, {
@@ -78,6 +78,8 @@ const Navbar = () =>
       ),
   })
   if (isLoading) return <Spinner />
+  
+
 
   const extractedData = data?.data?.map(item => ({
     _id: item._id,

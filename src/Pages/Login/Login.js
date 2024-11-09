@@ -10,6 +10,7 @@ export default function Login ()
   const navigate = useNavigate();
 
   const [ clickEye, setclickEye ] = useState(true);
+  const [ isLoading, setIsLoading ] = useState(false);
   const [ formData, setFormData ] = useState({
     email: 'jillurahmanjibon@gmail.com',
     password: 'AR_Admin'
@@ -34,7 +35,7 @@ export default function Login ()
       const response = await fetch(`${ BaseURL }/auth/login`, {
         method: 'POST',
         headers: {
-          'Content-Type':'application/json'
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify(formData)
       });
@@ -43,6 +44,7 @@ export default function Login ()
 
       if (response.ok)
       {
+        setIsLoading(true)
 
         const user = verifyToken(result.data.accessToken)
         localStorage.setItem('authToken', result.data.accessToken);
@@ -55,13 +57,17 @@ export default function Login ()
 
       } else
       {
-        toast.error(`${result?.message}`, {
+        setIsLoading(false)
+
+        toast.error(`${ result?.message }`, {
           id: toastId,
           duration: 2000,
         });
       }
     } catch (error)
     {
+
+      setIsLoading(false)
       toast.error("Something went wrong", { id: toastId, duration: 2000 });
     }
   };
@@ -126,13 +132,22 @@ export default function Login ()
                   </label>
                 </div>
 
-                <button
-                  type="submit"
-                  value="Submit Now"
-                  className="text-[14px] w-full py-[8px] rounded-[50px] hover:!bg-transparent bg-[#018496] text-[#fff] hover:text-[#018496] border-[2px] border-[#018496] transition-[0.4s]"
-                >
-                  LogIn
-                </button>
+                {
+                  isLoading ? <div
+
+
+                    className="text-[14px] w-full py-[8px] rounded-[50px] text-white flex justify-center gap-1 bg-[#018496]   border-[2px]  transition-[0.4s]"
+                  >
+                    <div className="w-5 h-5 border-4 border-t-transparent border-white rounded-full animate-spin"></div> <p>Loading...</p>
+                  </div> : <button
+
+                    type="submit"
+                    value="Submit Now"
+                    className="text-[14px] w-full py-[8px] rounded-[50px] hover:!bg-transparent bg-[#018496] text-[#fff] hover:text-[#018496] border-[2px] border-[#018496] transition-[0.4s]"
+                  >
+                    LogIn
+                  </button>
+                }
 
                 <p className="mt-[20px] text-black text-[14px]">
                   Forgot Password?

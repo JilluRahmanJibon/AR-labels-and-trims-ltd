@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { GoDotFill } from "react-icons/go";
 import { toast } from "sonner";
 import { BaseURL } from "../../../utils/BaseURL";
+import axios from "axios";
 
 const AdminDashboardAddProduct = () =>
 {
@@ -19,7 +20,11 @@ const AdminDashboardAddProduct = () =>
     const newFiles = files.filter(
       (file) => !selectedFiles.some((selectedFile) => selectedFile.name === file.name)
     );
-
+    if (selectedFiles.length + newFiles.length < 2)
+    {
+      alert("Please select at least two images.");
+      return;
+    }
     setSelectedFiles([ ...selectedFiles, ...newFiles ]);
     const newPreviews = newFiles.map((file) => URL.createObjectURL(file));
     setPreviewUrls([ ...previewUrls, ...newPreviews ]);
@@ -46,13 +51,19 @@ const AdminDashboardAddProduct = () =>
   const handleSubmit = async (e) =>
   {
     e.preventDefault();
-    const token = localStorage.getItem("authToken")
+    const token = localStorage.getItem("authToken");
     const toastId = toast.loading("Submitting...");
+
+    // Create FormData object and append the form data
     const data = new FormData();
-    data.append('data', JSON.stringify({
-      title: formData.name,
-      description: formData.description
-    }));
+    data.append(
+      "data",
+      JSON.stringify({
+        title: formData.name,
+        description: formData.description,
+      })
+    );
+
     selectedFiles.forEach((file) =>
     {
       data.append("files", file);
@@ -60,14 +71,15 @@ const AdminDashboardAddProduct = () =>
 
     try
     {
-      const response = await fetch(`${BaseURL }/products/create-product`, { // error come from this line
-        method: "POST",
+      const response = await axios.post(`${ BaseURL }/products/create-product`, data, {
         headers: {
-          Authorization: `${ token }`,
+          Authorization: `${ token }`, // Assuming "Bearer" token format
+          "Content-Type": "multipart/form-data", // Required for FormData
         },
-        body: data,
       });
-      if (response.ok)
+      
+
+      if (response?.status === 201)
       {
         toast.success("Product created successfully", { id: toastId });
         setSubmitted(true);
@@ -81,6 +93,7 @@ const AdminDashboardAddProduct = () =>
     } catch (error)
     {
       toast.error("Something went wrong", { id: toastId });
+      console.error("Error:", error);
     }
   };
 
@@ -185,15 +198,18 @@ const AdminDashboardAddProduct = () =>
               </div>
 
               <div className="mb-[12px] text-left">
-                <label  >
+                <label className="w-full">
                   <input
                     type="file"
                     onChange={handleFilesChange}
                     accept="image/*"
                     multiple
                     required
-                    className="inputStyleIng border-[2px] text-black rounded-lg block w-full p-2.5"
+                    className="hidden"
                   />
+                  <div className="inputStyleIng cursor-pointer border-2 border-dashed border-gray-400 rounded-lg w-full p-4 text-center">
+                    Click to upload images (min. 2)
+                  </div>
                 </label>
               </div>
 
