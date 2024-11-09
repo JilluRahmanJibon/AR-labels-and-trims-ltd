@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { GoDotFill } from "react-icons/go";
 import { toast } from "sonner";
+import { BaseURL } from "../../../utils/BaseURL";
 
 const AdminDashboardAddProduct = () =>
 {
@@ -59,7 +60,7 @@ const AdminDashboardAddProduct = () =>
 
     try
     {
-      const response = await fetch(`${ process.env.REACT_APP_BASE_URL }/products/create-product`, { // error come from this line
+      const response = await fetch(`${BaseURL }/products/create-product`, { // error come from this line
         method: "POST",
         headers: {
           Authorization: `${ token }`,

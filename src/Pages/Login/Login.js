@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast } from "sonner";
 import verifyToken from "../../utils/verifyToken";
+import { BaseURL } from "../../utils/BaseURL";
 
 export default function Login ()
 {
@@ -27,16 +28,13 @@ export default function Login ()
   {
     e.preventDefault();
     const toastId = toast.loading("Loading in");
-
+    
     try
     {
-      const baseUrl = process.env.REACT_APP_BASE_URL;
 
-      const response = await fetch(`${ baseUrl }/auth/login`, {
+      const response = await fetch(`${ BaseURL}/auth/login`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+ 
         body: JSON.stringify(formData)
       });
 

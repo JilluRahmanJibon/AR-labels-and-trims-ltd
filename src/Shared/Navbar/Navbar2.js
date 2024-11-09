@@ -17,6 +17,7 @@ import
   Bars3Icon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
+import { BaseURL } from "../../utils/BaseURL";
 
 const Navbar = () =>
 {
@@ -68,9 +69,9 @@ const Navbar = () =>
   }
 
   const { isLoading,  data } = useQuery({
-    queryKey: [ '/products' ],
+    queryKey: [ '/categories' ],
     queryFn: () =>
-      fetch(`${ process.env.REACT_APP_BASE_URL }/products`, {
+      fetch(`${ BaseURL }/categories`, {
         method: 'GET'
       }).then((res) =>
         res.json(),

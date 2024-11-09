@@ -8,6 +8,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import Spinner from "../../../Components/Loader/Spinner";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
+import { BaseURL } from "../../../utils/BaseURL";
 
 const AdminDashboardAllProduct = () =>
 {
@@ -25,7 +26,7 @@ const AdminDashboardAllProduct = () =>
 
         try
         {
-          const response = await fetch(`${ process.env.REACT_APP_BASE_URL }/products/${ handleDeleteCrumb }`, {
+          const response = await fetch(`${ BaseURL }/products/${ handleDeleteCrumb }`, {
             method: "DELETE",
             headers: {
               "Authorization": `${ token }`
@@ -58,7 +59,7 @@ const AdminDashboardAllProduct = () =>
   const { isLoading, error, data } = useQuery({
     queryKey: [ '/products' ],
     queryFn: () =>
-      fetch(`${ process.env.REACT_APP_BASE_URL }/products/`, {
+      fetch(`${BaseURL }/products/`, {
         method: 'GET'
       }).then((res) =>
         res.json(),

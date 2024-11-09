@@ -8,13 +8,14 @@ import { GoDotFill } from "react-icons/go";
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
 import { useQuery } from "@tanstack/react-query";
 import Spinner from "../../Components/Loader/Spinner";
+import { BaseURL } from "../../utils/BaseURL";
 
 const Product = () =>
 {
   const { isLoading, data } = useQuery({
     queryKey: [ '/products' ],
     queryFn: () =>
-      fetch(`${ process.env.REACT_APP_BASE_URL }/products/`, {
+      fetch(`${ BaseURL }/products/`, {
         method: 'GET'
       }).then((res) =>
         res.json(),
@@ -30,7 +31,7 @@ const Product = () =>
   const { isLoading: isLoading2, data: product } = useQuery({
     queryKey: [ '/products', pid ], // Include id in the query key
     queryFn: () =>
-      fetch(`${ process.env.REACT_APP_BASE_URL }/products/${ pid }`, {
+      fetch(`${BaseURL }/products/${ pid }`, {
         method: 'GET',
       }).then((res) => res.json()),
     enabled: !!pid, // Ensures the query only runs when `id` is defined

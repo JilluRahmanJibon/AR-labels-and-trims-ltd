@@ -4,6 +4,7 @@ import AdminDashboardNav from '../Pages/AdminDashboard/AdminDashboardNav/AdminDa
 import ProtectedRoute from './ProtectedRoute';
 import { useQuery } from '@tanstack/react-query';
 import Spinner from '../Components/Loader/Spinner';
+import { BaseURL } from '../utils/BaseURL';
 
 const AdminLayout = () =>
 {
@@ -14,7 +15,7 @@ const AdminLayout = () =>
     const { isLoading, error, data: datas } = useQuery({
         queryKey: [ '/users/me' ],
         queryFn: () =>
-            fetch(`${ process.env.REACT_APP_BASE_URL }/users/me`, {
+            fetch(`${ BaseURL}/users/me`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import Spinner from "../../../Components/Loader/Spinner";
 import {toast} from 'sonner'
+import { BaseURL } from "../../../utils/BaseURL";
 const UpdateProduct = () =>
 {
 
@@ -33,7 +34,7 @@ const UpdateProduct = () =>
     const { isLoading, data } = useQuery({
         queryKey: [ '/products', pid ], // Include id in the query key
         queryFn: () =>
-            fetch(`${ process.env.REACT_APP_BASE_URL }/products/${ pid }`, {
+            fetch(`${BaseURL }/products/${ pid }`, {
                 method: 'GET'
             }).then((res) => res.json()),
         enabled: !!pid, // Ensures the query only runs when `id` is defined
