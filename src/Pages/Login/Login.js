@@ -28,13 +28,14 @@ export default function Login ()
   {
     e.preventDefault();
     const toastId = toast.loading("Loading in");
-    
+
     try
     {
-
-      const response = await fetch(`${ BaseURL}/auth/login`, {
+      const response = await fetch(`${ BaseURL }/auth/login`, {
         method: 'POST',
- 
+        headers: {
+          'Content-Type':'application/json'
+        },
         body: JSON.stringify(formData)
       });
 
@@ -54,7 +55,10 @@ export default function Login ()
 
       } else
       {
-        console.error('Form submission failed:', result);
+        toast.error(`${result?.message}`, {
+          id: toastId,
+          duration: 2000,
+        });
       }
     } catch (error)
     {
