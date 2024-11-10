@@ -1,5 +1,5 @@
 import React from "react";
-
+import logo from "../../../Assets/logo3.png";
 import { MdEmail } from "react-icons/md";
 import { FaPhoneFlip } from "react-icons/fa6";
 import { Link } from "react-router-dom";
@@ -11,9 +11,11 @@ const LandFooter = () =>
       <footer className="text-white body-font">
         <div className="xl:w-[1230px] w-[100%] px-5 sm:py-24 py-10 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col z-10 relative">
           <div className="w-[18rem] flex-shrink-0 md:mx-0 mx-auto text-center md:text-left  text-[#ffffff9c]">
-            <div className="flex title-font font-bold text-xl items-center md:justify-start justify-center text-primary mb-[12px]">
-              AR-Labels & Trims Ltd.
-            </div>
+            <img
+                  className="h-[35px] cursor-pointer mx-auto md:mx-0"
+                  src={logo}
+                  alt="Company Logo"
+                />
             <div className="mt-2 md:text-[14px] text-[13px] GeologicaFont ">
               <span className="font-[600] pb-[1px] text-[#ffffffd1]">
                 Head Office Address :

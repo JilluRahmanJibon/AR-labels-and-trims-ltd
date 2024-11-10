@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
-const ApplyOnlineDetails = () =>
-{
+const ApplyOnlineDetails = () => {
   const AvailablePositionsData = [
     {
       id: 1,
       tittle: "SL",
-      childlist: [ { id: 1, description: "01" } ],
+      childlist: [{ id: 1, description: "01" }],
       width: [
         { id: 1, size: "240px" },
         { id: 2, size: "210px" },
@@ -28,7 +27,7 @@ const ApplyOnlineDetails = () =>
     {
       id: 3,
       tittle: "No. Of Positions",
-      childlist: [ { id: 1, description: "10" } ],
+      childlist: [{ id: 1, description: "10" }],
       width: [
         { id: 1, size: "360px" },
         { id: 2, size: "330px" },
@@ -37,7 +36,7 @@ const ApplyOnlineDetails = () =>
     {
       id: 4,
       tittle: "Deadline",
-      childlist: [ { id: 1, description: "25-12-2024" } ],
+      childlist: [{ id: 1, description: "25-12-2024" }],
       width: [
         { id: 1, size: "240px" },
         { id: 2, size: "210px" },
@@ -52,29 +51,30 @@ const ApplyOnlineDetails = () =>
   ] = useState();
 
   // Available Position
-  const [ availablePosition, setAvailablePosition ] = useState(false);
+  const [availablePosition, setAvailablePosition] = useState(false);
   // Submit Button disabled
-  const [ submitButtonToggle, setSubmitButtonToggle ] = useState(true);
+  const [submitButtonToggle, setSubmitButtonToggle] = useState(true);
   // Check Available Position
-  useEffect(() =>
-  {
-    if (AvailablePositionsData[ 1 ].childlist.length > 0)
-    {
-      setAvailablePosition(true)
-      setSubmitButtonToggle(true)
-    } else
-    {
-      setAvailablePosition(false)
-      setSubmitButtonToggle(false)
+  useEffect(() => {
+    if (AvailablePositionsData[1].childlist.length > 0) {
+      setAvailablePosition(true);
+      setSubmitButtonToggle(true);
+    } else {
+      setAvailablePosition(false);
+      setSubmitButtonToggle(false);
     }
-    { availablePositionsDataDescription === undefined ? setSubmitButtonToggle(false) : setSubmitButtonToggle(true) }
+    {
+      availablePositionsDataDescription === undefined
+        ? setSubmitButtonToggle(false)
+        : setSubmitButtonToggle(true);
+    }
   });
 
   // Show Position Option
-  const [ showPositionOption, setShowPositionOption ] = useState(false);
+  const [showPositionOption, setShowPositionOption] = useState(false);
 
   // State for form fields
-  const [ formData, setFormData ] = useState({
+  const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     phone: "",
@@ -84,27 +84,23 @@ const ApplyOnlineDetails = () =>
   });
 
   // State for form submission
-  const [ submitted, setSubmitted ] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   // Handle input change
-  const handleChange = (e) =>
-  {
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [ name ]: value });
+    setFormData({ ...formData, [name]: value });
   };
 
   // Handle form submission
-  const handleSubmit = (e) =>
-  {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     // Here you can integrate with your backend API
     console.log("Form Data Submitted:", formData);
 
-
     setSubmitted(true);
-    setTimeout(() =>
-    {
+    setTimeout(() => {
       setSubmitted(false);
     }, 10000);
 
@@ -167,7 +163,7 @@ const ApplyOnlineDetails = () =>
               </label>
             </div>
             <div className="grid gap-3 mb-[12px] md:grid-cols-2 text-left">
-              <label className="relative">
+              <label data-aos="fade-right" className="relative">
                 <input
                   type="email"
                   id="email"
@@ -183,7 +179,7 @@ const ApplyOnlineDetails = () =>
                   Email address
                 </span>
               </label>
-              <label className="relative">
+              <label data-aos="fade-left" className="relative">
                 <input
                   type="tel"
                   id="phone"
@@ -201,7 +197,7 @@ const ApplyOnlineDetails = () =>
               </label>
             </div>
             <div className="mb-[12px] text-left">
-              <label className="relative">
+              <label data-aos="fade-up" className="relative">
                 <textarea
                   type="text"
                   id="address"
@@ -220,7 +216,7 @@ const ApplyOnlineDetails = () =>
               </label>
             </div>
 
-            <div className="mb-[12px] text-left">
+            <div className="mb-[12px] text-left" data-aos="fade-up-left">
               <label className="relative">
                 <span className="focus:text-[#018496] bg-[#fff] transform -translate-y-[22px] -translate-x-[3px] scale-75 cursor-default text-sm text-opacity-80 absolute left-2 top-3 px-1 transition duration-200 input-text z-[1] ">
                   Applying Position
@@ -228,50 +224,55 @@ const ApplyOnlineDetails = () =>
 
                 <div className="inputStyleIng h-[43.2px] border-[2px] border-[#00000087] text-black text-sm rounded-lg focus:ring-[#018496] focus:border-[#00000087] block w-full p-2.5 dark:!bg-transparent dark:border-[#00000087] placeholder-[#pffffff9c] dark:focus:ring-[#018496] dark:focus:border-[#018496] font-[500] outline-none z-[1]">
                   <div
-                    className={`${ availablePosition ? "hidden" : "flex"
-                      } w-full  items-center text-[#000c]`}
+                    className={`${
+                      availablePosition ? "hidden" : "flex"
+                    } w-full  items-center text-[#000c]`}
                   >
                     <p className="text-[14px]">No Position Available</p>
                   </div>
                   <div
-                    className={`${ availablePosition ? "flex" : "hidden"
-                      } w-full justify-center items-center text-[#000c]`}
+                    className={`${
+                      availablePosition ? "flex" : "hidden"
+                    } w-full justify-center items-center text-[#000c]`}
                   >
                     <div
                       className="w-full h-[22px] flex justify-between items-center cursor-pointer"
                       onClick={() => setShowPositionOption(!showPositionOption)}
                     >
                       <p className="text-[14px] select-none">
-                        {availablePositionsDataDescription === undefined ? "Select Position" : availablePositionsDataDescription}
+                        {availablePositionsDataDescription === undefined
+                          ? "Select Position"
+                          : availablePositionsDataDescription}
                       </p>
                       <FaChevronDown
-                        className={`${ showPositionOption ? "hidden" : "" }`}
+                        className={`${showPositionOption ? "hidden" : ""}`}
                       />
                       <FaChevronUp
-                        className={`${ showPositionOption ? "" : "hidden" }`}
+                        className={`${showPositionOption ? "" : "hidden"}`}
                       />
                     </div>
 
                     {/* Position Option */}
                     <div
-                      className={`absolute top-[43px] left-0 w-[100%] bg-white z-[2] shadow-[0px_0px_6px_0px_#c6c6c6] rounded-b-[3px] ${ showPositionOption ? "" : "hidden"
-                        }`}
+                      className={`absolute top-[43px] left-0 w-[100%] bg-white z-[2] shadow-[0px_0px_6px_0px_#c6c6c6] rounded-b-[3px] ${
+                        showPositionOption ? "" : "hidden"
+                      }`}
                     >
-                      {AvailablePositionsData[ 1 ].childlist.map((key) =>
-                      {
+                      {AvailablePositionsData[1].childlist.map((key) => {
                         return (
                           <p
                             key={key.id}
-                            className={`${ availablePositionsDataDescription ==
-                                key.description
+                            className={`${
+                              availablePositionsDataDescription ==
+                              key.description
                                 ? "bg-[#00000011]"
                                 : ""
-                              } hover:bg-[#00000011] text-[14px] p-2.5 cursor-pointer transition-[0.3s] ${ AvailablePositionsData[ 1 ].childlist.length > 1
+                            } hover:bg-[#00000011] text-[14px] p-2.5 cursor-pointer transition-[0.3s] ${
+                              AvailablePositionsData[1].childlist.length > 1
                                 ? ""
                                 : "border-b-[1px] border-b-[#00000038]"
-                              } select-none`}
-                            onClick={() =>
-                            {
+                            } select-none`}
+                            onClick={() => {
                               setShowPositionOption(!showPositionOption);
                               setFormData({
                                 ...formData,
@@ -292,7 +293,7 @@ const ApplyOnlineDetails = () =>
               </label>
             </div>
 
-            <div className="mb-[12px] text-left">
+            <div className="mb-[12px] text-left" data-aos="fade-up-right">
               <label className="relative">
                 <input
                   type="file"

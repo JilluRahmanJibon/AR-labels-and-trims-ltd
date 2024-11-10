@@ -107,7 +107,7 @@ const Navbar = () =>
 
 
   return (
-    <div className="w-full flex flex-col fixed top-[0px] z-50 GeologicaFont">
+    <div className="w-full flex flex-col fixed top-[0px] z-50 GeologicaFont"   data-aos="fade-down">
       {openNav && (
         <div
           className={`bg-[#018496] w-full h-[2.5rem] flex justify-center items-center`}

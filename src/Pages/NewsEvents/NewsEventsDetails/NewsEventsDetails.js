@@ -20,7 +20,7 @@ function NewsEventsDetails() {
     },
   ];
   return (
-    <div className="bg-[#edededed] GeologicaFont">
+    <div className="bg-[#fff] GeologicaFont">
       <main className="xl:w-[1230px] w-[96%] mx-auto  py-[3rem] overflow-hidden">
         <div className="w-full text-center text-black relative z-10 sm:pb-[25px] pb-[15px]">
           <h1 className="[@media(min-width:800px)]:text-[30px] [@media(min-width:600px)]:text-[27px] [@media(min-width:500px)]:text-[25px] [@media(min-width:400px)]:text-[22px] text-[19px] font-semibold">

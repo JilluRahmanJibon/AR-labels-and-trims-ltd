@@ -73,7 +73,7 @@ const AdminDashboardNav = ({ data }) =>
   return (
     <>
       {/* Dashboard Top Nav */}
-      <div className="w-full flex flex-col fixed top-[0px] z-50 GeologicaFont">
+      <div data-aos="fade-down" className="w-full flex flex-col fixed top-[0px] z-50 GeologicaFont">
         <nav
           className={` w-full relative bg-white shadow-[0px_0px_3px_0px_#0003]
         `}
@@ -122,7 +122,7 @@ const AdminDashboardNav = ({ data }) =>
         </nav>
       </div>
       {/* Dashboard Left Nav */}
-      <div className={`w-[15rem] ${ showLeftNav ? "flex" : "hidden" } flex-col fixed top-0 left-[0px] z-[40] GeologicaFont`} >
+      <div data-aos="fade-right" className={`w-[15rem] ${ showLeftNav ? "flex" : "hidden" } flex-col fixed top-0 left-[0px] z-[40] GeologicaFont`} >
         <nav
           className={` w-full relative bg-white shadow-[0px_0px_3px_0px_#0003]
         `}

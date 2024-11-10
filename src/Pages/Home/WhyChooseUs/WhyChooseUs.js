@@ -32,6 +32,7 @@ const WhyChooseUs = () => {
         <div className="mt-8 flex flex-wrap justify-center">
           {reasons.map((reason, index) => (
             <div
+            data-aos="fade-up"
             key={index} className="mx-[10px] my-[10px]">
               <div
                 className="w-[280px] h-[220px] flex flex-col text-center justify-center items-center bg-white px-6 rounded-md shadow-[0px_0px_6px_0px_#00000021] mx-auto"
