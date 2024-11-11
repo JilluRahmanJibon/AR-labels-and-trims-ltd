@@ -10,6 +10,7 @@ import axios from "axios";
 
 const AdminDashboardAddProduct = () =>
 {
+  const [ isLoading, setIsLoading ] = useState(false);
   const [ selectedFiles, setSelectedFiles ] = useState([]);
   const [ previewUrls, setPreviewUrls ] = useState([]);
 
@@ -53,6 +54,7 @@ const AdminDashboardAddProduct = () =>
     e.preventDefault();
     const token = localStorage.getItem("authToken");
     const toastId = toast.loading("Submitting...");
+    setIsLoading(true)
 
     // Create FormData object and append the form data
     const data = new FormData();
@@ -77,7 +79,7 @@ const AdminDashboardAddProduct = () =>
           "Content-Type": "multipart/form-data", // Required for FormData
         },
       });
-      
+
 
       if (response?.status === 201)
       {
@@ -86,14 +88,20 @@ const AdminDashboardAddProduct = () =>
         setFormData({ name: "", description: "" });
         setSelectedFiles([]);
         setPreviewUrls([]);
+        setIsLoading(false)
+
       } else
       {
         toast.error("Failed to create product", { id: toastId });
+        setIsLoading(false)
+
       }
     } catch (error)
     {
       toast.error("Something went wrong", { id: toastId });
       console.error("Error:", error);
+      setIsLoading(false)
+
     }
   };
 
@@ -174,7 +182,7 @@ const AdminDashboardAddProduct = () =>
                     autoComplete="off"
                     placeholder="Product Name"
                     required
-                    className="inputStyleIng border-[2px] text-black rounded-lg block w-full p-2.5"
+                    className="inputStyleIng border-[2px] focus:outline-primary text-black rounded-lg block w-full p-2.5"
                   />
 
                 </label>
@@ -191,7 +199,7 @@ const AdminDashboardAddProduct = () =>
                     required
                     placeholder="Product Description"
                     rows="7"
-                    className="inputStyleIng border-[2px] text-black rounded-lg block w-full p-2.5"
+                    className="inputStyleIng border-[2px] focus:outline-primary text-black rounded-lg block w-full p-2.5"
                   />
 
                 </label>
@@ -213,12 +221,22 @@ const AdminDashboardAddProduct = () =>
                 </label>
               </div>
 
-              <button
-                type="submit"
-                className="text-[14px] px-[22px] py-[8px] rounded-[50px] bg-[#018496] text-white border-[2px] border-[#018496] transition"
-              >
-                Add Product
-              </button>
+              {
+                isLoading ? <div
+
+
+                  className="text-[14px] w-full py-[8px] rounded-[50px] text-white flex justify-center gap-1 bg-[#018496]   border-[2px]  transition-[0.4s]"
+                >
+                  <div className="w-5 h-5 border-4 border-t-transparent border-white rounded-full animate-spin"></div> <p>Loading...</p>
+                </div> : <button
+
+                  type="submit"
+                  value="Submit Now"
+                  className="text-[14px] w-full py-[8px] rounded-[50px] hover:!bg-transparent bg-[#018496] text-[#fff] hover:text-[#018496] border-[2px] border-[#018496] transition-[0.4s]"
+                >
+                  Add Product
+                </button>
+              }
             </form>
           </div>
         </div>

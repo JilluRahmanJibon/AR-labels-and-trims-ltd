@@ -10,7 +10,7 @@ import { ImHome } from "react-icons/im";
 import { GoChevronRight } from "react-icons/go";
 
 const AdminDashboardNav = ({ data }) => {
-  const [showLeftNav, setshowLeftNav] = useState(false);
+  const [showLeftNav, setshowLeftNav] = useState(true);
 
   const [openDropdown, setOpenDropdown] = useState(null);
   const [handleLogout, setHandleLogout] = useState(false);
