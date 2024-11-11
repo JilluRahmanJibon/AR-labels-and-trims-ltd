@@ -111,22 +111,22 @@ const AdminDashboardAllProduct = () =>
           {
             return (
               <div
-                key={key._id}
+                key={key?._id}
                 className="[@media(min-width:450px)]:w-[360px] [@media(min-width:370px)]:w-[330px] w-[300px] [@media(min-width:450px)]:mx-[10px] mx-0 my-[10px]  rounded-[10px] overflow-hidden border-[2px] border-[#ececec] bg-[#ffffff]"
               >
                 {/* multiple image */}
                 <Slider
                   {...settings}
-                  className={`w-[100%] [@media(min-width:450px)]:h-[190px] h-[150px] ${ key.image.length > 1 ? "flex" : "!hidden"
+                  className={`w-[100%] [@media(min-width:450px)]:h-[190px] h-[150px] ${ key?.image?.length > 1 ? "flex" : "!hidden"
                     }  items-center overflow-hidden mx-auto`}
                 >
-                  {key.image.map((key) =>
+                  {key?.image?.map((key) =>
                   {
                     return (
                       <img
-                        key={key.img}
+                        key={key?.img}
                         alt={key?.name}
-                        src={key.img}
+                        src={key?.img}
                         className="w-[100%] block"
                       />
                     );
@@ -134,17 +134,17 @@ const AdminDashboardAllProduct = () =>
                 </Slider>
                 {/* 1 image only */}
                 <img
-                  src={key.image[ 0 ].img}
+                  src={key?.image[ 0 ].img}
                   alt={key?.name}
-                  className={`w-[100%] ${ key.image.length > 1 ? "hidden" : "block" }`}
+                  className={`w-[100%] ${ key?.image?.length > 1 ? "hidden" : "block" }`}
                 />
 
                 <div className="text-center text-black [@media(min-width:450px)]:pt-[10px] pt-[5px] [@media(min-width:450px)]:pb-[15px] pb-[5px] px-[7px]">
                   <p className="text-red-600 [@media(min-width:450px)]:text-[16px] text-[15px]">
-                    ({key.title})
+                    ({key?.title})
                   </p>
                   <p className="[@media(min-width:450px)]:text-[14px] text-[13px] text-justify [@media(min-width:450px)]:px-[10px] px-[5px] pt-[5px] ">
-                    {key.description}
+                    {key?.description}
                   </p>
 
                   <div className="flex justify-center pb-[10px] pt-[15px]">
@@ -157,11 +157,11 @@ const AdminDashboardAllProduct = () =>
                       onClick={() =>
                       {
                         const confirmBox = window.confirm(
-                          `Do you really want to delete (${ key.title }) product?`
+                          `Do you really want to delete (${ key?.title }) product?`
                         );
                         {
                           confirmBox === true
-                            ? sethandleDeleteCrumb(key._id)
+                            ? sethandleDeleteCrumb(key?._id)
                             : sethandleDeleteCrumb(false);
                         }
                       }}

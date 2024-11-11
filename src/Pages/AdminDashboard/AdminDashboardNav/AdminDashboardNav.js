@@ -9,13 +9,15 @@ import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { ImHome } from "react-icons/im";
 import { GoChevronRight } from "react-icons/go";
 
-const AdminDashboardNav = ({ data }) => {
-  const [showLeftNav, setshowLeftNav] = useState(true);
+const AdminDashboardNav = ({ data }) =>
+{
+  const [ showLeftNav, setshowLeftNav ] = useState(true);
 
-  const [openDropdown, setOpenDropdown] = useState(null);
-  const [handleLogout, setHandleLogout] = useState(false);
+  const [ openDropdown, setOpenDropdown ] = useState(null);
+  const [ handleLogout, setHandleLogout ] = useState(false);
 
-  if (handleLogout) {
+  if (handleLogout)
+  {
     localStorage.removeItem("authToken");
     return <Navigate to="/login" replace={true} />;
   }
@@ -49,11 +51,11 @@ const AdminDashboardNav = ({ data }) => {
     },
     {
       name: "Sustainability",
-      subItems: [{ name: "Certifications", path: "/certifications" }],
+      subItems: [ { name: "Certifications", path: "/certifications" } ],
     },
     {
       name: "News & Events",
-      subItems: [{ name: "Our News & Events", path: "/news-events" }],
+      subItems: [ { name: "Our News & Events", path: "/news-events" } ],
     },
     {
       name: "Careers",
@@ -90,30 +92,31 @@ const AdminDashboardNav = ({ data }) => {
 
               <RxCross2
                 onClick={() => setshowLeftNav(false)}
-                className={`${
-                  showLeftNav
+                className={`${ showLeftNav
                     ? "[@media(min-width:1400px)]:hidden flex "
                     : "hidden"
-                } h-[22px] w-[22px] ml-[1rem]  cursor-pointer text-gray-500`}
+                  } h-[22px] w-[22px] ml-[1rem]  cursor-pointer text-gray-500`}
               />
 
               <Bars3Icon
                 onClick={() => setshowLeftNav(true)}
-                className={`${
-                  showLeftNav
+                className={`${ showLeftNav
                     ? "hidden"
                     : "[@media(min-width:1400px)]:hidden flex"
-                } h-[22px] w-[22px] ml-[1rem]  cursor-pointer text-gray-500`}
+                  } h-[22px] w-[22px] ml-[1rem]  cursor-pointer text-gray-500`}
               />
+
             </div>
           </div>
+
         </nav>
+
       </div>
+
       {/* Dashboard Left Nav */}
       <div
-        className={`w-[15rem] ${
-          showLeftNav ? "flex" : "hidden"
-        } flex-col fixed top-0 left-[0px] z-[40] GeologicaFont`}
+        className={`w-[15rem] ${ showLeftNav ? "flex" : "hidden"
+          } flex-col fixed top-0 left-[0px] z-[40] GeologicaFont`}
       >
         <nav
           className={` w-full relative bg-white shadow-[0px_0px_3px_0px_#0003]
@@ -146,7 +149,7 @@ const AdminDashboardNav = ({ data }) => {
                 {/* Nav Item */}
                 <div className="pt-[1rem] space-y-1 px-[20px] z-[1] relative">
                   <NavLink
-                    to={`${data?.role}/dashboard`}
+                    to={`${ data?.role }/dashboard`}
                     className={({ isActive }) =>
                       isActive
                         ? "flex items-center justify-between py-[1rem] rounded-md text-[14px] font-medium text-primary "
@@ -182,19 +185,17 @@ const AdminDashboardNav = ({ data }) => {
                         >
                           {item.name}
                           <ChevronDownIcon
-                            className={`h-[14px] w-[14px] transition-transform ${
-                              openDropdown === item.name
+                            className={`h-[14px] w-[14px] transition-transform ${ openDropdown === item.name
                                 ? "transform rotate-180"
                                 : ""
-                            }`}
+                              }`}
                           />
                         </button>
                         <div
-                          className={`ml-4 mb-[10px] transition-all duration-300 ease-in-out transform ${
-                            openDropdown === item.name
+                          className={`ml-4 mb-[10px] transition-all duration-300 ease-in-out transform ${ openDropdown === item.name
                               ? "opacity-100 translate-y-0"
                               : "opacity-0 -translate-y-2 pointer-events-none"
-                          }`}
+                            }`}
                         >
                           {openDropdown === item.name && (
                             <div className="ml-[5px]">
@@ -202,7 +203,8 @@ const AdminDashboardNav = ({ data }) => {
                                 <NavLink
                                   key={subItem.name}
                                   to={subItem.path}
-                                  onClick={() => {
+                                  onClick={() =>
+                                  {
                                     setOpenDropdown(null);
                                   }}
                                   className={({ isActive }) =>
@@ -228,27 +230,28 @@ const AdminDashboardNav = ({ data }) => {
             </div>
           </div>
         </nav>
-      </div>
-      <div
-        className={`w-[233px] ${
-          showLeftNav ? "flex" : "hidden"
-        } bg-white absolute bottom-0 left-0 h-[3.5rem] items-center shadow-[0px_-2px_3px_-2px_#0003] pl-[20px] z-[41]`}
-      >
-        <button
-          onClick={() => {
-            const confirmBox = window.confirm(`Do you really want to Logout`);
-            {
-              confirmBox === true
-                ? setHandleLogout(true)
-                : setHandleLogout(false);
-            }
-          }}
-          className="flex items-center text-red-600"
+        <div
+          className={`w-[233px] ${ showLeftNav ? "flex" : "hidden"
+            } bg-white absolute bottom-0 left-0 h-[3.5rem] items-center shadow-[0px_-2px_3px_-2px_#0003] pl-[20px] z-[41]`}
         >
-          <p className="text-[14px] font-[500] pr-[5px]">Logout</p>
-          <FaPowerOff className="text-[13px]" />
-        </button>
+          <button
+            onClick={() =>
+            {
+              const confirmBox = window.confirm(`Do you really want to Logout`);
+              {
+                confirmBox === true
+                  ? setHandleLogout(true)
+                  : setHandleLogout(false);
+              }
+            }}
+            className="flex items-center text-red-600"
+          >
+            <p className="text-[14px] font-[500] pr-[5px]">Logout</p>
+            <FaPowerOff className="text-[13px]" />
+          </button>
+        </div>
       </div>
+
     </>
   );
 };

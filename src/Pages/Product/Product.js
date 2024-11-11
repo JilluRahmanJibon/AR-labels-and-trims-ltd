@@ -100,22 +100,22 @@ const Product = () =>
             {
               return (
                 <div
-                  key={key._id}
+                  key={key?._id}
                   className="[@media(min-width:450px)]:w-[360px] [@media(min-width:370px)]:w-[330px] w-[300px] h-[260px] [@media(min-width:450px)]:mx-[10px] mx-0 my-[10px]  rounded-[10px] overflow-hidden border-[2px] border-[#ececec] bg-[#ffffff] relative"
                 >
                   <Link to={`/products/${ key?._id }`}>
                     {/* multiple image */}
                     <Slider
                       {...settings}
-                      className={`w-[100%] h-[220px]  ${ key.image.length > 1 ? "flex" : "!hidden"
+                      className={`w-[100%] h-[220px]  ${ key?.image?.length > 1 ? "flex" : "!hidden"
                         } items-center overflow-hidden mx-auto`}
                     >
                       {key?.image?.map((key) =>
                       {
                         return (
                           <img
-                            key={key.img}
-                            src={key.img}
+                            key={key?.img}
+                            src={key?.img}
                             className="w-[100%] h-[12rem] object-cover object-center block"
                             alt=""
                           />
@@ -124,14 +124,14 @@ const Product = () =>
                     </Slider>
                     {/* 1 image only */}
                     <img
-                      src={key.image[ 0 ].image}
+                      src={key?.image[ 0 ].image}
                       alt=""
-                      className={`w-[100%] h-[12rem] ${ key.image.length > 1 ? "hidden" : "block"
+                      className={`w-[100%] h-[12rem] ${ key?.image?.length > 1 ? "hidden" : "block"
                         }`} />
                   </Link>
                   <div className="text-center text-black px-[5px] absolute bottom-[10px] left-0 right-0">
                     <p className="text-red-600 [@media(min-width:450px)]:text-[16px] text-[15px]">
-                      {key.title}
+                      {key?.title}
                     </p>
                   </div>
                 </div>
