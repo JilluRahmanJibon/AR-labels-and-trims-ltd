@@ -29,6 +29,8 @@ export default function Login ()
   {
     e.preventDefault();
     const toastId = toast.loading("Loading in");
+    setIsLoading(true)
+
 
     try
     {
