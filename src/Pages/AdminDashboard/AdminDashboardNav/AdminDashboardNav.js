@@ -9,22 +9,16 @@ import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { ImHome } from "react-icons/im";
 import { GoChevronRight } from "react-icons/go";
 
+const AdminDashboardNav = ({ data }) => {
+  const [showLeftNav, setshowLeftNav] = useState(true);
 
-const AdminDashboardNav = ({ data }) =>
-{
-  const [ showLeftNav, setshowLeftNav ] = useState(true)
-  const [ openDropdown, setOpenDropdown ] = useState(null);
-  const [ handleLogout, setHandleLogout ] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const [handleLogout, setHandleLogout] = useState(false);
 
-
-  if (handleLogout)
-  {
-    localStorage.removeItem('authToken')
+  if (handleLogout) {
+    localStorage.removeItem("authToken");
     return <Navigate to="/login" replace={true} />;
-
   }
-
-
 
   // Left Nav
   const menuItemsDashboard = [
@@ -55,11 +49,11 @@ const AdminDashboardNav = ({ data }) =>
     },
     {
       name: "Sustainability",
-      subItems: [ { name: "Certifications", path: "/certifications" } ],
+      subItems: [{ name: "Certifications", path: "/certifications" }],
     },
     {
       name: "News & Events",
-      subItems: [ { name: "Our News & Events", path: "/news-events" } ],
+      subItems: [{ name: "Our News & Events", path: "/news-events" }],
     },
     {
       name: "Careers",
@@ -67,62 +61,60 @@ const AdminDashboardNav = ({ data }) =>
         { name: "Available Positions", path: "/available_positions" },
         { name: "Apply Online", path: "/apply_online" },
       ],
-    }
-
+    },
   ];
   return (
     <>
       {/* Dashboard Top Nav */}
-      <div data-aos="fade-down" className="w-full flex flex-col fixed top-[0px] z-50 GeologicaFont">
+      <div
+        data-aos="fade-down"
+        className="w-full flex flex-col fixed top-[0px] z-50 GeologicaFont"
+      >
         <nav
           className={` w-full relative bg-white shadow-[0px_0px_3px_0px_#0003]
         `}
           style={{ transition: ".1s ease-in" }}
         >
           <div className="mx-auto">
-            <div className="flex justify-between items-center h-[4rem]">
+            <div className="flex justify-between items-center h-[4rem] sm:pr-[2rem] pr-[1rem]">
               {/* Logo */}
-              <div className="flex items-center">
-                <div className="[@media(min-width:850px)]:w-[15rem] w-[11rem] flex justify-center">
-                  <NavLink to="/">
-                    <img
-                      className="[@media(min-width:850px)]:h-[35px] h-[30px] w-auto"
-                      src={logo}
-                      alt="Company Logo"
-                    />
-                  </NavLink>
-                </div>
-                <RxCross2 onClick={() => setshowLeftNav(false)} className={`${ showLeftNav ? "[@media(min-width:1400px)]:hidden flex " : "hidden" } h-[22px] w-[22px] ml-[1rem]  cursor-pointer text-gray-500`} />
-                <Bars3Icon onClick={() => setshowLeftNav(true)} className={`${ showLeftNav ? "hidden" : "[@media(min-width:1400px)]:hidden flex" } h-[22px] w-[22px] ml-[1rem]  cursor-pointer text-gray-500`} />
+              <div className="[@media(min-width:850px)]:w-[15rem] w-[11rem] flex justify-center">
+                <NavLink to="/">
+                  <img
+                    className="[@media(min-width:850px)]:h-[35px] h-[30px] w-auto"
+                    src={logo}
+                    alt="Company Logo"
+                  />
+                </NavLink>
               </div>
-              {/* Desktop Menu Right Side */}
 
-              <div className="flex justify-end gap-2 items-center [@media(min-width:850px)]:pr-[2.5rem] pr-[1.5rem]">
+              <RxCross2
+                onClick={() => setshowLeftNav(false)}
+                className={`${
+                  showLeftNav
+                    ? "[@media(min-width:1400px)]:hidden flex "
+                    : "hidden"
+                } h-[22px] w-[22px] ml-[1rem]  cursor-pointer text-gray-500`}
+              />
 
-                <button
-                  onClick={() =>
-                  {
-                    const confirmBox = window.confirm(
-                      `Do you really want to Logout`
-                    );
-                    {
-                      confirmBox === true
-                        ? setHandleLogout(true)
-                        : setHandleLogout(false);
-                    }
-                  }}
-                  className="flex items-center text-red-600"
-                >
-                  <p className="text-[14px] font-[500] pr-[5px]">Logout</p>
-                  <FaPowerOff className="text-[13px]" />
-                </button>
-              </div>
+              <Bars3Icon
+                onClick={() => setshowLeftNav(true)}
+                className={`${
+                  showLeftNav
+                    ? "hidden"
+                    : "[@media(min-width:1400px)]:hidden flex"
+                } h-[22px] w-[22px] ml-[1rem]  cursor-pointer text-gray-500`}
+              />
             </div>
           </div>
         </nav>
       </div>
       {/* Dashboard Left Nav */}
-      <div data-aos="fade-right" className={`w-[15rem] ${ showLeftNav ? "flex" : "hidden" } flex-col fixed top-0 left-[0px] z-[40] GeologicaFont`} >
+      <div
+        className={`w-[15rem] ${
+          showLeftNav ? "flex" : "hidden"
+        } flex-col fixed top-0 left-[0px] z-[40] GeologicaFont`}
+      >
         <nav
           className={` w-full relative bg-white shadow-[0px_0px_3px_0px_#0003]
         `}
@@ -130,12 +122,12 @@ const AdminDashboardNav = ({ data }) =>
         >
           <div className="mx-auto">
             <div
-              className="flex justify-between max-h-[100vh] h-[100vh] w-full overflow-y-auto px-[20px] pt-[5.5rem]"
+              className="flex flex-col justify-between max-h-[100vh] h-[100vh] w-full overflow-y-auto pt-[5.5rem] pb-[3.5rem] relative"
               id="AdminDashboardLeftNav"
             >
-              <div className="w-full">
+              <div className="w-full ">
                 {/* Admin Info */}
-                <div className="flex items-center">
+                <div className="flex items-center px-[20px]">
                   <div className="w-[2.5rem] h-[2.5rem] relative mr-[10px]">
                     <img
                       alt="team"
@@ -152,7 +144,7 @@ const AdminDashboardNav = ({ data }) =>
                   </div>
                 </div>
                 {/* Nav Item */}
-                <div className="pt-[1rem] space-y-1">
+                <div className="pt-[1rem] space-y-1 px-[20px] z-[1] relative">
                   <NavLink
                     to={`${data?.role}/dashboard`}
                     className={({ isActive }) =>
@@ -190,17 +182,19 @@ const AdminDashboardNav = ({ data }) =>
                         >
                           {item.name}
                           <ChevronDownIcon
-                            className={`h-[14px] w-[14px] transition-transform ${ openDropdown === item.name
-                              ? "transform rotate-180"
-                              : ""
-                              }`}
+                            className={`h-[14px] w-[14px] transition-transform ${
+                              openDropdown === item.name
+                                ? "transform rotate-180"
+                                : ""
+                            }`}
                           />
                         </button>
                         <div
-                          className={`ml-4 mb-[10px] transition-all duration-300 ease-in-out transform ${ openDropdown === item.name
-                            ? "opacity-100 translate-y-0"
-                            : "opacity-0 -translate-y-2 pointer-events-none"
-                            }`}
+                          className={`ml-4 mb-[10px] transition-all duration-300 ease-in-out transform ${
+                            openDropdown === item.name
+                              ? "opacity-100 translate-y-0"
+                              : "opacity-0 -translate-y-2 pointer-events-none"
+                          }`}
                         >
                           {openDropdown === item.name && (
                             <div className="ml-[5px]">
@@ -208,8 +202,7 @@ const AdminDashboardNav = ({ data }) =>
                                 <NavLink
                                   key={subItem.name}
                                   to={subItem.path}
-                                  onClick={() =>
-                                  {
+                                  onClick={() => {
                                     setOpenDropdown(null);
                                   }}
                                   className={({ isActive }) =>
@@ -235,6 +228,26 @@ const AdminDashboardNav = ({ data }) =>
             </div>
           </div>
         </nav>
+      </div>
+      <div
+        className={`w-[233px] ${
+          showLeftNav ? "flex" : "hidden"
+        } bg-white absolute bottom-0 left-0 h-[3.5rem] items-center shadow-[0px_-2px_3px_-2px_#0003] pl-[20px] z-[41]`}
+      >
+        <button
+          onClick={() => {
+            const confirmBox = window.confirm(`Do you really want to Logout`);
+            {
+              confirmBox === true
+                ? setHandleLogout(true)
+                : setHandleLogout(false);
+            }
+          }}
+          className="flex items-center text-red-600"
+        >
+          <p className="text-[14px] font-[500] pr-[5px]">Logout</p>
+          <FaPowerOff className="text-[13px]" />
+        </button>
       </div>
     </>
   );
