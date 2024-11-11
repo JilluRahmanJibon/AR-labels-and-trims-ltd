@@ -12,8 +12,8 @@ export default function Login ()
   const [ clickEye, setclickEye ] = useState(true);
   const [ isLoading, setIsLoading ] = useState(false);
   const [ formData, setFormData ] = useState({
-    email: 'jillurahmanjibon@gmail.com',
-    password: 'AR_Admin'
+    email: '',
+    password: ''
   });
 
   const handleChange = (e) =>
