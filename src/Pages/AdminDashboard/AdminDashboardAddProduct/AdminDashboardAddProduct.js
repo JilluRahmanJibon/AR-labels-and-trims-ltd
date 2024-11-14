@@ -98,7 +98,7 @@ const AdminDashboardAddProduct = () =>
       );
  
  
-      if (response?.statusText === 'OK')
+      if (response?.status === 200)
       {
         toast.success(`${response?.data?.message}`, { id: toastId });
         setSubmitted(true);
@@ -108,7 +108,7 @@ const AdminDashboardAddProduct = () =>
         setIsLoading(false);
       } else
       {
-        toast.error(`${ response?.data?.message }`, { id: toastId });
+        toast.error(`Please give a unique title!`, { id: toastId });
         setIsLoading(false);
       }
     } catch (error)

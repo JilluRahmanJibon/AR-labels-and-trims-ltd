@@ -16,6 +16,7 @@ code {
 }
 html {
   scroll-behavior: smooth;
+  /* overflow-x: hidden; */
 }
 
 /* Global Scrollbar Styles */
