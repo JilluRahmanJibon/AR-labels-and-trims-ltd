@@ -98,9 +98,9 @@ const AdminDashboardAddProduct = () =>
       );
  
  
-      if (response?.status === 200 && response?.statusText === 'OK')
+      if (response?.statusText === 'OK')
       {
-        toast.success("Product is created successfully", { id: toastId });
+        toast.success(`${response?.data?.message}`, { id: toastId });
         setSubmitted(true);
         setFormData({ name: "", description: "" });
         setSelectedFiles([]);
@@ -108,7 +108,7 @@ const AdminDashboardAddProduct = () =>
         setIsLoading(false);
       } else
       {
-        toast.error("Failed to create product", { id: toastId });
+        toast.error(`${ response?.data?.message }`, { id: toastId });
         setIsLoading(false);
       }
     } catch (error)
@@ -190,7 +190,7 @@ const AdminDashboardAddProduct = () =>
                     value={formData.name}
                     onChange={handleChange}
                     autoComplete="off"
-                    placeholder="Unique Product Name"
+                    placeholder="Unique Product Title"
                     required
                     className="inputStyleIng border-[2px] focus:outline-primary text-black rounded-lg block w-full p-2.5"
                   />
