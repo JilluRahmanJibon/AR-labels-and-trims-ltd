@@ -13,11 +13,15 @@ const AdminDashboardAddProduct = () =>
   const [ isLoading, setIsLoading ] = useState(false);
   const [ selectedFiles, setSelectedFiles ] = useState([]);
   const [ previewUrls, setPreviewUrls ] = useState([]);
+  const [ formData, setFormData ] = useState({
+    name: "",
+    description: "",
+  });
+  const [ submitted, setSubmitted ] = useState(false);
 
   const handleFilesChange = (e) =>
   {
     const files = Array.from(e.target.files);
-
     const newFiles = files.filter(
       (file) => !selectedFiles.some((selectedFile) => selectedFile.name === file.name)
     );
@@ -37,12 +41,6 @@ const AdminDashboardAddProduct = () =>
     setPreviewUrls((prevUrls) => prevUrls.filter((_, i) => i !== index));
   };
 
-  const [ formData, setFormData ] = useState({
-    name: "",
-    description: "",
-  });
-  const [ submitted, setSubmitted ] = useState(false);
-
   const handleChange = (e) =>
   {
     const { name, value } = e.target;
@@ -54,54 +52,70 @@ const AdminDashboardAddProduct = () =>
     e.preventDefault();
     const token = localStorage.getItem("authToken");
     const toastId = toast.loading("Submitting...");
-    setIsLoading(true)
+    setIsLoading(true);
 
-    // Create FormData object and append the form data
-    const data = new FormData();
-    data.append(
-      "data",
-      JSON.stringify({
-        title: formData.name,
-        description: formData.description,
-      })
-    );
-
-    selectedFiles.forEach((file) =>
-    {
-      data.append("files", file);
-    });
 
     try
     {
-      const response = await axios.post(`${ BaseURL }/products/create-product`, data, {
-        headers: {
-          Authorization: `${ token }`, // Assuming "Bearer" token format
-          "Content-Type": "multipart/form-data", // Required for FormData
-        },
-      });
-
-
-      if (response?.status === 201)
+      const imageUrls = [];
+      for (const file of selectedFiles)
       {
-        toast.success("Product created successfully", { id: toastId });
+        const formDataImage = new FormData();
+        formDataImage.append("file", file);
+        formDataImage.append("upload_preset", "gffb3xhf"); // Replace with your preset
+        formDataImage.append("cloud_name", "db3xhqy4o"); // Replace with your Cloudinary cloud name
+
+        const cloudinaryResponse = await axios.post(
+          `https://api.cloudinary.com/v1_1/db3xhqy4o/image/upload`,
+          formDataImage
+        );
+
+        if (cloudinaryResponse?.status === 200)
+        {
+          imageUrls.push({ img: cloudinaryResponse.data.secure_url }); // Store Cloudinary image URL
+        } else
+        {
+          throw new Error("Failed to upload image to Cloudinary");
+        }
+      }
+
+
+      const data = {
+        title: formData.name,
+        description: formData.description,
+        image: imageUrls
+      }
+
+
+      const response = await axios.post(
+        `${ BaseURL }/products/create-product`,
+        data,
+        {
+          headers: {
+            Authorization: `${ token }`,  
+          },
+        }
+      );
+ 
+ 
+      if (response?.status === 200 && response?.statusText === 'OK')
+      {
+        toast.success("Product is created successfully", { id: toastId });
         setSubmitted(true);
         setFormData({ name: "", description: "" });
         setSelectedFiles([]);
         setPreviewUrls([]);
-        setIsLoading(false)
-
+        setIsLoading(false);
       } else
       {
         toast.error("Failed to create product", { id: toastId });
-        setIsLoading(false)
-
+        setIsLoading(false);
       }
     } catch (error)
     {
       toast.error("Something went wrong", { id: toastId });
       console.error("Error:", error);
-      setIsLoading(false)
-
+      setIsLoading(false);
     }
   };
 
@@ -131,7 +145,6 @@ const AdminDashboardAddProduct = () =>
 
   return (
     <div className="w-full h-full pt-[4rem] [@media(min-width:1400px)]:pl-[15rem] pl-0 relative GeologicaFont">
-      {/* UI and form structure */}
       <div className="w-full h-full pt-[1rem]">
         <h1 className="text-center font-semibold text-[19px] sm:text-[30px]">Add Product</h1>
         <div className="flex items-center mt-[5px] justify-center">
@@ -140,7 +153,6 @@ const AdminDashboardAddProduct = () =>
           <div className="bg-[#FA0472] w-[18px] h-[2px] inline-flex"></div>
         </div>
 
-        {/* File Preview Slider */}
         <div className="flex flex-wrap w-[100%] mx-auto justify-center py-[2rem]">
           <div className="w-[300px] mx-0 my-[10px] rounded-[10px] overflow-hidden border-[2px] bg-[#ffffff]">
             <Slider {...settings} className="w-full h-[150px]">
@@ -162,7 +174,6 @@ const AdminDashboardAddProduct = () =>
             </Slider>
           </div>
 
-          {/* Form */}
           <div className="sm:w-[500px] w-[100%] sm:pl-[2rem] text-center">
             {submitted && (
               <div className="mb-4 p-4 bg-green-100 text-green-700 rounded">
@@ -171,37 +182,34 @@ const AdminDashboardAddProduct = () =>
             )}
             <form onSubmit={handleSubmit}>
               <div className="mb-[12px] pt-[1.5rem] text-left">
-                <label  >
-
+                <label>
                   <input
                     type="text"
                     id="name"
                     name="name"
                     value={formData.name}
-                    onChange={(e) => handleChange(e)}
+                    onChange={handleChange}
                     autoComplete="off"
-                    placeholder="Product Name"
+                    placeholder="Unique Product Name"
                     required
                     className="inputStyleIng border-[2px] focus:outline-primary text-black rounded-lg block w-full p-2.5"
                   />
-
                 </label>
               </div>
 
               <div className="mb-[12px] text-left">
-                <label  >
+                <label>
                   <textarea
                     id="description"
                     name="description"
                     value={formData.description}
-                    onChange={(e) => handleChange(e)}
+                    onChange={handleChange}
                     autoComplete="off"
                     required
                     placeholder="Product Description"
                     rows="7"
                     className="inputStyleIng border-[2px] focus:outline-primary text-black rounded-lg block w-full p-2.5"
                   />
-
                 </label>
               </div>
 
@@ -221,22 +229,15 @@ const AdminDashboardAddProduct = () =>
                 </label>
               </div>
 
-              {
-                isLoading ? <div
-
-
-                  className="text-[14px] w-full py-[8px] rounded-[50px] text-white flex justify-center gap-1 bg-[#018496]   border-[2px]  transition-[0.4s]"
-                >
-                  <div className="w-5 h-5 border-4 border-t-transparent border-white rounded-full animate-spin"></div> <p>Loading...</p>
-                </div> : <button
-
+              <div className="mb-[12px] flex justify-center">
+                <button
                   type="submit"
-                  value="Submit Now"
-                  className="text-[14px] w-full py-[8px] rounded-[50px] hover:!bg-transparent bg-[#018496] text-[#fff] hover:text-[#018496] border-[2px] border-[#018496] transition-[0.4s]"
+                  disabled={isLoading}
+                  className="py-2 px-4 bg-primary text-white rounded-lg"
                 >
-                  Add Product
+                  {isLoading ? "Submitting..." : "Submit"}
                 </button>
-              }
+              </div>
             </form>
           </div>
         </div>
@@ -244,6 +245,7 @@ const AdminDashboardAddProduct = () =>
     </div>
   );
 };
+
 
 // Arrow button components
 function NextButton ({ onClick, showButton })
