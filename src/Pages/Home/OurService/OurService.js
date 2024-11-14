@@ -7,19 +7,16 @@ const OurService = () =>
             title: 'Custom Design',
             description: 'Tailored garment designs to meet your unique specifications.',
             icon: '🎨',
-            animation: 'fade-right',
         },
         {
             title: 'Bulk Production',
             description: 'Efficient large-scale manufacturing with consistent quality.',
             icon: '🏭',
-            animation: '',
         },
         {
             title: 'Eco-Friendly Fabrics',
             description: 'Sourcing sustainable materials for environmentally conscious products.',
             icon: '🌿',
-            animation: 'fade-left',
         },
     ];
 
@@ -33,7 +30,7 @@ const OurService = () =>
                     {services.map((service, index) => (
                         <div
                             key={index}
-                            data-aos={service.animation}
+                            data-aos={"fade-left"}
                             className="w-80 p-6 bg-white rounded-md shadow-[0px_0px_6px_0px_#00000021]"
                         >
                             <div className="text-4xl">{service.icon}</div>

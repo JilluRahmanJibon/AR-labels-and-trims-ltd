@@ -107,10 +107,11 @@ const Navbar = () =>
 
 
   return (
-    <div className="w-full flex flex-col fixed top-[0px] z-50 GeologicaFont"   data-aos="fade-down">
+    <div className="w-full flex flex-col fixed top-[0px] z-50 GeologicaFont"   >
       {openNav && (
         <div
           className={`bg-[#018496] w-full h-[2.5rem] flex justify-center items-center`}
+          data-aos="fade-down"
         >
           <div className="max-w-7xl w-full flex items-center justify-between mx-auto text-white sm:px-[25px] px-[10px]">
             <div className="flex items-center">
@@ -150,6 +151,7 @@ const Navbar = () =>
       <nav
         className={` w-full relative ${ color ? "bg-[#ffffffed] shadow-[0px_0px_3px_0px_#0003]" : "bg-white"
           }`}
+          data-aos="fade-down"
         style={{ transition: ".1s ease-in" }}
       >
         <div className="max-w-7xl mx-auto lg:!px-[20px] [@media(min-width:500px)]:px-[2rem] [@media(min-width:350px)]:px-[20px] px-[10px]">

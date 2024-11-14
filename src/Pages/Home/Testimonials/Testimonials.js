@@ -105,10 +105,10 @@ const Testimonial = () =>
               return (
                 <div
                   key={key.id}
-                  data-aos="fade-right"
                   className="sm:!px-[10px] px-0 w-[100%] my-[10px]"
                 >
-                  <div className="h-full bg-[#fff] sm:!px-8 px-6 sm:!py-8 py-4 rounded [@media(min-width:460px)]:shadow-[0px_0px_6px_0px_#00000021] shadow-none [@media(min-width:460px)]:text-left text-center">
+                  <div
+                  data-aos="fade-right" className="h-full bg-[#fff] sm:!px-8 px-6 sm:!py-8 py-4 rounded [@media(min-width:460px)]:shadow-[0px_0px_6px_0px_#00000021] shadow-none [@media(min-width:460px)]:text-left text-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="currentColor"
