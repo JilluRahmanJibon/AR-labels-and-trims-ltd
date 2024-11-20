@@ -23,14 +23,14 @@ const OurService = () =>
     return (
         <section className="py-6 bg-white GeologicaFont md:py-12">
             <div className="container mx-auto px-6">
-                <h2 className="text-center text-gray-800 text-22 font-semibold sm:text-3xl md:text-[26px]">
+                <h2 className="sm:!text-3xl [@media(min-width:460px)]:text-[26px] text-[22px] font-semibold text-center text-gray-800">
                     Our Services
                 </h2>
                 <div className="mt-8 flex flex-wrap justify-center gap-6">
                     {services.map((service, index) => (
                         <div
+                            data-aos="fade-right"
                             key={index}
-                            data-aos="fade-left"
                             className="w-80 p-6 bg-white rounded-md shadow-[0px_0px_6px_0px_#00000021]"
                         >
                             <div className="text-4xl">{service.icon}</div>
