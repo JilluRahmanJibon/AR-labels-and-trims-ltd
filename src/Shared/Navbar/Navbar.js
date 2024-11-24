@@ -8,8 +8,7 @@ import { FaRegUserCircle, FaUserCheck } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { BsInstagram } from "react-icons/bs";
 import verifyToken from "../../utils/verifyToken";
-import { useQuery } from "@tanstack/react-query";
-import Spinner from "../../Components/Loader/Spinner";
+ 
 
 import
 {
@@ -17,9 +16,8 @@ import
   Bars3Icon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
-import { BaseURL } from "../../utils/BaseURL";
 
-const Navbar = () =>
+const Navbar = ({ data }) =>
 {
   const [ mobileMenuOpen, setMobileMenuOpen ] = useState(false);
   const [ openDropdown, setOpenDropdown ] = useState(null); // Track which dropdown is open
@@ -68,17 +66,6 @@ const Navbar = () =>
     user = verifyToken(token)
   }
 
-  const { isLoading, error, data } = useQuery({
-    queryKey: [ '/categories' ],
-    queryFn: () =>
-      fetch(`${ BaseURL }/categories`, {
-        method: 'GET'
-      }).then((res) =>
-        res.json(),
-      ),
-  })
-  if (isLoading) return <Spinner />
-  
 
 
   const extractedData = data?.data?.map(item => ({
