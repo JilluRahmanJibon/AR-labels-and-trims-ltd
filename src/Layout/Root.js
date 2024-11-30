@@ -8,7 +8,7 @@ import { BaseURL } from '../utils/BaseURL'
 
 const Root = () =>
 {
-    const { isLoading, error, data } = useQuery({
+    const { isLoading,  data } = useQuery({
         queryKey: [ '/categories' ],
         queryFn: () =>
             fetch(`${ BaseURL }/categories`, {

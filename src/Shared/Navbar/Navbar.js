@@ -1,6 +1,6 @@
 // src/components/Navbar.jsx
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink ,useLocation} from "react-router-dom";
 import { menuItems, menuItems2 } from "./NavItems";
 import logo from "../../Assets/logo3.png";
 import { FaFacebookF } from "react-icons/fa6";
@@ -23,7 +23,7 @@ const Navbar = ({ data }) =>
   const [ openDropdown, setOpenDropdown ] = useState(null); // Track which dropdown is open
   const [ openDropdown2, setOpenDropdown2 ] = useState(null); // Track which dropdown is open
   const [ openNav, setIsOpenNav ] = useState(true);
-
+  const location = useLocation()
   const handleMouseEnter = (index) =>
   {
     setOpenDropdown(index);
@@ -165,25 +165,31 @@ const Navbar = ({ data }) =>
                       onMouseEnter={() => handleMouseEnter(index)}
                       onMouseLeave={handleMouseLeave}
                     >
-                      <button className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary flex items-center">
+                      <button
+                        className={`px-3 py-2 rounded-md text-sm font-medium flex items-center ${ item.subItems.some((subItem) =>
+                          location.pathname.startsWith(subItem.path)
+                        )
+                            ? "text-primary"
+                            : "text-gray-700 hover:text-primary"
+                          }`}
+                      >
                         {item.title}
                         <ChevronDownIcon className="ml-1 h-4 w-4" />
                       </button>
                       <div
                         className={`absolute left-0 w-[13rem] bg-white border rounded-md shadow-lg transition-all duration-300 ease-in-out transform ${ openDropdown === index
-                          ? "opacity-100 translate-y-0"
-                          : "opacity-0 -translate-y-2 pointer-events-none"
+                            ? "opacity-100 translate-y-0"
+                            : "opacity-0 -translate-y-2 pointer-events-none"
                           }`}
                       >
                         {item.subItems?.map((subItem) => (
                           <NavLink
                             key={subItem.title}
                             to={subItem.path}
-                            className={
-                              ({ isActive }) =>
-                                isActive
-                                  ? "block px-4 py-2 text-sm text-primary bg-gray-100 border-l-[3px] transition-all border-primary" // Active state with left border
-                                  : "block px-4 py-2 text-sm text-gray-700 hover:text-primary transition-all hover:border-l-[3px] hover:border-primary" // Hover state with left border
+                            className={({ isActive }) =>
+                              isActive
+                                ? "block px-4 py-2 text-sm text-primary bg-gray-100 border-l-[3px] transition-all border-primary"
+                                : "block px-4 py-2 text-sm text-gray-700 hover:text-primary transition-all hover:border-l-[3px] hover:border-primary"
                             }
                           >
                             {subItem.title}
@@ -193,6 +199,7 @@ const Navbar = ({ data }) =>
                     </div>
                   )
                 )}
+
               </div>
             </div>
             {/* Logo */}
@@ -228,7 +235,12 @@ const Navbar = ({ data }) =>
                       onMouseEnter={() => handleMouseEnter2(index)}
                       onMouseLeave={handleMouseLeave2}
                     >
-                      <button className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary flex items-center">
+                        <button className={`px-3 py-2 rounded-md text-sm font-medium flex items-center ${ item.subItems.some((subItem) =>
+                          location.pathname.startsWith(subItem.path)
+                        )
+                          ? "text-primary"
+                          : "text-gray-700 hover:text-primary"
+                          }`}>
                         {item.title}
                         <ChevronDownIcon className="ml-1 h-4 w-4" />
                       </button>
@@ -256,6 +268,7 @@ const Navbar = ({ data }) =>
                     </div>
                   )
                 )}
+                
                 <NavLink
                   to={"/contactUs"}
                   className={
@@ -299,6 +312,7 @@ const Navbar = ({ data }) =>
                         : "block px-3 py-2 rounded-md [@media(min-width:800px)]:text-[15px] text-[14px] font-medium text-gray-700 hover:text-primary"
                     }
                   >
+                    
                     {item.title}
                   </NavLink>
                 ) : (
@@ -309,8 +323,15 @@ const Navbar = ({ data }) =>
                           openDropdown === item.title ? null : item.title
                         )
                       }
-                      className="w-full flex items-center justify-between px-3 py-2 rounded-md [@media(min-width:800px)]:text-[15px] text-[14px] font-medium text-gray-700 hover:text-primary focus:outline-none"
-                    >
+                     
+                        className={`w-full flex items-center justify-between px-3 py-2 rounded-md [@media(min-width:800px)]:text-[15px] text-[14px] font-medium text-gray-700 hover:text-primary focus:outline-none ${ item.subItems.some((subItem) =>
+                          location.pathname.startsWith(subItem.path)
+                        )
+                          ? "text-primary"
+                          : "text-gray-700 hover:text-primary"
+                          }`}
+                      >
+                        
                       {item.title}
                       <ChevronDownIcon
                         className={`h-[15px] w-[15px] transition-transform ${ openDropdown === item.title
@@ -375,7 +396,12 @@ const Navbar = ({ data }) =>
                           openDropdown === item.title ? null : item.title
                         )
                       }
-                      className="w-full flex items-center justify-between px-3 py-2 rounded-md [@media(min-width:800px)]:text-[15px] text-[14px] font-medium text-gray-700 hover:text-primary focus:outline-none"
+                        className={`w-full flex items-center justify-between px-3 py-2 rounded-md [@media(min-width:800px)]:text-[15px] text-[14px] font-medium text-gray-700 hover:text-primary focus:outline-none ${ item.subItems.some((subItem) =>
+                          location.pathname.startsWith(subItem.path)
+                        )
+                          ? "text-primary"
+                          : "text-gray-700 hover:text-primary"
+                          }`}
                     >
                       {item.title}
                       <ChevronDownIcon
@@ -417,6 +443,21 @@ const Navbar = ({ data }) =>
                   </div>
                 )
               )}
+              <NavLink
+                onClick={() =>
+                {
+                  setMobileMenuOpen(false);
+                }}
+                to={"/contactUs"}
+                className={({ isActive }) =>
+                  isActive
+                    ? "block px-3 py-2 w-full  rounded-md  [@media(min-width:800px)]:text-[15px] text-[14px] font-medium text-primary"
+                    : "block px-3 py-2 w-full  rounded-md  [@media(min-width:800px)]:text-[15px] text-[14px] font-medium text-gray-700 hover:text-primary"
+                }
+              >
+                Contact Us
+              </NavLink>
+
 
             </div>
           </div>

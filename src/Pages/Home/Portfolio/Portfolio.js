@@ -3,19 +3,19 @@ const Portfolio = () =>
 {
     const portfolioItems = [
         {
-            image: 'http://localhost:3000/static/media/ar-image.a22264bd26421aab3d1f.jpg',
+            image: 'http://test.arltl.com/static/media/ar-image.a22264bd26421aab3d1f.jpg',
             title: 'Summer Collection',
         },
         {
-            image: 'http://localhost:3000/static/media/ar-image.a22264bd26421aab3d1f.jpg',
+            image: 'http://test.arltl.com/static/media/ar-image.a22264bd26421aab3d1f.jpg',
             title: 'Winter Wear',
         },
         {
-            image: 'http://localhost:3000/static/media/ar-image.a22264bd26421aab3d1f.jpg',
+            image: 'http://test.arltl.com/static/media/ar-image.a22264bd26421aab3d1f.jpg',
             title: 'Sports Apparel',
         },
         {
-            image: 'http://localhost:3000/static/media/ar-image.a22264bd26421aab3d1f.jpg',
+            image: 'http://test.arltl.com/static/media/ar-image.a22264bd26421aab3d1f.jpg',
             title: 'Casual Line',   
         },
     ];

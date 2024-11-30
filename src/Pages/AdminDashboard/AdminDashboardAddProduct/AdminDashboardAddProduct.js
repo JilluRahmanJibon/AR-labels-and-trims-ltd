@@ -62,11 +62,11 @@ const AdminDashboardAddProduct = () =>
       {
         const formDataImage = new FormData();
         formDataImage.append("file", file);
-        formDataImage.append("upload_preset", "gffb3xhf"); // Replace with your preset
-        formDataImage.append("cloud_name", "db3xhqy4o"); // Replace with your Cloudinary cloud name
+        formDataImage.append("upload_preset", "czyqaklr"); // Replace with your preset
+        formDataImage.append("cloud_name", "ddcxgj2oz"); // Replace with your Cloudinary cloud name
 
         const cloudinaryResponse = await axios.post(
-          `https://api.cloudinary.com/v1_1/db3xhqy4o/image/upload`,
+          `https://api.cloudinary.com/v1_1/ddcxgj2oz/image/upload`,
           formDataImage
         );
 

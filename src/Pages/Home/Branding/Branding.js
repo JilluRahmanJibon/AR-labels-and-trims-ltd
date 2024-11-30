@@ -29,7 +29,7 @@ const Branding = () =>
   ];
   return (
     <main>
-      <section className="text-gray-600 body-font GeologicaFont">
+      <section data-aos='fade-up' className="text-gray-600 body-font GeologicaFont">
         <div className="xl:w-[1230px] w-[100%] [@media(min-width:400px)]:px-5 px-0 [@media(min-width:400px)]:pt-[2rem] pt-[1.5rem] [@media(min-width:625px)]:pb-[2rem] pb-[0.5rem] mx-auto">
           <div className="w-[95%] mx-auto flex flex-wrap justify-center items-center">
             <div className="[@media(min-width:600px)]:w-[550px] w-[100%] text-center md:m-0 m-auto">
