@@ -1,4 +1,3 @@
-// src/components/SwiperSlider.jsx
 import React from "react";
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
 import Slider from "react-slick";
@@ -54,21 +53,21 @@ const DynamicSlider = ({ slides = [] }) =>
   };
 
   return (
-    <div className="max-w-[1920px] mx-auto w-full h-full justify-center relative mt-[6.5rem]">
-      {/* Large Dot Slider */}
+    <div className="max-w-[1920px] mx-auto w-full h-full justify-center relative  ">
+      {/* Large device Slider */}
       <div className="relative [@media(min-width:450px)]:flex hidden items-center text-[#fff]">
         {slides.length > 1 ? (
-          <Slider {...largeDotSettings} className="w-full xl:h-[610px] flex items-center overflow-hidden mx-auto">
+          <Slider {...largeDotSettings} className="w-full max-h-max object-bottom flex items-center overflow-hidden mx-auto">
             {slides.map((slide, index) => (
               <img key={slide.id || index} src={slide?.img} alt={`slide-${ index }`} className="w-full block" />
             ))}
           </Slider>
         ) : (
-          <img src={slides[ 0 ]?.img} alt="single product" className="w-full xl:h-[610px] block" />
+          <img src={slides[ 0 ]?.img} alt="single product" className="w-full xl:h-[610px]  block" />
         )}
       </div>
 
-      {/* Small Dot Slider */}
+      {/* Mobile device Slider */}
       <div className="relative [@media(min-width:450px)]:hidden flex items-center text-[#fff]">
         {slides.length > 1 ? (
           <Slider {...smallDotSettings} className="w-full xl:h-[610px] flex items-center overflow-hidden mx-auto">

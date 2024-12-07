@@ -1,6 +1,6 @@
 // src/components/Navbar.jsx
 import React, { useState } from "react";
-import { Navigate, NavLink } from "react-router-dom";
+import { Navigate, NavLink, useLocation } from "react-router-dom";
 import { Bars3Icon } from "@heroicons/react/24/outline";
 import { FaPowerOff } from "react-icons/fa6";
 import logo from "../../../Assets/logo3.png";
@@ -15,6 +15,7 @@ const AdminDashboardNav = ({ data }) =>
 
   const [ openDropdown, setOpenDropdown ] = useState(null);
   const [ handleLogout, setHandleLogout ] = useState(false);
+  const location = useLocation()
 
   if (handleLogout)
   {
@@ -93,16 +94,16 @@ const AdminDashboardNav = ({ data }) =>
               <RxCross2
                 onClick={() => setshowLeftNav(false)}
                 className={`${ showLeftNav
-                    ? "[@media(min-width:1400px)]:hidden flex "
-                    : "hidden"
+                  ? "[@media(min-width:1400px)]:hidden flex "
+                  : "hidden"
                   } h-[22px] w-[22px] ml-[1rem]  cursor-pointer text-gray-500`}
               />
 
               <Bars3Icon
                 onClick={() => setshowLeftNav(true)}
                 className={`${ showLeftNav
-                    ? "hidden"
-                    : "[@media(min-width:1400px)]:hidden flex"
+                  ? "hidden"
+                  : "[@media(min-width:1400px)]:hidden flex"
                   } h-[22px] w-[22px] ml-[1rem]  cursor-pointer text-gray-500`}
               />
 
@@ -181,20 +182,25 @@ const AdminDashboardNav = ({ data }) =>
                               openDropdown === item.name ? null : item.name
                             )
                           }
-                          className="w-full flex items-center justify-between py-[1rem] rounded-md text-[14px] font-medium text-gray-700 hover:text-primary focus:outline-none"
+                          className={`w-full flex items-center justify-between px-3 py-2 rounded-md [@media(min-width:800px)]:text-[15px] text-[14px] font-medium text-gray-700 hover:text-primary focus:outline-none ${ item.subItems.some((subItem) =>
+                            location.pathname.startsWith(subItem.path)
+                          )
+                            ? "text-primary"
+                            : "text-gray-700 hover:text-primary"
+                            }`}
                         >
                           {item.name}
                           <ChevronDownIcon
                             className={`h-[14px] w-[14px] transition-transform ${ openDropdown === item.name
-                                ? "transform rotate-180"
-                                : ""
+                              ? "transform rotate-180"
+                              : ""
                               }`}
                           />
                         </button>
                         <div
                           className={`ml-4 mb-[10px] transition-all duration-300 ease-in-out transform ${ openDropdown === item.name
-                              ? "opacity-100 translate-y-0"
-                              : "opacity-0 -translate-y-2 pointer-events-none"
+                            ? "opacity-100 translate-y-0"
+                            : "opacity-0 -translate-y-2 pointer-events-none"
                             }`}
                         >
                           {openDropdown === item.name && (
@@ -237,7 +243,7 @@ const AdminDashboardNav = ({ data }) =>
           <button
             onClick={() =>
             {
-              const confirmBox = window.confirm(`Do you really want to Logout`);
+              const confirmBox = window.confirm(`Do you really want to Logout?`);
               {
                 confirmBox === true
                   ? setHandleLogout(true)

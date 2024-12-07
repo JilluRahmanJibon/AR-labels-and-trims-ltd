@@ -12,7 +12,7 @@ const AdminLayout = () =>
     const token = localStorage.getItem('authToken');
 
     // Only run the query if the token is available
-    const { isLoading, error, data: datas } = useQuery({
+    const { isLoading,   data: datas } = useQuery({
         queryKey: [ '/users/me' ],
         queryFn: () =>
             fetch(`${ BaseURL}/users/me`, {
