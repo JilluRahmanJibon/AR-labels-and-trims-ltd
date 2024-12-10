@@ -47,70 +47,156 @@ const AdminDashboardAddProduct = () =>
     setFormData({ ...formData, [ name ]: value });
   };
 
+  // const handleSubmit = async (e) =>
+  // {
+  //   e.preventDefault();
+  //   const token = localStorage.getItem("authToken");
+  //   const toastId = toast.loading("Submitting...");
+  //   setIsLoading(true);
+
+
+  //   try
+  //   {
+  //     const imageUrls = [];
+  //     for (const file of selectedFiles)
+  //     {
+  //       const formDataImage = new FormData();
+  //       formDataImage.append("file", file);
+  //       formDataImage.append("upload_preset", "czyqaklr");
+  //       formDataImage.append("cloud_name", "ddcxgj2oz");
+
+  //       const cloudinaryResponse = await axios.post(
+  //         `https://api.cloudinary.com/v1_1/ddcxgj2oz/image/upload`,
+  //         formDataImage
+  //       );
+
+  //       if (cloudinaryResponse?.status === 200)
+  //       {
+  //         imageUrls.push({ img: cloudinaryResponse.data.secure_url });
+  //       } else
+  //       {
+  //         throw new Error("Failed to upload image to Cloudinary");
+  //       }
+  //     }
+
+
+  //     const data = {
+  //       title: formData.name,
+  //       description: formData.description,
+  //       image: imageUrls
+  //     }
+
+
+  //     const response = await axios.post(
+  //       `${ BaseURL }/products/create-product`,
+  //       data,
+  //       {
+  //         headers: {
+  //           Authorization: `${ token }`,
+  //         },
+  //       }
+  //     );
+
+
+  //     if (response?.status === 200)
+  //     {
+  //       toast.success(`${ response?.data?.message }`, { id: toastId });
+  //       setSubmitted(true);
+  //       setFormData({ name: "", description: "" });
+  //       setSelectedFiles([]);
+  //       setPreviewUrls([]);
+  //       setIsLoading(false);
+  //     } else
+  //     {
+  //       toast.error(`Please give a unique title!`, { id: toastId });
+  //       setIsLoading(false);
+  //     }
+  //   } catch (error)
+  //   {
+  //     toast.error("Something went wrong", { id: toastId });
+  //     console.error("Error:", error);
+  //     setIsLoading(false);
+  //   }
+  // };
   const handleSubmit = async (e) =>
   {
     e.preventDefault();
     const token = localStorage.getItem("authToken");
-    const toastId = toast.loading("Submitting...");
+    const toastId = toast.loading(`Submitting...`, { duration: 2000 });
     setIsLoading(true);
-
 
     try
     {
       const imageUrls = [];
       for (const file of selectedFiles)
       {
+        // Show toast for image upload
+        const imageToastId = toast.loading(`Uploading image: ${ file.name }...`, { duration: 100 });
+
         const formDataImage = new FormData();
         formDataImage.append("file", file);
-        formDataImage.append("upload_preset", "czyqaklr"); // Replace with your preset
-        formDataImage.append("cloud_name", "ddcxgj2oz"); // Replace with your Cloudinary cloud name
+        formDataImage.append("upload_preset", "czyqaklr");
+        formDataImage.append("cloud_name", "ddcxgj2oz");
 
-        const cloudinaryResponse = await axios.post(
-          `https://api.cloudinary.com/v1_1/ddcxgj2oz/image/upload`,
-          formDataImage
-        );
+        try
+        {
+          const cloudinaryResponse = await axios.post(
+            `https://api.cloudinary.com/v1_1/ddcxgj2oz/image/upload`,
+            formDataImage
+          );
 
-        if (cloudinaryResponse?.status === 200)
+          if (cloudinaryResponse?.status === 200)
+          {
+            imageUrls.push({ img: cloudinaryResponse.data.secure_url });
+            toast.success(`Image uploaded: ${ file.name }`, {
+              id: imageToastId,
+              duration: 100, });
+          } else
+          {
+            throw new Error("Failed to upload image to Cloudinary");
+          }
+        } catch (imageError)
         {
-          imageUrls.push({ img: cloudinaryResponse.data.secure_url }); // Store Cloudinary image URL
-        } else
-        {
-          throw new Error("Failed to upload image to Cloudinary");
+          toast.error(`Failed to upload image: ${ file.name }`, {
+            id: imageToastId,
+            duration: 3000,  
+          });
+          console.error("Image Upload Error:", imageError);
         }
       }
-
 
       const data = {
         title: formData.name,
         description: formData.description,
-        image: imageUrls
-      }
-
-
-      const response = await axios.post(
-        `${ BaseURL }/products/create-product`,
-        data,
-        {
-          headers: {
-            Authorization: `${ token }`,  
-          },
-        }
-      );
- 
- 
-      if (response?.status === 200)
+        image: imageUrls,
+      };
+      if (imageUrls?.length > 0)
       {
-        toast.success(`${response?.data?.message}`, { id: toastId });
-        setSubmitted(true);
-        setFormData({ name: "", description: "" });
-        setSelectedFiles([]);
-        setPreviewUrls([]);
-        setIsLoading(false);
+        const response = await axios.post(`${ BaseURL }/products/create-product`, data, {
+          headers: {
+            Authorization: `${ token }`,
+          },
+        });
+
+        if (response?.status === 200)
+        {
+          toast.success(`${ response?.data?.message }`, { id: toastId, duration: 1000 });
+          setSubmitted(true);
+          setFormData({ name: "", description: "" });
+          setSelectedFiles([]);
+          setPreviewUrls([]);
+          setIsLoading(false);
+        } else
+        {
+          toast.error(`Please give a unique title!`, { id: toastId });
+          setIsLoading(false);
+        }
       } else
       {
-        toast.error(`Please give a unique title!`, { id: toastId });
-        setIsLoading(false);
+        toast.error("Please Upload at lest 2 images !", { id: toastId });
+
       }
+
     } catch (error)
     {
       toast.error("Something went wrong", { id: toastId });
@@ -153,25 +239,27 @@ const AdminDashboardAddProduct = () =>
           <div className="bg-[#FA0472] w-[18px] h-[2px] inline-flex"></div>
         </div>
 
-        <div className="flex flex-wrap w-[100%] mx-auto justify-center py-[2rem]">
-          <div className="w-[300px] mx-0 my-[10px] rounded-[10px] overflow-hidden border-[2px] bg-[#ffffff]">
-            <Slider {...settings} className="w-full h-[150px]">
-              {previewUrls.length > 0 ? (
-                previewUrls.map((url, index) => (
-                  <div key={index} className="relative">
-                    <img src={url} alt={`Preview ${ index }`} className="w-full" />
-                    <button
-                      onClick={() => removeImage(index)}
-                      className="absolute top-1 right-1 bg-red-500 text-white rounded-full px-2"
-                    >
-                      ✕
-                    </button>
-                  </div>
-                ))
-              ) : (
-                <p className="absolute top-[25%] left-[35%] text-[15px]">Product Image</p>
-              )}
-            </Slider>
+        <div className="flex flex-wrap w-[100%] mx-auto justify-center items-center py-[2rem]">
+          <div className="w-[300px] mx-0 my-[10px] rounded-[10px] ">
+            <div>
+              <Slider {...settings} className="w-full relative h-[180px] overflow-hidden">
+                {previewUrls.length > 0 ? (
+                  previewUrls.map((url, index) => (
+                    <div key={index} className="relative">
+                      <img src={url} alt={`Preview ${ index }`} className="w-full" />
+                      <button
+                        onClick={() => removeImage(index)}
+                        className="absolute top-1 right-1 bg-red-500 text-white rounded-full px-2"
+                      >
+                        ✕
+                      </button>
+                    </div>
+                  ))
+                ) : (
+                  <p className="absolute top-[25%] left-[35%] z-40 text-black text-[15px]">Product Image</p>
+                )}
+              </Slider>
+           </div>
           </div>
 
           <div className="sm:w-[500px] w-[100%] sm:pl-[2rem] text-center">
@@ -224,7 +312,10 @@ const AdminDashboardAddProduct = () =>
                     className="hidden"
                   />
                   <div className="inputStyleIng cursor-pointer border-2 border-dashed border-gray-400 rounded-lg w-full p-4 text-center">
-                    Click to upload images (min. 2)
+                    {
+                      selectedFiles?.length ? <>{selectedFiles?.length} Images are Selected.</> :"Click to upload images (min. 2)"
+                    }
+                
                   </div>
                 </label>
               </div>

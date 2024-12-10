@@ -26,11 +26,7 @@ const Banner = () =>
     {
       id: 4,
       image: "https://www.adzitrims.com/sul-web-cms-adzi/upload/slider_image_upload_site_banner_slider_1546504364_1546504364.jpg",
-    },
-    {
-      id: 5,
-      image: "http://test.arltl.com/static/media/ar-image.a22264bd26421aab3d1f.jpg",
-    },
+    }
   ];
   let settings = {
     dots: true,
@@ -60,14 +56,14 @@ const Banner = () =>
     <div className=" max-w-[1920px] mx-auto w-full h-[100%] justify-center relative mt-[6.5rem]">
       {/* <DynamicSlider slides={sliderData} /> */}
       <div className="relative flex items-center text-[#fff]">
-        <Slider {...settings} className="w-[100%] xl:h-[610px]  [@media(min-width:650px)]:flex hidden items-center overflow-hidden mx-auto">
+        <Slider {...settings} className="w-[100%] xl:h-[690px]  [@media(min-width:650px)]:flex hidden items-center overflow-hidden mx-auto">
           {bannerData.map((key) =>
           {
             return (
               <img
                 key={key.id}
                 src={key.image}
-                className="w-[100%] block"
+                className="w-[100%] sm:h-full h-[12rem] object-cover object-center block"
                 alt=""
               />
             );

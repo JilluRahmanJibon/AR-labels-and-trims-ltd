@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { GoDotFill } from "react-icons/go";
 
-const DynamicSlider = ({ slides = [] }) =>
+const DynamicSlider = ({ slides }) =>
 {
   if (!slides.length)
   {

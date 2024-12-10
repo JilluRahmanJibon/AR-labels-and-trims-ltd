@@ -68,8 +68,8 @@ const Product = () =>
 
   return (
     <section className="max-w-[1920px] mx-auto GeologicaFont">
-      <div className="  ">
-        <DynamicSlider slides={product?.data.image} />
+      <div className="mt-[6.3rem]  ">
+        <DynamicSlider slides={product?.data?.image} />
       </div>
       <div className=" py-6 [@media(min-width:850px)]:px-12 px-[0px]">
         <div className="[@media(min-width:850px)]:px-[0px] px-[1rem]">
