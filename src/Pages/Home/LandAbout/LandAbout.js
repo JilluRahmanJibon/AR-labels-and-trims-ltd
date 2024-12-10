@@ -7,7 +7,7 @@ const LandAbout = () =>
     <section className="py-6 md:py-12 bg-white">
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-center px-4 md:px-0">
         {/* Image Section */}
-        <div className="sm:w-[400px] w-[300px] max-h-[400px]  flex-shrink-0">
+        <div data-aos='fade-up' className="sm:w-[400px] w-[300px] max-h-[400px]  flex-shrink-0">
           <img
             src={arImage} // Ensure the actual image URL is used
             alt="About Us"
@@ -16,7 +16,7 @@ const LandAbout = () =>
         </div>
 
         {/* Text Section */}
-        <div className="md:w-1/2 md:mt-0 mt-4 p-4 md:text-left text-center GeologicaFont leading-snug text-gray-700">
+        <div data-aos='fade-down' className="md:w-1/2 md:mt-0 mt-4 p-4 md:text-left text-center GeologicaFont leading-snug text-gray-700">
           <h2 className="font-semibold text-gray-800 text-[20px] md:text-[26px] sm:text-[28px] mb-2 md:mb-4">
             About AR-Labels & Trims Ltd.
           </h2>

@@ -1,18 +1,22 @@
-import React from "react";
-import AboutSkils from "./AboutSkils/AboutSkils";
+import React, { Suspense, lazy } from "react";
 import DynamicBanner from "../../../Shared/DynamicBanner/DynamicBanner";
-import OurCompanyDetails from "./OurCompanyDetails/OurCompanyDetails";
 import bgCover from "../../../Assets/aboutUs.jpg";
 
-function OurCompany() {
+// Lazy load components
+const AboutSkils = lazy(() => import("./AboutSkils/AboutSkils"));
+const OurCompanyDetails = lazy(() => import("./OurCompanyDetails/OurCompanyDetails"));
+
+function OurCompany ()
+{
   return (
     <main>
       {/*  banner section  */}
       <DynamicBanner webTittle={true} bg={bgCover} />
-      {/*  skils section  */}
-      <AboutSkils />
-      {/*  our company details section */}
-      <OurCompanyDetails />
+      {/*  skils and company details sections */}
+      <Suspense fallback={<div>Loading...</div>}>
+        <AboutSkils />
+        <OurCompanyDetails />
+      </Suspense>
     </main>
   );
 }

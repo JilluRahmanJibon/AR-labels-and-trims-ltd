@@ -6,33 +6,33 @@ import img4 from "../../../../Assets/AboutUs/4.webp";
 import img5 from "../../../../Assets/AboutUs/5.webp";
 import img6 from "../../../../Assets/AboutUs/6.webp";
 
-function AboutUs() {
+const aboutItems = [
+  { img: img1, text: "Maintain integrity" },
+  { img: img2, text: "Take ownership" },
+  { img: img3, text: "Keep agile" },
+  { img: img4, text: "Exceed expectations" },
+  { img: img6, text: "Remain humble" },
+  { img: img5, text: "Continuous innovation" },
+];
+
+function AboutUs ()
+{
   return (
-    <main className="xl:w-[1230px] w-[96%] mx-auto py-[2rem] px-5 grid sm:!grid-cols-3 [@media(min-width:400px)]:grid-cols-2 grid-cols-1 GeologicaFont">
-      <div className="w-[150px] [@media(min-width:400px)]:h-[140px] h-[120px] mx-auto flex flex-col justify-center text-center items-center mt-[15px]">
-        <img src={img1} className="sm:w-[86px] [@media(min-width:400px)]:w-[76px] w-[70px] mx-auto" />
-        <p className="leading-[19px] h-[55px] pt-[1rem]">Maintain integrity</p>
-      </div>
-      <div className="w-[150px] [@media(min-width:400px)]:h-[140px] h-[120px] mx-auto flex flex-col justify-center text-center items-center mt-[15px]">
-        <img src={img2} className="sm:w-[58px] [@media(min-width:400px)]:w-[48px] mx-auto" />
-        <p className="leading-[19px] h-[55px] pt-[1rem]">Take ownership</p>
-      </div>
-      <div className="w-[150px] [@media(min-width:400px)]:h-[140px] h-[120px] mx-auto flex flex-col justify-center text-center items-center mt-[15px]">
-        <img src={img3} className="sm:w-[67px] [@media(min-width:400px)]:w-[57px] w-[51px] mx-auto" />
-        <p className="leading-[19px] h-[55px] pt-[1rem]">Keep agile</p>
-      </div>
-      <div className="w-[150px] [@media(min-width:400px)]:h-[140px] h-[120px] mx-auto flex flex-col justify-center text-center items-center mt-[15px]">
-        <img src={img4} className="sm:w-[67px] [@media(min-width:400px)]:w-[57px] w-[51px] mx-auto" />
-        <p className="leading-[19px] h-[55px] pt-[1rem]">Exceed expectations</p>
-      </div>
-      <div className="w-[150px] [@media(min-width:400px)]:h-[140px] h-[120px] mx-auto flex flex-col justify-center text-center items-center mt-[15px]">
-        <img src={img6} className="sm:!w-[66px] [@media(min-width:400px)]:w-[56px] w-[50px] mx-auto" />
-        <p className="leading-[19px] h-[55px] pt-[1rem]">Remain humble</p>
-      </div>
-      <div className="w-[150px] [@media(min-width:400px)]:h-[140px] h-[120px] mx-auto flex flex-col justify-center text-center items-center mt-[15px]">
-        <img src={img5} className="sm:!w-[67px] [@media(min-width:400px)]:w-[57px] w-[51px] mx-auto" />
-        <p className="leading-[19px] h-[55px] pt-[1rem]">Continuous innovation</p>
-      </div>
+    <main className="max-w-[1230px] w-[96%] mx-auto py-8 px-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 font-geologica">
+      {aboutItems.map((item, index) => (
+        <div
+          key={index}
+          className="w-[150px] h-[140px] mx-auto flex flex-col justify-center text-center items-center"
+        >
+          <img
+            src={item.img}
+            alt={item.text}
+            className="w-[70px] sm:w-[80px] lg:w-[86px] mx-auto"
+            loading="lazy"
+          />
+          <p className="leading-5 pt-4">{item.text}</p>
+        </div>
+      ))}
     </main>
   );
 }
