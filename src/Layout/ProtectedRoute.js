@@ -1,34 +1,40 @@
-
 import { Navigate } from "react-router-dom";
+import { useMemo } from "react";
 import verifyToken from "../utils/verifyToken";
 
 const ProtectedRoute = ({ children, requiredRole }) =>
 {
-    const token = localStorage.getItem('authToken');
-    let userRole;
-    if (token)
+    const token = localStorage.getItem("authToken");
+
+    // Memoize user role computation only when token changes
+    const userRole = useMemo(() =>
     {
-        try
+        if (token)
         {
-            const user = verifyToken(token)
-            userRole = user.role
-        } catch (error)
-        {
-            console.error('Invalid token format:', error);
+            try
+            {
+                const user = verifyToken(token);
+                return user?.role;
+            } catch (error)
+            {
+                console.error("Invalid token format:", error);
+            }
         }
-    }
+        return null;
+    }, [ token ]);
 
     // Redirect to login if there's no token
     if (!token)
     {
-        return <Navigate to="/login" replace={true} />;
+        return <Navigate to="/login" replace />;
     }
 
-    // Check for admin access if a specific role is required
+    // Redirect if role does not match the requiredRole
     if (requiredRole && userRole !== requiredRole)
     {
-        return <Navigate to="/not-authorized" replace={true} />; // Redirect to an unauthorized page if needed
+        return <Navigate to="/not-authorized" replace />;
     }
+
     return children;
 };
 

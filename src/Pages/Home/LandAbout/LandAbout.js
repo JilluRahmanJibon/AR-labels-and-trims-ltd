@@ -4,30 +4,30 @@ import arImage from "../../../Assets/ar-image.jpg"; // Ensure the image path is 
 const LandAbout = () =>
 {
   return (
-    <section className="py-6 md:py-12">
-      <div className="container mx-auto flex flex-col md:flex-row items-center justify-center">
+    <section className="py-6 md:py-12 bg-white">
+      <div className="container mx-auto flex flex-col md:flex-row items-center justify-center px-4 md:px-0">
         {/* Image Section */}
-        <div className="md:w-[450px] w-full">
+        <div className="sm:w-[400px] w-[300px] max-h-[400px]  flex-shrink-0">
           <img
             src={arImage} // Ensure the actual image URL is used
             alt="About Us"
-            className="rounded-lg w-[97%] mx-auto"
+            className="rounded-lg w-full h-auto object-cover"
           />
         </div>
 
         {/* Text Section */}
-        <div className="md:w-1/2 md:mt-0 mt-4 p-2 md:text-left text-center GeologicaFont">
-          <h2 className="font-semibold text-gray-800 text-[18px] md:text-[26px] sm:text-[28px] mb-1 md:mb-4">
+        <div className="md:w-1/2 md:mt-0 mt-4 p-4 md:text-left text-center GeologicaFont leading-snug text-gray-700">
+          <h2 className="font-semibold text-gray-800 text-[20px] md:text-[26px] sm:text-[28px] mb-2 md:mb-4">
             About AR-Labels & Trims Ltd.
           </h2>
-          <p className="text-gray-700 text-[13px] md:text-[15px] mt-2">
+          <p className="text-[14px] md:text-[16px] mb-4">
             AR-Labels & Trims Ltd. is a modern, state-of-the-art apparel trims
             and accessories manufacturer. Established in 2012 under the Indet
             Group, we began production in 2016 with a commitment to providing
             high-quality products to Bangladesh’s export-oriented garment
             industries.
           </p>
-          <p className="text-gray-700 mt-4 text-[14px] md:text-[15px]">
+          <p className="text-[14px] md:text-[16px]">
             Our mission is to deliver world-class accessories with advanced
             technologies, supported by a professional team, short lead times,
             and competitive pricing. We are dedicated to ensuring customer

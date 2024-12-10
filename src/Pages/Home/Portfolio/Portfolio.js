@@ -1,5 +1,6 @@
- 
-const Portfolio = () =>
+import React, { memo } from "react";
+
+const Portfolio = memo(() =>
 {
     const portfolioItems = [
         {
@@ -16,28 +17,43 @@ const Portfolio = () =>
         },
         {
             image: 'http://test.arltl.com/static/media/ar-image.a22264bd26421aab3d1f.jpg',
-            title: 'Casual Line',   
+            title: 'Casual Line',
         },
     ];
-  return (
-      <section className="pb-[1rem] bg-white GeologicaFont">
-          <div className="container mx-auto [@media(min-width:460px)]:px-6 px-0">
-              <h2 className="sm:!text-3xl [@media(min-width:460px)]:text-[26px] text-[22px] font-semibold text-center text-gray-800">Our Portfolio</h2>
-              <div className="mt-8 flex flex-wrap justify-center items-center">
-                  {portfolioItems.map((item, index) => (
-                      <div
-                          data-aos="fade-down"
-                          key={index} className="relative flex [@media(min-width:460px)]:px-[10px] px-0 py-[10px]">
-                          <img src={item.image} alt={item.title} className="w-[280px] h-[280px] object-cover rounded-md shadow-[0px_0px_6px_0px_#00000021]" />
-                          <div className="absolute w-[280px] h-[280px] bg-[#ffffffb8] flex items-center rounded-md justify-center opacity-0 hover:opacity-100 transition-opacity">
-                              <span className="text-black text-lg">{item.title}</span>
-                          </div>
-                      </div>
-                  ))}
-              </div>
-          </div>
-      </section>
-  )
-}
 
-export default Portfolio
+    return (
+        <section className="pb-4 bg-white GeologicaFont">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+  
+                <h2 data-aos="fade-up" className="sm:text-3xl text-[22px] font-semibold text-center text-gray-800 mb-6">
+                    Our Portfolio
+                </h2>
+
+             
+                <div className="mt-4 flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8">
+                    {portfolioItems.map((item) => (
+                        <div
+                            data-aos="fade-down"
+                            key={item.title}
+                            className="relative group flex items-center justify-center sm:w-[280px] sm:h-[280px] w-[260px] cursor-pointer"
+                        >
+                            {/* Main Image */}
+                            <img
+                                src={item.image}
+                                alt={item.title}
+                                className="w-full h-full object-cover rounded-md shadow-md"
+                            />
+
+                            {/* Hover Effect */}
+                            <div className="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <span className="text-black text-lg font-semibold">{item.title}</span>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+});
+
+export default Portfolio;

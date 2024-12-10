@@ -273,7 +273,7 @@ const Navbar = ({ data }) =>
                                 className={
                                   ({ isActive }) =>
                                     isActive
-                                      ? "block px-4 py-2 text-sm text-primary bg-gray-100 border-l-[3px] transition-all border-primary" // Active state with left border
+                                      ? "block px-4 py-2 text-sm text-primary bg-gray-100 border-l-[3px] transition-all border-primary"  
                                       : "block px-4 py-2 text-sm text-gray-700 hover:text-primary transition-all hover:border-l-[3px] hover:border-primary" // Hover state with left border
                                 }
                               >
@@ -484,5 +484,4 @@ const Navbar = ({ data }) =>
     </>
   );
 };
-
-export default Navbar;
+export default React.memo(Navbar);

@@ -1,6 +1,6 @@
-import React from "react";
+import React, { memo } from "react";
 
-const WhyChooseUs = () =>
+const WhyChooseUs = memo(() =>
 {
   const reasons = [
     {
@@ -24,34 +24,33 @@ const WhyChooseUs = () =>
       icon: "⏰",
     },
   ];
+
   return (
     <section className="py-12 bg-white GeologicaFont">
       <div className="container mx-auto px-6">
-        <h2 className="sm:!text-3xl [@media(min-width:460px)]:text-[26px] text-[22px] font-semibold text-center text-gray-800">
+        {/* Animated Title Section */}
+        <h2 className="sm:text-3xl text-[22px] font-semibold text-center text-gray-800 mb-6">
           Why Choose Us
         </h2>
-        <div className="mt-8 flex flex-wrap justify-center">
-          {reasons.map((reason, index) => (
+
+        {/* Optimized Grid Section */}
+        <div className="mt-6 flex flex-wrap justify-center gap-4 md:gap-6">
+          {reasons.map((reason) => (
             <div
               data-aos="fade-right"
-              key={index} className="mx-[10px] my-[10px]">
-              <div
-                className="w-[280px] h-[220px] flex flex-col text-center justify-center items-center bg-white px-6 rounded-md shadow-[0px_0px_6px_0px_#00000021] mx-auto"
-              >
-                <div className="text-[40px] ">{reason.icon}</div>
-                <div className="pt-[10px]">
-                  <h3 className="text-[18px] font-[600] text-gray-800">
-                    {reason.title}
-                  </h3>
-                  <p className="text-[15px] text-gray-600 h-[47px] mt-2">{reason.description}</p>
-                </div>
-              </div>
+              key={reason.title}
+              className="w-[280px] h-[220px] bg-white rounded-md shadow-md flex flex-col justify-center items-center text-center px-4 py-3 transition-transform transform hover:scale-105"
+            >
+              {/* Icon + Text */}
+              <div className="text-[40px] mb-2">{reason.icon}</div>
+              <h3 className="text-[18px] font-semibold text-gray-800">{reason.title}</h3>
+              <p className="text-[15px] text-gray-600 mt-2 h-[47px]">{reason.description}</p>
             </div>
           ))}
         </div>
       </div>
     </section>
   );
-};
+});
 
 export default WhyChooseUs;

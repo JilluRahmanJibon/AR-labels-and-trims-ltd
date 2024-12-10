@@ -90,10 +90,10 @@ const Testimonial = () =>
   return (
     <div className="text-black body-font bg-[#fff] [@media(min-width:460px)]:py-[3rem] py-[1.5rem] GeologicaFont">
       <div className="xl:!w-[1230px] sm:!w-[96%] [@media(min-width:460px)]:w-[98%] w-[100%] [@media(min-width:460px)]:px-5 px-3 mx-auto relative ">
-        <p className="text-[#018496] [@media(min-width:530px)]:text-[15px] [@media(min-width:460px)]:text-[13px] text-[12px] mx-auto  text-center relative z-10 ">
+        <p data-aos="fade-down" className="text-[#018496] [@media(min-width:530px)]:text-[15px] [@media(min-width:460px)]:text-[13px] text-[12px] mx-auto  text-center relative z-10 ">
           Testimonial
         </p>
-        <h1 className="sm:!text-3xl [@media(min-width:460px)]:text-[26px] text-[20px] text-gray-800 sm:!leading-[36px] [@media(min-width:460px)]:leading-[32px] leading-[25px] font-semibold title-font [@media(min-width:460px)]:mb-[19px] sm:!mb-[1.5rem] mb-[0px] text-center relative z-10 ">
+        <h1 data-aos="fade-down" className="sm:!text-3xl [@media(min-width:460px)]:text-[26px] text-[20px] text-gray-800 sm:!leading-[36px] [@media(min-width:460px)]:leading-[32px] leading-[25px] font-semibold title-font [@media(min-width:460px)]:mb-[19px] sm:!mb-[1.5rem] mb-[0px] text-center relative z-10 ">
           What People Say About
           <br />
           Our Company
