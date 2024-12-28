@@ -18,14 +18,14 @@ const fetchCategories = async () =>
 
 const Root = () =>
 {
-    const { isLoading, data, error } = useQuery({
+    const { data } = useQuery({
         queryKey: [ '/categories' ],
         queryFn: fetchCategories,
     });
 
     // Handle loading/error states gracefully
-    if (isLoading) return <Spinner />;
-    if (error) return <div>Error loading data</div>;
+    // if (isLoading) return <Spinner />;
+    // if (error) return <div>Error loading data</div>;
 
     return (
         <main>

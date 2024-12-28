@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 // Footer component is memoized to avoid re-rendering when props do not change
 const Footer = memo(() =>
 {
+  const currentYear = new Date().getFullYear();
   const links = [
     { path: "", label: "Terms & Condition" },
     { path: "", label: "Privacy Policy" },
@@ -30,7 +31,7 @@ const Footer = memo(() =>
         <p className="text-[#ffffffe5] sm:text-sm text-[13px] text-center md:text-left">
           <span className="font-bold text-primary">AR </span>
           <span className="font-[400]">
-            Labels & Trims Ltd. - Copyright © 2024 All rights reserved.
+            Labels & Trims Ltd. - Copyright © {currentYear} All rights reserved.
           </span>
         </p>
 

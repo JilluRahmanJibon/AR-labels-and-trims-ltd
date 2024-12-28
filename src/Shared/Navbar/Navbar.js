@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link, NavLink ,useLocation} from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { menuItems, menuItems2 } from "./NavItems";
 import logo from "../../Assets/logo3.png";
 import { FaFacebookF } from "react-icons/fa6";
@@ -7,7 +7,7 @@ import { FaRegUserCircle, FaUserCheck } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { BsInstagram } from "react-icons/bs";
 import verifyToken from "../../utils/verifyToken";
- 
+
 
 import
 {
@@ -45,7 +45,7 @@ const Navbar = ({ data }) =>
     setOpenDropdown2(null);
   };
 
-   
+
   const token = localStorage.getItem('authToken')
   let user
   if (token)
@@ -105,7 +105,7 @@ const Navbar = ({ data }) =>
     {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [ isVisible ]); 
+  }, [ isVisible ]);
 
 
   return (
@@ -225,6 +225,8 @@ const Navbar = ({ data }) =>
                       className="[@media(min-width:450px)]:h-[40px] h-[30px] w-auto"
                       src={logo}
                       alt="Company Logo"
+                      loading="lazy"
+
                     />
                   </NavLink>
                 </div>
@@ -273,7 +275,7 @@ const Navbar = ({ data }) =>
                                 className={
                                   ({ isActive }) =>
                                     isActive
-                                      ? "block px-4 py-2 text-sm text-primary bg-gray-100 border-l-[3px] transition-all border-primary"  
+                                      ? "block px-4 py-2 text-sm text-primary bg-gray-100 border-l-[3px] transition-all border-primary"
                                       : "block px-4 py-2 text-sm text-gray-700 hover:text-primary transition-all hover:border-l-[3px] hover:border-primary" // Hover state with left border
                                 }
                               >

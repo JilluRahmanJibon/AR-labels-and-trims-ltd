@@ -59,7 +59,7 @@ const DynamicSlider = ({ slides }) =>
         {slides.length > 1 ? (
           <Slider {...largeDotSettings} className="w-full max-h-max object-bottom flex items-center overflow-hidden mx-auto">
             {slides.map((slide, index) => (
-              <img key={slide.id || index} src={slide?.img} alt={`slide-${ index }`} className="w-full block" />
+              <img key={slide.id || index} src={slide?.img} alt={`slide-${ index }`} className="w-full lg:h-[40rem] h-[25rem] block" />
             ))}
           </Slider>
         ) : (

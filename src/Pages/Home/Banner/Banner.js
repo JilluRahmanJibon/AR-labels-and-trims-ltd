@@ -34,18 +34,12 @@ const PrevButton = memo(({ onClick }) =>
 const Banner = () =>
 {
   const bannerData = [
-    {
-      id: 1,
-      image: "http://test.arltl.com/static/media/ar-image.a22264bd26421aab3d1f.jpg",
-    },
+
     {
       id: 2,
       image: "https://www.adzitrims.com/sul-web-cms-adzi/upload/slider_image_upload_site_banner_slider_1571200303_1571200303.jpg",
     },
-    {
-      id: 3,
-      image: "http://test.arltl.com/static/media/ar-image.a22264bd26421aab3d1f.jpg",
-    },
+
     {
       id: 4,
       image: "https://www.adzitrims.com/sul-web-cms-adzi/upload/slider_image_upload_site_banner_slider_1546504364_1546504364.jpg",
@@ -77,7 +71,7 @@ const Banner = () =>
   };
 
   return (
-    <div className="max-w-[1920px] mx-auto w-full h-full justify-center relative mt-[6.5rem]">
+    <div className="max-w-[1920px] mx-auto w-full h-full justify-center relative pt-[6.5rem]">
       <div className="relative flex items-center text-[#fff]">
         <Slider {...settings} className="w-full xl:h-[690px] [@media(min-width:650px)]:flex hidden items-center overflow-hidden mx-auto">
           {bannerData.map(({ id, image }) => (
