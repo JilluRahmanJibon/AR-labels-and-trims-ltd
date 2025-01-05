@@ -9,7 +9,7 @@ function NewsEvents ()
       {/* Dynamic Banner Section */}
       <DynamicBanner
         webTittle={true}
-        bg={"https://www.adzitrims.com/assets/images/coming-soonbg2.jpg"}
+        bg={"https://arltl.com/web-cms-arltl/uploads/news-bg.jpg"}
       />
 
       {/* News & Events Section */}

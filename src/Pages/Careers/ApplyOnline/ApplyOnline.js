@@ -6,7 +6,7 @@ const ApplyOnline = () => {
   return (
     <div className="mt-[7rem]">
       {/*  banner section  */}
-      <DynamicBanner webTittle={true} bg={"https://www.adzitrims.com/assets/images/coming-soonbg2.jpg"} />
+      <DynamicBanner webTittle={true} bg={"https://arltl.com/web-cms-arltl/uploads/career-bg.jpg"} />
 
       {/*  Apply Online section  */}
       <ApplyOnlineDetails />

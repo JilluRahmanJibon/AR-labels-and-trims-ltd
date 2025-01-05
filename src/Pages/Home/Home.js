@@ -40,7 +40,7 @@ const Home = () =>
       <OurNewsLetter />
 
       {/* footer section for landing page on the bottom */}
-      <LandFooter />
+      {/* <LandFooter /> */}
     </main>
   );
 };

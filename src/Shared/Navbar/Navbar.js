@@ -119,7 +119,10 @@ const Navbar = ({ data }) =>
             <div className="max-w-7xl w-full flex items-center justify-between mx-auto text-white sm:px-[25px] px-[10px]">
               <div className="flex items-center">
                 <div className="[@media(min-width:450px)]:w-[24px] w-[21px] [@media(min-width:450px)]:h-[24px] h-[21px] cursor-pointer flex justify-center items-center border-[1.59px] border-white rounded-[50px] mx-[5px]">
-                  <FaFacebookF className="text-[11px]" />
+                  <a href="https://www.adzitrims.com/" target="_blank" rel="noopener noreferrer">
+                    <FaFacebookF className="text-[11px]" />
+                  </a>
+
                 </div>
                 <div className="[@media(min-width:450px)]:w-[24px] w-[21px] [@media(min-width:450px)]:h-[24px] h-[21px] cursor-pointer flex justify-center items-center border-[1.59px] border-white rounded-[50px] mx-[5px]">
                   <FaLinkedinIn className="text-[11px]" />

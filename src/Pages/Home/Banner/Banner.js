@@ -36,13 +36,21 @@ const Banner = () =>
   const bannerData = [
 
     {
-      id: 2,
-      image: "https://www.adzitrims.com/sul-web-cms-adzi/upload/slider_image_upload_site_banner_slider_1571200303_1571200303.jpg",
+      id: 1,
+      image: "https://arltl.com/web-cms-arltl/uploads/banner-1.jpg",
     },
 
     {
+      id: 2,
+      image: "https://arltl.com/web-cms-arltl/uploads/banner-2.jpg",
+    },
+    {
+      id: 3,
+      image: "https://arltl.com/web-cms-arltl/uploads/banner-3.jpg",
+    },
+    {
       id: 4,
-      image: "https://www.adzitrims.com/sul-web-cms-adzi/upload/slider_image_upload_site_banner_slider_1546504364_1546504364.jpg",
+      image: "https://arltl.com/web-cms-arltl/uploads/banner-4.jpg",
     }
   ];
 
@@ -71,14 +79,14 @@ const Banner = () =>
   };
 
   return (
-    <div className="max-w-[1920px] mx-auto w-full h-full justify-center relative pt-[6.5rem]">
+    <div className="max-w-[1920px] mx-auto w-full h-full justify-center relative pt-[3.5rem]">
       <div className="relative flex items-center text-[#fff]">
-        <Slider {...settings} className="w-full xl:h-[690px] [@media(min-width:650px)]:flex hidden items-center overflow-hidden mx-auto">
+        <Slider {...settings} className="w-full xl:h-[650px] [@media(min-width:550px)]:flex hidden items-center overflow-hidden mx-auto">
           {bannerData.map(({ id, image }) => (
             <img
               key={id}
               src={image}
-              className="w-full sm:h-full h-[12rem] object-cover object-center block"
+              className="w-full max-h-[650px] object-cover object-center block"
               alt={`Banner ${ id }`}
             />
           ))}

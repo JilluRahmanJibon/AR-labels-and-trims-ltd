@@ -9,7 +9,7 @@ const ContactUs = () => {
   return (
     <div className="mt-[7rem]">
       {/*  banner section  */}
-      <DynamicBanner webTittle={false} tittle={"Contact Us"} bg={"https://www.adzitrims.com/assets/images/coming-soonbg.jpg"} />
+      <DynamicBanner webTittle={false} tittle={"Contact Us"} bg={"https://arltl.com/web-cms-arltl/uploads/contact-bg.jpg"} />
 
       {/*  Contact Information section  */}
       <ContactInfo />

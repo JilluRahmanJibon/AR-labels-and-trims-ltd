@@ -1,13 +1,14 @@
 import React from "react";
 import DynamicBanner from "../../../Shared/DynamicBanner/DynamicBanner";
 import AffiliationsDetails from "./AffiliationsDetails/AffiliationsDetails";
-import bgCover from "../../../Assets/aboutUs.jpg";
 
-function Affiliations() {
+
+function Affiliations ()
+{
   return (
     <main>
       {/*  banner section  */}
-      <DynamicBanner webTittle={true} bg={bgCover} />
+      <DynamicBanner webTittle={true} bg="https://www.arltl.com/web-cms-arltl/uploads/about-banner.jpg" />
       {/* Affiliations section */}
       <AffiliationsDetails />
 

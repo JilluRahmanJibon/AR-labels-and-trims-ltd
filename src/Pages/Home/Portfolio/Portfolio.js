@@ -4,19 +4,19 @@ const Portfolio = memo(() =>
 {
     const portfolioItems = [
         {
-            image: 'http://test.arltl.com/static/media/ar-image.a22264bd26421aab3d1f.jpg',
+            image: 'https://arltl.com/web-cms-arltl/uploads/portfolio-1.jpg',
             title: 'Summer Collection',
         },
         {
-            image: 'http://test.arltl.com/static/media/ar-image.a22264bd26421aab3d1f.jpg',
+            image: 'https://arltl.com/web-cms-arltl/uploads/portfolio-2.jpg',
             title: 'Winter Wear',
         },
         {
-            image: 'http://test.arltl.com/static/media/ar-image.a22264bd26421aab3d1f.jpg',
+            image: 'https://arltl.com/web-cms-arltl/uploads/portfolio-3.jpg',
             title: 'Sports Apparel',
         },
         {
-            image: 'http://test.arltl.com/static/media/ar-image.a22264bd26421aab3d1f.jpg',
+            image: 'https://arltl.com/web-cms-arltl/uploads/portfolio-4.jpg',
             title: 'Casual Line',
         },
     ];

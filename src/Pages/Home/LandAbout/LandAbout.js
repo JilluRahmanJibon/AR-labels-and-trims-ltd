@@ -1,5 +1,5 @@
 import React from "react";
-import arImage from "../../../Assets/ar-image.jpg"; // Ensure the image path is correct
+import arImage from "../../../Assets/ar-image.jpg"; 
 
 const LandAbout = () =>
 {
@@ -9,7 +9,7 @@ const LandAbout = () =>
         {/* Image Section */}
         <div data-aos='fade-up' className="sm:w-[400px] w-[300px] max-h-[400px]  flex-shrink-0">
           <img
-            src={arImage} // Ensure the actual image URL is used
+            src={arImage} 
             alt="About Us"
             className="rounded-lg w-full h-auto object-cover"
           />

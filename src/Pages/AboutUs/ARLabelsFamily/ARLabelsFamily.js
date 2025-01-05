@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
-import bgCover from "../../../Assets/aboutUs.jpg";
 
-const DynamicBanner = React.lazy(() =>
+
+const DynamicBanner = React.lazy(() =>  
   import("../../../Shared/DynamicBanner/DynamicBanner")
 );
 const FamilyMember = React.lazy(() =>
@@ -14,7 +14,7 @@ function ARLabelsFamily ()
     <main>
       {/* Banner Section */}
       <Suspense fallback={<div>Loading banner...</div>}>
-        <DynamicBanner webTittle={true} bg={bgCover} />
+        <DynamicBanner webTittle={true} bg="https://www.arltl.com/web-cms-arltl/uploads/about-banner.jpg" />
       </Suspense>
 
       {/* Family Section */}

@@ -7,7 +7,7 @@ const Certifications = () =>
   return (
     <div className="mt-[6rem]  ">
       {/* Banner Section */}
-      <DynamicBanner webTittle={true} bg='https://www.adzitrims.com/assets/images/page-header-bg.jpg' />
+      <DynamicBanner webTittle={true} bg='https://arltl.com/web-cms-arltl/uploads/SUSTAINABLE.jpg' />
 
       {/* Certifications Section */}
       <CertificationsData />
